@@ -5,7 +5,7 @@ const defaultState = {
   errors: []
 };
 
-const sessionReducer = (defaultState = {}, action) => {
+const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
