@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
         </label>
         {signupInputs}
         <button>{buttonText}</button>
-        {renderErrors()}
+        
       </form>
     );
   }
