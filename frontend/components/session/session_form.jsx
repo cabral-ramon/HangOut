@@ -37,7 +37,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     const buttonText = this.props.match.url === "/signup" ? "Sign up" : "Log in";
     let signupInputs;
 
@@ -77,7 +76,7 @@ class SessionForm extends React.Component {
         </label>
         {signupInputs}
         <button>{buttonText}</button>
-        
+
       </form>
     );
   }
