@@ -68,7 +68,11 @@ class SessionForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}
             className="login-signup-form">
+        <h3>Log in</h3>
+        <p>Not registered with us yet? Sign up</p>
+        <hr/>
         <label>Username
+          <br/>
           <input
             type="text"
             value={this.state.username}
@@ -76,6 +80,8 @@ class SessionForm extends React.Component {
         </label>
 
         <label>Password
+          <br/>
+          <p>Forgot your password?</p>
           <input
             type="password"
             value={this.state.password}
