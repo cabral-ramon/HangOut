@@ -1,6 +1,6 @@
 class Api::GroupsController < ApplicationController
 
-  before_action :require_logged_in
+  before_action :require_logged_in, only: [:create, :update]
 
   def create
     @group = Group.new(group_params)
@@ -22,10 +22,16 @@ class Api::GroupsController < ApplicationController
     end
   end
 
+  def index
+    @groups = Group.all
+  end
+
   def show
+    @group = Group.find(params[:id])
   end
 
   def destroy
+    @group = Group.find(params[:id])
   end
 
   private
