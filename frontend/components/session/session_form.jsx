@@ -48,19 +48,21 @@ class SessionForm extends React.Component {
 
     if (this.props.match.url === "/signup") {
        signupInputs = (
-        <div>
+        <div className="session-element">
           <label>email
             <input
               type="text"
               value={this.state.email}
-              onChange={this.update('email')}/>
+              onChange={this.update('email')}
+              className="session-input"/>
           </label>
 
           <label>location
             <input
               type="text"
               value={this.state.location}
-              onChange={this.update('location')}/>
+              onChange={this.update('location')}
+              className="session-input"/>
           </label>
         </div>
       );
@@ -68,27 +70,37 @@ class SessionForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}
             className="login-signup-form">
-        <h3>Log in</h3>
-        <p>Not registered with us yet? Sign up</p>
-        <hr/>
-        <label>Username
-          <br/>
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={this.update('username')}/>
-        </label>
+        <div className="session-form-header">
+          <h3>Log in</h3>
+          <p>Not registered with us yet? <a href="" >Sign Up?</a></p>
+        </div>
 
-        <label>Password
-          <br/>
-          <p>Forgot your password?</p>
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.update('password')}/>
-        </label>
+        <div className="session-element">
+          <label >Username:
+            <br/>
+            <input
+              type="text"
+              value={this.state.username}
+              onChange={this.update('username')}
+              className="session-input"
+              tabIndex="0"/>
+          </label>
+        </div>
+        <br/>
+        <div className="session-element">
+          <label >Password:
+            <br/>
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              className="session-input"
+              tabIndex="1"/>
+            <br />
+          </label>
+        </div>
         {signupInputs}
-        <button>{buttonText}</button>
+        <button className="session-button">{buttonText}</button>
         {this.renderErrors()}
       </form>
     );

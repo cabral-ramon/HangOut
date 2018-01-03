@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: sans-serif;
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: xx-large;
+  color: crimson;
+}

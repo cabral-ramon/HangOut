@@ -2,9 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .login-signup-form {
-  display: flex;
-  margin: auto;
-  padding: 50px;
+  margin: 50px auto;
+  width: 460px;
+  padding: 10px 0;
   font-size: 16px;
-  font-weight: 400px;
+  font-weight: bold;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 3px;
+  background-color: #fff;
+  h3 {
+    font-weight: 500px;
+    font-size: 34px;
+    margin: 0;
+    padding-bottom: 8px;
+  }
+  p {
+    margin-bottom: 16px;
+  }
+}
+
+
+.forgot-pw-text {
+  font-size: 13px;
+}
+
+.session-form-header {
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding: 16px 16px 0;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.session-button {
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 36px;
+  outline: 0;
+  vertical-align: middle;
+  line-height: 1;
+  margin: 16px;
+  margin-left: 26px;
+  border: 1px solid rgba(0,0,0,.12);
+  stroke: transparent;
+  fill: #fff!important;
+  color: #fff!important;
+  background: #ed1c40;
+  border-color: #ed1c40;
+  padding: 0 16px;
+}
+
+.session-input {
+  width: 90%;
+  margin-bottom: 16px;
+  color: rgba(0,0,0,.87);
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 3px;
+  background-color: #fafafa;
+  width: 99.8%;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.session-element {
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 1.45;
+  margin: 0 16px;
+  margin-top: 4px;
+  padding-top: 10px;
 }

@@ -11,16 +11,19 @@ class NavBar extends React.Component {
   userIcon() {
     if (this.props.currentUser !== null) {
       return (
-      <div>
-        <p>{this.props.currentUser.username}</p>
-        <button onClick={this.props.logout}>Log Out</button>
+      <div className="navbar-user-container">
+        <button
+          onClick={this.props.logout}
+          className="logout-button">Log Out</button>
+        <h3 className="username">{this.props.currentUser.username}</h3>
       </div>
       );
     } else {
       return (
-        <div>
-          <Link to={`/login`}>Login</Link>
-          <Link to={`/signup`}>signup</Link>
+        <div className="navbar-links-container">
+          <a href="">Create a Hangout</a>
+          <Link to={`/login`} className="navbar-links">Login</Link>
+          <Link to={`/signup`} className="navbar-links">signup</Link>
         </div>
       );
     }
@@ -28,8 +31,8 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav>
-        <h1>HangOut</h1>
+      <nav className="navbar">
+        <h1 className="logo">HangOut</h1>
         {this.userIcon()}
       </nav>
     );
