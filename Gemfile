@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'validates_email_format_of'
-
+gem 'faker'
 gem 'pry-rails'
 
 # Use Capistrano for deployment
