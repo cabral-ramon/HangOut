@@ -1,35 +1,35 @@
-export const fetchGroups = () => {
+export const fetchGroups = () => (
   $.ajax({
-    url: "api/group",
+    url: "/api/groups",
     method: "get"
-  });
-};
+  })
+);
 
-export const fetchGroup = (groupId) => {
+export const fetchGroup = (groupId) => (
   $.ajax({
-    url: `api/group/${groupId}`,
+    url: `/api/groups/${groupId}`,
     method: "get"
-  });
-};
+  })
+);
 
-export const updateGroup = (group) => {
+export const updateGroup = (group) => (
   $.ajax({
-    url: `api/group/${group.id}`,
+    url: `/api/groups/${group.id}`,
     method: "patch",
     data: { group }
-  });
-};
+  })
+);
 
-export const deleteGroup = (groupId) => {
+export const deleteGroup = (groupId) => (
   $.ajax({
-    url: `api/group/${groupId}`,
+    url: `/api/groups/${groupId}`,
     method: "delete"
-  });
-};
+  })
+);
 
-export const createGroup = (group) => {
+export const createGroup = (group) => (
   $.ajax({
-    url: "api/group",
+    url: "/api/groups",
     method: "post"
-  });
-};
+  })
+);
