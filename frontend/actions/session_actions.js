@@ -13,13 +13,14 @@ const receiveCurrentUser = (user) => {
 const receiveSessionErrors = (errors) => {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors
+    errors: errors.responseJSON
   };
 };
 
 export const login = (user) => (dispatch) => {
   SessionApiUtil.login(user).then( (user) =>
-  dispatch(receiveCurrentUser(user)));
+  dispatch(receiveCurrentUser(user)), (error) =>
+  dispatch(receiveSessionErrors(error)));
 };
 
 export const logout = () => (dispatch) => {
@@ -29,5 +30,6 @@ export const logout = () => (dispatch) => {
 
 export const signup = (user) => (dispatch) => {
   SessionApiUtil.signup(user).then( (user) =>
-  dispatch(receiveCurrentUser(user)));
+  dispatch(receiveCurrentUser(user)), (errors) =>
+  dispatch(receiveSessionErrors(errors)));
 };
