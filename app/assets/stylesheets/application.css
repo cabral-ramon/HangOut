@@ -13,9 +13,3 @@
  *= require_tree .
  *= require_self
  */
- .login-signup-from {
-   display: flex;
-   margin: auto;
-   padding: 50px;
-   background-color: grey;
- }
