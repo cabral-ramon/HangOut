@@ -18,11 +18,11 @@ class GroupsIndex extends React.Component {
   render() {
     const groupIndexItems = Object.values(this.props.groups).map ( (group) => {
       return (
-        <GroupIndexItem group={group} />
+        <GroupIndexItem group={group} key={group.id}/>
       );
     });
     return(
-      <ul>
+      <ul className="group-index-container">
         {groupIndexItems}
       </ul>
     );

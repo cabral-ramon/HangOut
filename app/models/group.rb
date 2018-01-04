@@ -5,7 +5,8 @@
 #  id          :integer          not null, primary key
 #  name        :string           not null
 #  description :string           not null
-#  locataion   :string
+#  location    :string
+#  img_url     :string
 #
 
 class Group < ApplicationRecord

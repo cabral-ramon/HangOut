@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103215801) do
+ActiveRecord::Schema.define(version: 20180104145534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180103215801) do
     t.string "name", null: false
     t.string "description", null: false
     t.string "location"
+    t.string "img_url"
     t.index ["name"], name: "index_groups_on_name", unique: true
   end
 

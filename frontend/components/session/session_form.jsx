@@ -45,8 +45,10 @@ class SessionForm extends React.Component {
   render() {
     const buttonText = this.props.match.url === "/signup" ? "Sign up" : "Log in";
     let signupInputs;
+    let title;
 
     if (this.props.match.url === "/signup") {
+       title = "Sign Up";
        signupInputs = (
         <div className="session-element">
           <label>email
@@ -66,12 +68,14 @@ class SessionForm extends React.Component {
           </label>
         </div>
       );
+    } else {
+      title = "Log in";
     }
     return (
       <form onSubmit={this.handleSubmit}
             className="login-signup-form">
         <div className="session-form-header">
-          <h3>Log in</h3>
+          <h3>{title}</h3>
           <p>Not registered with us yet? <a href="" >Sign Up?</a></p>
         </div>
 

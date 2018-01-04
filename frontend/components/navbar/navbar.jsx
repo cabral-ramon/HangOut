@@ -32,7 +32,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <h1 className="logo">HangOut</h1>
+        <h1 className="logo"><a href="/" >HangOut</a></h1>
         {this.userIcon()}
       </nav>
     );

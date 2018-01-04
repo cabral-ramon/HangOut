@@ -13,6 +13,13 @@ const App = () => (
     </header>
     <Route path="/login" component={SessionFormContainer}/>
     <Route path="/signup" component={SessionFormContainer}/>
+    <div className="video-container">
+      <video
+        src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4"
+        autoPlay=""
+        className="video"
+        loop="" data-vscid="cgnslx2fk"></video>
+     </div>
     <Groups />
   </div>
 );

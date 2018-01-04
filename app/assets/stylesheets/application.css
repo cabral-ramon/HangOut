@@ -23,3 +23,22 @@ body {
   font-size: xx-large;
   color: crimson;
 }
+
+.video-container {
+
+}
+
+.video {
+  object-fit: unset;
+  z-index: 20;
+  display: flex;
+  min-height: 320px;
+  max-height: 465px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  width: 100vw;
+}

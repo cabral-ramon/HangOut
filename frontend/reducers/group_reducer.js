@@ -1,8 +1,6 @@
 import { RECEIVE_GROUP, RECEIVE_GROUPS, REMOVE_GROUP } from '../actions/group_actions';
 
-const defaultState = {
-  groups: {}
-};
+const defaultState = {};
 
 const groupReducer = (state = defaultState, action) => {
   Object.freeze(state);

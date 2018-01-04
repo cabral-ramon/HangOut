@@ -6,9 +6,14 @@ class GroupIndexItem extends React.Component {
     super(props);
   }
 
+
   render() {
+
     return (
-      <li>{this.props.group.name}</li>
+      <li className="group-container">
+        <h4 className="group-name">{this.props.group.name}</h4>
+        <p className="group-location">{this.props.group.location}</p>
+      </li>
     );
   }
 
