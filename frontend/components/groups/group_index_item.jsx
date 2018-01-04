@@ -10,7 +10,7 @@ class GroupIndexItem extends React.Component {
   render() {
 
     return (
-      <li className="group-container">
+      <li className="group-container" background-image={this.props.group.img_url}>
         <h4 className="group-name">{this.props.group.name}</h4>
         <p className="group-location">{this.props.group.location}</p>
       </li>

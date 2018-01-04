@@ -23,12 +23,13 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.all.shuffle[0...9]
     render :index
   end
 
   def show
     @group = Group.find(params[:id])
+    render "/api/groups/#{@group.id}"
   end
 
   def destroy

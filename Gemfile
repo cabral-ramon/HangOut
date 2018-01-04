@@ -20,6 +20,8 @@ gem 'jquery-rails'
 gem 'validates_email_format_of'
 gem 'faker'
 gem 'pry-rails'
+gem 'aws-sdk', '< 3.0'
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

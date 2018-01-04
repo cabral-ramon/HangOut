@@ -25,15 +25,13 @@ body {
 }
 
 .video-container {
-
+  height: 66vh;
 }
 
 .video {
   object-fit: unset;
   z-index: 20;
   display: flex;
-  min-height: 320px;
-  max-height: 465px;
   overflow: hidden;
   position: relative;
   background-size: cover;
@@ -41,4 +39,42 @@ body {
   background-repeat: no-repeat;
   box-sizing: border-box;
   width: 100vw;
+  height: 50vh
+}
+
+.video-text {
+  z-index: 30;
+  position: absolute;
+  top: 19%;
+  left: 34%;
+  color: white;
+  text-align: center;
+}
+
+.video-text h3{
+  font-size: 56px;
+  font-weight: 600;
+  margin: 25px;
+  margin-bottom: 5px;
+}
+
+.video-text p {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+
+.video-signup-btn {
+  background-color: crimson;
+  padding-left: 95px;
+  padding-right: 95px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border: 1px solid crimson;
+  border-radius: 10px;
+}
+
+.video-signup-btn:hover {
+  background-color: darkred;
 }
