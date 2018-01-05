@@ -8,7 +8,6 @@ class GroupIndexItem extends React.Component {
 
 
   render() {
-    console.log(this.props.group.image.url);
     return (
       <li className="group-container">
         <img src={this.props.group.image}></img>

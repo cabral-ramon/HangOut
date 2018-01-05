@@ -23,6 +23,7 @@ gem 'pry-rails'
 gem 'aws-sdk', '< 3.0'
 gem 'paperclip'
 gem 'figaro'
+gem 'font-awesome-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

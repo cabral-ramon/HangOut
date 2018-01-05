@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
       email: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeSessionForm = this.closeSessionForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +41,11 @@ class SessionForm extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  closeSessionForm(e){
+    e.preventDefault();
+    this.props.history.push("/");
   }
 
   render() {
@@ -75,6 +81,8 @@ class SessionForm extends React.Component {
       <div className="form-container">
         <form onSubmit={this.handleSubmit}
               className="login-signup-form">
+          <button onClick={this.closeSessionForm}
+            className="close-btn">X</button>
           <div className="session-form-header">
             <h3>{title}</h3>
             <p>Not registered with us yet? <a href="" >Sign Up?</a></p>

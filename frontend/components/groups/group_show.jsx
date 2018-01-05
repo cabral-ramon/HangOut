@@ -4,6 +4,11 @@ class GroupShow extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {
+    this.props.fetchGroup(this.props.groupId);
+  }
+
   render() {
     return (
       <div>
