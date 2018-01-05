@@ -22,6 +22,7 @@ gem 'faker'
 gem 'pry-rails'
 gem 'aws-sdk', '< 3.0'
 gem 'paperclip'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
