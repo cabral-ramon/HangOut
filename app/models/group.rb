@@ -2,11 +2,14 @@
 #
 # Table name: groups
 #
-#  id          :integer          not null, primary key
-#  name        :string           not null
-#  description :string           not null
-#  location    :string
-#  img_url     :string
+#  id                 :integer          not null, primary key
+#  name               :string           not null
+#  description        :string           not null
+#  location           :string
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class Group < ApplicationRecord

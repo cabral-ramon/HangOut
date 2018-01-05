@@ -8,18 +8,24 @@
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+  :hover {
+    color: crimson;
+    cursor: pointer;
+  }
 }
 .group-container {
-  height: 27%;
-  width: 22%;
-  padding: 10px;
+  width: 325px;
+  padding: 15px;
   margin: 10px;
-  background-color: red;
   font-size: 16px;
+  position: relative;
+
 }
 
 .group-name {
-
+  position: absolute;
+  left: 16px;
+  top: 5px;
 }
 
 .group-description {
@@ -27,5 +33,7 @@
 }
 
 .group-location {
-
+  position: absolute;
+  top: 115px;
+  left: 20px;
 }
