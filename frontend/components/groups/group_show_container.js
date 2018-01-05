@@ -3,8 +3,10 @@ import { fetchGroup } from '../../actions/group_actions';
 import GroupShow from './group_show';
 
 const mapStateToProps = (state, ownProps) => {
+  const groupId = parseInt(ownProps.match.params.groupId);
   return {
-    group: state.group[ownProps.groupId]
+    group: state.group[ownProps.groupId],
+    groupId: groupId
   };
 };
 

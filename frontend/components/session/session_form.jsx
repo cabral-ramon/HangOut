@@ -13,10 +13,6 @@ class SessionForm extends React.Component {
     this.closeSessionForm = this.closeSessionForm.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);

@@ -4,12 +4,18 @@ class GroupIndexItem extends React.Component {
 
   constructor(props) {
     super(props);
+    this.redirectToShowPage = this.redirectToShowPage.bind(this);
   }
 
+  redirectToShowPage(e) {
+    e.preventDefault();
+    this.props.history.push(`/groups/${this.props.groupId}`);
+  }
 
   render() {
     return (
-      <li className="group-container">
+      <li className="group-container"
+          onClick={this.redirectToShowPage}>
         <img src={this.props.group.image}></img>
         <h4
           className="group-name">

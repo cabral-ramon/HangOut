@@ -29,7 +29,7 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    render "/api/groups/#{@group.id}"
+    render :show
   end
 
   def destroy
