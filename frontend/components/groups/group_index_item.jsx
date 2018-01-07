@@ -1,32 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class GroupIndexItem extends React.Component {
+const GroupIndexItem = ({group}) => {
 
-  constructor(props) {
-    super(props);
-    this.redirectToShowPage = this.redirectToShowPage.bind(this);
-  }
-
-  redirectToShowPage(e) {
-    e.preventDefault();
-    this.props.history.push(`/groups/${this.props.groupId}`);
-  }
-
-  render() {
     return (
-      <li className="group-container"
-          onClick={this.redirectToShowPage}>
-        <img src={this.props.group.image}></img>
-        <h4
-          className="group-name">
-          {this.props.group.name.length > 30 ?
-            this.props.group.name.slice(0,30) + '...' : this.props.group.name}
-        </h4>
-        <p className="group-location">{this.props.group.location}</p>
-      </li>
+      <Link
+        to={`/groups/${group.id}`}
+        style={{
+          textDecoration: 'none'}}>
+        <li className="group-container">
+          <img src={group.image}></img>
+          <h4
+            className="group-name">
+            {group.name.length > 30 ?
+              group.name.slice(0,30) + '...' : group.name}
+            </h4>
+            <p className="group-location">{group.location}</p>
+          </li>
+      </Link>
     );
-  }
-
-}
+  };
 
 export default GroupIndexItem;

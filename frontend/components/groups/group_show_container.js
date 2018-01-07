@@ -5,7 +5,7 @@ import GroupShow from './group_show';
 const mapStateToProps = (state, ownProps) => {
   const groupId = parseInt(ownProps.match.params.groupId);
   return {
-    group: state.group[ownProps.groupId],
+    group: state.groups[groupId],
     groupId: groupId
   };
 };

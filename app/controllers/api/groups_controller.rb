@@ -6,7 +6,7 @@ class Api::GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      render "/api/groups/"
+      render :show
     else
       render json: @group.errors.full_messages, status: 422
     end

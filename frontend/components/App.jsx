@@ -10,17 +10,26 @@ import GroupShowContainer from './groups/group_show_container';
 import Video from './video/video';
 
 const App = () => (
-  <div>
+  <main>
     <header>
       <NavBar />
     </header>
-    <Route path="/login" component={SessionFormContainer}/>
-    <Route path="/signup" component={SessionFormContainer}/>
-    <Video />
-    <Route path="/create" component={GroupFormContainer}/>
-    <Route path="/" component={GroupIndexContainer}/>
-    <Route path="/groups/:groupId" component={GroupShowContainer}/>
-  </div>
+
+    <Switch>
+      <Route path="/login" component={SessionFormContainer}/>
+      <Route path="/signup" component={SessionFormContainer}/>
+      <Route path="/create" component={GroupFormContainer}/>
+      <Route path="/groups/:groupId" component={GroupShowContainer}/>
+    </Switch>
+
+      <Route exact path="/" component={Video}/>
+      <Route path="/login" component={Video}/>
+      <Route path="/signup" component={Video}/>
+      <Route exact path="/" component={GroupIndexContainer}/>
+
+    <footer>
+    </footer>
+  </main>
 );
 
 export default App;

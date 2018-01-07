@@ -4,7 +4,7 @@ import GroupForm from './group_form';
 
 const mapStateToProps = (state) => {
   return {
-
+    errors: state.errors.group
   };
 };
 

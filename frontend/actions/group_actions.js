@@ -3,6 +3,7 @@ import * as GroupAPIUtil from "../util/group_api_util";
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
 export const REMOVE_GROUP = "REMOVE_GROUP";
+export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 
 const receiveGroup = (group) => {
   return {
@@ -22,6 +23,13 @@ const removeGroup = (groupId) => {
   return {
     type: REMOVE_GROUP,
     groupId: groupId
+  };
+};
+
+const receiveGroupErrors = (errors) => {
+  return {
+    type: RECEIVE_GROUP_ERRORS,
+    errors: errors.responseJSON
   };
 };
 
@@ -51,6 +59,8 @@ export const deleteGroup = (groupId) => (dispatch) => {
 
 export const createGroup = (group) => (dispatch) => {
   return GroupAPIUtil.createGroup(group).then( (group) => {
-    dispatch(receiveGroup(group));
+    return dispatch(receiveGroup(group));
+  }, (errors) => {
+    return dispatch(receiveGroupErrors(errors));
   });
 };

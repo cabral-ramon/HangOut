@@ -11,11 +11,19 @@ class GroupShow extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.props.name}</h2>
-        <img url={this.props.image}/>
-        <p>this.props.location</p>
-        <p>{this.props.description}</p>
+      <div className="group-show-container">
+        <section className="group-show-image-container">
+          <img className="group-show-image"
+            src={this.props.group.image}/>
+          <div className="group-info-container">
+            <h2 className="group-show-name">
+              {this.props.group.name}</h2>
+            <p>{this.props.group.location}</p>
+          </div>
+        </section>
+        <article>
+          <p>{this.props.group.description}</p>
+        </article>
       </div>
     );
   }
