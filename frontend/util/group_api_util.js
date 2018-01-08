@@ -30,6 +30,9 @@ export const deleteGroup = (groupId) => (
 export const createGroup = (group) => (
   $.ajax({
     url: "/api/groups",
-    method: "post"
+    method: "post",
+    contentType: false,
+    processData: false,
+    data: group
   })
 );

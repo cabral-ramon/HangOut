@@ -18,4 +18,15 @@ class Group < ApplicationRecord
 
   has_attached_file :image, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  has_many :memberships,
+    primary_key: :id,
+    foreign_key: :group_id,
+    class_name: :Membership
+
+  has_many :members,
+    through: :memberships,
+    source: :user
+
+
 end

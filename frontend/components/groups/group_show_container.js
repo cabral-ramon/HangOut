@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchGroup } from '../../actions/group_actions';
+import { createMembership } from '../../actions/membership_actions';
 import GroupShow from './group_show';
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchGroup: (groupId) => dispatch(fetchGroup(groupId))
+    fetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
+    createMembership: (membership) => dispatch(createMembership(membership))
   };
 };
 

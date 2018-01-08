@@ -1,6 +1,6 @@
 .group-form-main {
   margin: auto;
-  width: 60%;
+  width: 100%;
 
   font-size: 26px;
 }
@@ -8,11 +8,23 @@
 .group-form-header {
   margin: auto;
   text-align: center;
+  position: absolute;
+  color: white;
   h2 {
     margin: auto;
+    position: absolute;
+    top: 28%;
+    left: 45%;
   }
   p {
     margin: auto;
+    position: absolute;
+    top: 40%;
+    left: 34%;
+  }
+  img {
+    object-fit: cover;
+    height: 380px;
   }
 }
 .group-form-container {
@@ -20,6 +32,9 @@
   flex-direction: column;
   margin: auto;
   font-weight: 500;
+  position: absolute;
+  top: 460px;
+  left: 34%;
 }
 
 .group-form-name {
@@ -56,6 +71,10 @@
   width: 100%;
 }
 
+.group-form-image {
+  padding: 10px;
+}
+
 .group-form-btn {
   cursor: pointer;
   border-radius: 3px;
@@ -63,8 +82,6 @@
   outline: 0;
   vertical-align: middle;
   line-height: 1;
-  margin: 16px;
-  margin-left: 26px;
   border: 1px solid rgba(0,0,0,.12);
   stroke: transparent;
   fill: #fff;
@@ -72,10 +89,17 @@
   background: #ed1c40;
   border-color: #ed1c40;
   padding: 0 16px;
+  text-align: center;
+  :hover {
+
+  }
 }
 
 .group-form {
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 10px;
 }

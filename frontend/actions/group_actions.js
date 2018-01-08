@@ -27,9 +27,10 @@ const removeGroup = (groupId) => {
 };
 
 const receiveGroupErrors = (errors) => {
+  console.log(errors);
   return {
     type: RECEIVE_GROUP_ERRORS,
-    errors: errors.responseJSON
+    errors: errors.responseText
   };
 };
 

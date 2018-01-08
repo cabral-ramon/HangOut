@@ -23,12 +23,13 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all.shuffle[0...9]
+    @groups = Group.includes(:members).all.shuffle[0...9]
     render :index
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:members).find(params[:id])
+    @members = @group.members.each{|member| member.to_json}
     render :show
   end
 

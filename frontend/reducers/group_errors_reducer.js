@@ -1,7 +1,7 @@
 import { RECEIVE_GROUP_ERRORS } from '../actions/group_actions';
 
 
-const sessionErrorsReducer = (state =[], action) => {
+const groupErrorsReducer = (state =[], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_GROUP_ERRORS:
@@ -11,4 +11,4 @@ const sessionErrorsReducer = (state =[], action) => {
   }
 };
 
-export default sessionErrorsReducer;
+export default groupErrorsReducer;
