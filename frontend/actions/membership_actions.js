@@ -1,12 +1,12 @@
-import * as MemberhsipAPIUtil from "../util/membership_api_util";
+import * as MembershipAPIUtil from "../util/membership_api_util";
 
 export const RECEIVE_MEMBERSHIP = "RECEIVE_MEMBERSHIP";
 export const REMOVE_MEMBERSHIP = "REMOVE_MEMBERSHIP";
 
-const receiveMembership = (membership) => {
+const receiveMembership = (group) => {
   return {
     type: RECEIVE_MEMBERSHIP,
-    membership: membership
+    group:  group 
   };
 };
 

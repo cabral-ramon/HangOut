@@ -12,11 +12,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   if (ownProps.match.path === "/signup") {
     return {
-      processForm: (user) => dispatch(signup(user))
+      processForm: (user) => dispatch(signup(user)),
+      guestLogin: (user) => dispatch(login(user))
     };
   } else {
     return {
-      processForm: (user) => dispatch(login(user))
+      processForm: (user) => dispatch(login(user)),
+      guestLogin: (user) => dispatch(login(user))
     };
   }
 };

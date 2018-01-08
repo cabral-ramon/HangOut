@@ -26,10 +26,14 @@
   vertical-align: -webkit-baseline-middle;
   display: flex;
   flex-direction: row;
+  a {
+    margin-top: 5px;
+  }
 }
 
 .navbar-links {
   padding: 15px;
+  color: dimgrey;
 }
 
 .navbar-links:hover {

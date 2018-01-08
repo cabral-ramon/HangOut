@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   const groupId = parseInt(ownProps.match.params.groupId);
   return {
     group: state.groups[groupId],
-    groupId: groupId
+    groupId: groupId,
+    currentUser: state.session.currentUser
   };
 };
 

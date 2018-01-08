@@ -8,10 +8,12 @@ class NavBar extends React.Component {
     super(props);
   }
 
+
   userIcon() {
     if (this.props.currentUser !== null) {
       return (
       <div className="navbar-user-container">
+        <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
         <button
           onClick={this.props.logout}
           className="logout-button">Log Out</button>
@@ -28,6 +30,7 @@ class NavBar extends React.Component {
       );
     }
   }
+
 
   render() {
     return (

@@ -1,7 +1,7 @@
 export const createMembership = (membership) => (
   $.ajax({
-    url: "/api/memberships",
-    method: post,
+    url: `/api/groups/${membership.group_id}/memberships`,
+    method: "post",
     data: { membership }
   })
 );

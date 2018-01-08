@@ -2,13 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.group-show-main {
+  background: #f6f7f8;
+}
 .group-show-container {
   padding: 50px;
   width: 70%;
   margin: auto;
   article {
     margin-top: 25px;
-    width: 615px;
+    width: 470px;
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
   }
 }
 
@@ -30,4 +38,34 @@
 
 .group-show-name {
   font-size: 40px;
+}
+
+.group-show-button {
+  background-color: crimson;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: 1px solid crimson;
+  border-radius: 5px;
+  :hover {
+    cursor: pointer;
+    border-color: red;
+  }
+}
+
+.group-show-section {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+}
+
+.members-container {
+  margin: 0 auto;
+  text-align: center;
+  h3{
+    span{
+      color: darkgray;
+      font-size: 16px;
+    }
+  }
 }

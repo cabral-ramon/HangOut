@@ -5,6 +5,8 @@ class Api::MembershipsController < ApplicationController
   def create
     @membership = Membership.new(membership_params)
     if @membership.save
+      @group = @membership.group
+      render :create
     else
       render json: @membership.errors.full_messages, status: 422
     end

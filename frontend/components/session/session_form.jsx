@@ -11,12 +11,22 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeSessionForm = this.closeSessionForm.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then ( () => {
+      this.props.history.push("/");
+    });
+  }
+
+  demoLogin() {
+    this.props.guestLogin({
+      username: 'Guest User',
+      password: 'password'
+    }).then( () => {
       this.props.history.push("/");
     });
   }
@@ -81,7 +91,6 @@ class SessionForm extends React.Component {
             className="close-btn">X</button>
           <div className="session-form-header">
             <h3>{title}</h3>
-            <p>Not registered with us yet? <a href="" >Sign Up?</a></p>
           </div>
 
           <div className="session-element">
@@ -111,6 +120,8 @@ class SessionForm extends React.Component {
           {signupInputs}
           <button className="session-button">{buttonText}</button>
           {this.renderErrors()}
+          <a className="guest-button"
+            onClick={this.demoLogin}>Guest User</a>
         </form>
       </div>
     );
