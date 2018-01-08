@@ -38,29 +38,34 @@ class GroupForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>
-          <h2>Create a new hangout</h2>
+      <div className="group-form-main">
+        <header className="group-form-header">
+            <h2>Create a new Hangout</h2>
+            <p>We'll help you find the right people to make it happen.</p>
         </header>
         <div className="group-form-container">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}
+            className="group-form">
             <label>Name:
               <input
                 type="text"
                 value={this.state.name}
-                onChange={this.update('name')}/>
+                onChange={this.update('name')}
+                className="group-form-name"/>
             </label>
             <label>Location:
               <input
                 type="text"
                 value={this.state.location}
-                onChange={this.update('location')}/>
+                onChange={this.update('location')}
+                className="group-form-location"/>
             </label>
             <label>Description:
               <input
-                type="text"
+                type="textarea"
                 value={this.state.description}
-                onChange={this.update('description')}/>
+                onChange={this.update('description')}
+                className="group-form-description"/>
             </label>
             <button className="group-form-btn">Create Hangout!</button>
             {this.renderErrors()}
