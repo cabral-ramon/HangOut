@@ -71,7 +71,8 @@ export const deleteGroup = (groupId) => (dispatch) => {
 
 export const createGroup = (group) => (dispatch) => {
   return GroupAPIUtil.createGroup(group).then( (group) => {
-    return dispatch(receiveGroup(group));
+     dispatch(receiveGroup(group));
+     return group.group;
   }, (errors) => {
     return dispatch(receiveGroupErrors(errors));
   });
@@ -85,6 +86,11 @@ export const fetchGroupMembers = (groupId) => (dispatch) => {
 
 export const createMembership = (membership) => (dispatch) => {
   return MembershipAPIUtil.createMembership(membership).then( (group) => {
+    return dispatch(receiveGroup(group));
+  });
+};
+export const removeMembership = (groupId) => (dispatch) => {
+  return MembershipAPIUtil.removeMembership(groupId).then( (group) => {
     return dispatch(receiveGroup(group));
   });
 };

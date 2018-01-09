@@ -6,10 +6,10 @@ export const createMembership = (membership) => (
   })
 );
 
-export const deleteMembership = (membershipId) => (
+export const removeMembership = (groupId) => (
   $.ajax({
-    url: `/api/memberships/${membershipId}`,
+    url: `/api/groups/${groupId}/memberships/`,
     method: "delete",
-    data: { membershipId}
+    data: { groupId }
   })
 );

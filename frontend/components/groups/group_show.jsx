@@ -1,9 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.leaveGroup = this.leaveGroup.bind(this);
   }
 
   componentDidMount() {
@@ -11,13 +13,19 @@ class GroupShow extends React.Component {
   }
 
   renderMembers() {
-    // return (
-    //   <ul>
-    //     {this.props.members.map( (member) => (
-    //       <li key={member.id}>{member.username}</li>
-    //     ))}
-    //   </ul>
-    // );
+    return (
+      <ul>
+        {this.props.members.map( (member) => (
+          <li key={member.id}>{member.username}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  leaveGroup(e) {
+    e.preventDefault();
+    const groupId = this.props.group.id;
+    this.props.removeMembership(groupId);
   }
 
   handleSubmit(e) {
@@ -35,7 +43,9 @@ class GroupShow extends React.Component {
       if ( groupMembers.includes(this.props.currentUser.id) ) {
         buttonText = "Leave Group";
         return (
-          <button>{buttonText}</button>
+          <button
+            className="group-show-button"
+            onClick={this.leaveGroup}>{buttonText}</button>
         );
       }
     }
@@ -80,4 +90,4 @@ class GroupShow extends React.Component {
   }
 }
 
-export default GroupShow;
+export default withRouter(GroupShow);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class GroupForm extends React.Component {
   constructor(props) {
@@ -7,10 +8,11 @@ class GroupForm extends React.Component {
       name: "",
       location: "",
       description: "",
-      image: null,
+      image: "",
       imageUrl: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   handleSubmit(e) {
@@ -20,8 +22,9 @@ class GroupForm extends React.Component {
     formData.append("group[location]", this.state.location);
     formData.append("group[description]", this.state.description);
     formData.append("group[image]", this.state.image);
-    // const group = Object.assign({}, this.state);
-    this.props.createGroup(formData);
+    this.props.createGroup(formData).then( (group) => {
+      this.props.history.push(`/groups/${group.id}`);
+    });
   }
 
   update(field) {
@@ -30,19 +33,21 @@ class GroupForm extends React.Component {
     });
   }
 
-  updateFile() {
-    return e => {
-      e.preventDefault();
-      var file = e.currentTarget.files[0];
-      var fileReader = new FileReader();
-      fileReader.onloadend = () => {
-        this.setState({image: file, imageUrl: fileReader.result});
-      };
+  updateFile(e) {
+    e.preventDefault();
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({image: file, imageUrl: fileReader.result});
     };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", image: null });
+    }
   }
-  if (file) {
-    fileReader.readAsDataUrl(file);
-  }
+
 
   renderErrors() {
     if (this.props.errors) {
@@ -53,6 +58,12 @@ class GroupForm extends React.Component {
   }
 
   render() {
+    let imageName;
+    if (this.state.image) {
+      imageName = this.state.image.name;
+    } else {
+      imageName = "";
+    }
     return (
       <div className="group-form-main">
         <header className="group-form-header">
@@ -78,7 +89,7 @@ class GroupForm extends React.Component {
                 className="group-form-location"/>
             </label>
             <label>Description:
-              <input
+              <textarea
                 type="textarea"
                 value={this.state.description}
                 onChange={this.update('description')}
@@ -87,8 +98,7 @@ class GroupForm extends React.Component {
             <label>Image:
               <input
                 type="file"
-                value={this.state.imageUrl}
-                onChange={this.updateFile()}
+                onChange={this.updateFile}
                 className="group-form-image"/>
             </label>
             <button className="group-form-btn">Create Hangout!</button>
@@ -100,4 +110,4 @@ class GroupForm extends React.Component {
   }
 }
 
-export default GroupForm;
+export default withRouter(GroupForm);
