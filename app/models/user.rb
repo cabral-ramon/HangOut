@@ -25,12 +25,12 @@ class User < ApplicationRecord
   has_many :memberships,
     primary_key: :id,
     foreign_key: :user_id,
-    class_name: :memberships
+    class_name: "Membership"
 
   has_many :groups,
     through: :memberships,
     source: :group
-    
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return nil unless user

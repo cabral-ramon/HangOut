@@ -29,7 +29,7 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.includes(:members).find(params[:id])
-    @members = @group.members.each{|member| member.to_json}
+    # @members = @group.members.each{|member| member.to_json}
     render :show
   end
 

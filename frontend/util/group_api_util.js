@@ -36,3 +36,11 @@ export const createGroup = (group) => (
     data: group
   })
 );
+
+export const fetchGroupMembers = (groupId) => (
+  $.ajax({
+    url: `/api/users`,
+    method: "get",
+    data: { groupId }
+  })
+);

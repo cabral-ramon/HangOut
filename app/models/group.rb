@@ -22,11 +22,15 @@ class Group < ApplicationRecord
   has_many :memberships,
     primary_key: :id,
     foreign_key: :group_id,
-    class_name: :Membership
+    class_name: "Membership"
 
   has_many :members,
     through: :memberships,
     source: :user
 
+  has_many :events,
+    primary_key: :id,
+    foreign_key: :group_id,
+    class_name: "Event"
 
 end

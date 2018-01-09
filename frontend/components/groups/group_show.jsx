@@ -11,13 +11,13 @@ class GroupShow extends React.Component {
   }
 
   renderMembers() {
-    return (
-      <ul>
-        {this.props.group.members.map( (member) => (
-          <li key={member.id}>{member.username}</li>
-        ))}
-      </ul>
-    );
+    // return (
+    //   <ul>
+    //     {this.props.members.map( (member) => (
+    //       <li key={member.id}>{member.username}</li>
+    //     ))}
+    //   </ul>
+    // );
   }
 
   handleSubmit(e) {
@@ -30,21 +30,25 @@ class GroupShow extends React.Component {
 
   renderButton() {
     let buttonText;
-    const currentUser = this.props.currentUser.username;
-    const groupMembers = this.props.group.members;
-
-    if ( groupMembers.includes(currentUser)){
-      buttonText = "Leave Group";
-    } else {
-      buttonText = "Join Group";
+    const groupMembers = this.props.memberIds;
+    if ( this.props.currentUser ) {
+      if ( groupMembers.includes(this.props.currentUser.id) ) {
+        buttonText = "Leave Group";
+        return (
+          <button>{buttonText}</button>
+        );
+      }
     }
+    buttonText = "Join Group";
     return (
       <button
-        className="group-show-button"
-        onClick={this.handleSubmit}
-        >{buttonText}</button>
+       className="group-show-button"
+       onClick={this.handleSubmit}
+       >{buttonText}</button>
     );
   }
+
+
 
   render() {
     return (
@@ -66,7 +70,7 @@ class GroupShow extends React.Component {
               <p>{this.props.group.description}</p>
             </article>
             <aside className="members-container">
-              <h3><span>({this.props.group.members.length})</span> Members</h3>
+              <h3><span>({this.props.memberIds.length})</span> Members</h3>
               {this.renderMembers()}
             </aside>
           </section>

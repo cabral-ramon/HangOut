@@ -8,6 +8,7 @@ import GroupIndexContainer from './groups/group_index_container';
 import GroupFormContainer from './groups/group_form_container';
 import GroupShowContainer from './groups/group_show_container';
 import Video from './video/video';
+import Footer from './footer/footer';
 
 const App = () => (
   <main>
@@ -27,8 +28,7 @@ const App = () => (
       <Route path="/signup" component={Video}/>
       <Route exact path="/" component={GroupIndexContainer}/>
 
-    <footer>
-    </footer>
+    <Footer />
   </main>
 );
 

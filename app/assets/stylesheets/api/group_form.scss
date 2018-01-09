@@ -73,23 +73,22 @@
 
 .group-form-image {
   padding: 10px;
+
 }
 
 .group-form-btn {
   cursor: pointer;
   border-radius: 3px;
   font-weight: 600;
-  outline: 0;
-  vertical-align: middle;
-  line-height: 1;
   border: 1px solid rgba(0,0,0,.12);
   stroke: transparent;
-  fill: #fff;
   color: #fff;
   background: #ed1c40;
   border-color: #ed1c40;
   padding: 0 16px;
   text-align: center;
+  width: 215px;
+  margin-top: 15px;
   :hover {
 
   }
@@ -101,5 +100,6 @@
   margin: auto;
   margin-top: 25px;
   margin-bottom: 25px;
-  padding-top: 10px;
+  border: 1px solid dimgray;
+  padding: 38px;
 }

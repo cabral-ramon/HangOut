@@ -1,8 +1,6 @@
 @groups.each do |group|
   json.set! group.id do
-    json.extract! group, :id, :name, :description, :location, :image, :image
-    json.members group.members.each do |member|
-      json.extract! member, :id, :username, :location
-    end
+    json.extract! group, :id, :name, :description, :location, :image
+    json.memberIds group.member_ids
   end
 end

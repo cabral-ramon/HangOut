@@ -1,14 +1,17 @@
 import * as GroupAPIUtil from "../util/group_api_util";
+import * as MembershipAPIUtil from "../util/membership_api_util";
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
 export const REMOVE_GROUP = "REMOVE_GROUP";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
+export const RECEIVE_MEMBERS = "RECEIVE_MEMBERS";
 
-const receiveGroup = (group) => {
+const receiveGroup = ({group, members}) => {
   return {
     type: RECEIVE_GROUP,
-    group: group
+    group: group,
+    members: members
   };
 };
 
@@ -27,12 +30,20 @@ const removeGroup = (groupId) => {
 };
 
 const receiveGroupErrors = (errors) => {
-  console.log(errors);
   return {
     type: RECEIVE_GROUP_ERRORS,
     errors: errors.responseText
   };
 };
+
+const receiveMembers = (members) => {
+  return {
+    type: RECEIVE_MEMBERS,
+    members: members
+  };
+};
+
+
 
 export const fetchGroup = (group) => (dispatch) => {
   return GroupAPIUtil.fetchGroup(group).then( (response) => {
@@ -63,5 +74,17 @@ export const createGroup = (group) => (dispatch) => {
     return dispatch(receiveGroup(group));
   }, (errors) => {
     return dispatch(receiveGroupErrors(errors));
+  });
+};
+
+export const fetchGroupMembers = (groupId) => (dispatch) => {
+  return GroupAPIUtil.fetchGroupMembers(groupId).then( (users) => {
+    return dispatch(receiveMembers(users));
+  });
+};
+
+export const createMembership = (membership) => (dispatch) => {
+  return MembershipAPIUtil.createMembership(membership).then( (group) => {
+    return dispatch(receiveGroup(group));
   });
 };
