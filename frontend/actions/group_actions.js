@@ -7,11 +7,12 @@ export const REMOVE_GROUP = "REMOVE_GROUP";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 export const RECEIVE_MEMBERS = "RECEIVE_MEMBERS";
 
-const receiveGroup = ({group, members}) => {
+const receiveGroup = ({group, members, events}) => {
   return {
     type: RECEIVE_GROUP,
     group: group,
-    members: members
+    members: members,
+    events: events
   };
 };
 

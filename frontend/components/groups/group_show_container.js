@@ -10,7 +10,12 @@ const mapStateToProps = (state, ownProps) => {
   );
   const members = Object.values(state.members).filter( (member) =>
     member.username);
-  let memberIds = state.groups[groupId].memberIds;
+    let memberIds;
+    if(state.groups[groupId]){
+      memberIds = state.groups[groupId].memberIds;
+    } else {
+      memberIds = [];
+    }
   return {
     group: state.groups[groupId],
     groupId: groupId,

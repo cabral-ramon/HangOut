@@ -18,6 +18,8 @@
 
 Group.delete_all
 
+user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
+
 group1 = Group.create(
   name: "Brooklyn Pickup Soccer Group",
   description: "Bklyn Pickup Soccer is a coed soccer group that plays year-round. Founded by John Thomas in 2008, this group has grown and evolved to over 4,000 members, hosting numerous pickup games all over Brooklyn. Everyone is welcome to attend (so long as people RSVP and respect our rules). Games tend to play on an intermediate level.

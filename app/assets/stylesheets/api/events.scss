@@ -1,3 +1,97 @@
 // Place all the styles related to the Api::Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.event-form-main {
+  margin: auto;
+  width: 100%;
+
+  font-size: 26px;
+}
+
+.event-form-header {
+  color: crimson
+}
+.event-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  font-weight: 500;
+  position: absolute;
+  top: 460px;
+  left: 34%;
+}
+
+.event-form-name {
+  background-color: #fafafa;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 0 0 4px;
+  max-width: 100%;
+  padding: 8px;
+  width: 100%;
+}
+.event-form-location {
+  background-color: #fafafa;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 0 0 4px;
+  max-width: 100%;
+  padding: 8px;
+  width: 100%;
+}
+.event-form-description {
+  background-color: #fafafa;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,.12);
+  box-shadow: none;
+  box-sizing: border-box;
+  margin: 0 0 4px;
+  max-width: 100%;
+  padding: 8px;
+  width: 100%;
+}
+
+.event-form-image {
+  padding: 10px;
+
+}
+
+.event-form-btn {
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,.12);
+  stroke: transparent;
+  color: #fff;
+  background: #ed1c40;
+  border-color: #ed1c40;
+  padding: 15px;
+  text-align: center;
+  width: 215px;
+  margin-top: 15px;
+  :hover {
+
+  }
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 1px solid dimgray;
+  padding: 38px;
+  width: 500px;
+  font-weight: 500;
+  label {
+    padding-bottom: 25px;
+    input {
+      font-weight: 100;
+    }
+  }
+}

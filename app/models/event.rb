@@ -20,4 +20,6 @@ class Event < ApplicationRecord
     primary_key: :id,
     foreign_key: :group_id,
     class_name: :Group
+
+  
 end

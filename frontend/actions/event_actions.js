@@ -32,5 +32,6 @@ export const fetchEvent = ({ eventId, groupId}) => (dispatch) => {
 export const createEvent = ({ groupId, event}) => (dispatch) => {
   return EventAPIUtil.createEvent({groupId, event}).then( (event) => {
     dispatch(receiveEvent(event));
+    return event;
   });
 };
