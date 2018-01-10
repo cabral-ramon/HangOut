@@ -6,7 +6,7 @@ json.location @event.location
 json.date @event.date
 json.time @event.time
 json.group_id @event.group_id
-json.attendees @event.attendee_ids
+json.attendees @event.attendees.map{ |attendee| attendee.user_id}
 
 
 # json.set! @event.id do

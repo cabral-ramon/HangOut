@@ -1,5 +1,7 @@
 import { RECEIVE_GROUP } from '../actions/group_actions';
 import { RECEIVE_EVENTS, RECEIVE_EVENT  } from '../actions/event_actions';
+import { merge } from 'lodash';
+
 
 const eventsReducer = (state = {}, action) => {
   Object.freeze(state);

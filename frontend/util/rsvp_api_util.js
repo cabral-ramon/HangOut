@@ -1,14 +1,14 @@
-export const createRsvp = ({group_id, rsvp}) => (
+export const createRsvp = (rsvp) => (
   $.ajax({
-    url: `/api/groups/${group_id}/events/${rsvp.event_id}/rsvps`,
+    url: `/api/rsvps/`,
     method: "post",
     data: { rsvp }
   })
 );
 
-export const removeRsvp = ({ groupId, eventId}) => (
+export const deleteRsvp = (eventId) => (
   $.ajax({
-    url: `/api/groups/${groupId}/rsvps`,
+    url: `/api/events/:event_id/rsvps`,
     method: "delete",
     data: { eventId }
   })

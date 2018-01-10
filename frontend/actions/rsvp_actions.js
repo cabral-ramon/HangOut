@@ -18,14 +18,14 @@ const removeRsvp = (rsvpId) => {
   };
 };
 
-export const createRsvp = ({group_id, rsvp}) => (dispatch) => {
-  return RsvpAPIUtil.createRsvp({group_id, rsvp}).then( (event) => {
+export const createRsvp = (rsvpParams) => (dispatch) => {
+  return RsvpAPIUtil.createRsvp(rsvpParams).then( (event) => {
     return dispatch(receiveEvent(event));
   });
 };
 
-export const deleteRsvp = ({ groupId, eventId})) => (dispatch) => {
-  return RsvpAPIUtil.deleteRsvp{ groupId, eventId}).then( ({ groupId, eventId})) => {
-    return dispatch(removeRsvp({ groupId, eventId})));
+export const deleteRsvp = (eventId) => (dispatch) => {
+  return RsvpAPIUtil.deleteRsvp(eventId).then( (response) => {
+    return dispatch(removeRsvp(response));
   });
 };

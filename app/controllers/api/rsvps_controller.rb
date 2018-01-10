@@ -4,6 +4,7 @@ class Api::RsvpsController < ApplicationController
   def create
     @rsvp = Rsvp.new(rsvp_params)
     if @rsvp.save
+      @event = @rsvp.event
       render "api/events/show"
     else
       render json: @rsvp.errors.full_messages, status: 422
@@ -11,9 +12,10 @@ class Api::RsvpsController < ApplicationController
   end
 
   def destroy
-     @rsvp = Rsvp.where("event_id = ?", params[:event_id]).find_by(user_id: current_user.id)
+     @rsvp = Rsvp.where("event_id = ?", params[:eventId]).find_by(user_id: current_user.id)
      if @rsvp
        @rsvp.destroy
+       @event = @rsvp.event
        render "api/events/show"
     end
   end
