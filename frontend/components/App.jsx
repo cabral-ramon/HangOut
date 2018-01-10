@@ -8,6 +8,7 @@ import GroupIndexContainer from './groups/group_index_container';
 import GroupFormContainer from './groups/group_form_container';
 import GroupShowContainer from './groups/group_show_container';
 import EventShowContainer from './event/event_show_container';
+import HomepageContainer from './homepage/homepage_container';
 import Video from './video/video';
 import Footer from './footer/footer';
 
@@ -21,8 +22,9 @@ const App = () => (
       <Route path="/login" component={SessionFormContainer}/>
       <Route path="/signup" component={SessionFormContainer}/>
       <Route path="/create" component={GroupFormContainer}/>
-      <Route path="/groups/:groupId/events/:eventId" component={EventShowContainer}/>
+      <Route path="/events/:eventId" component={EventShowContainer}/>
       <Route path="/groups/:groupId" component={GroupShowContainer}/>
+      <Route path="/homepage" component={HomepageContainer}/>
     </Switch>
 
       <Route exact path="/" component={Video}/>
