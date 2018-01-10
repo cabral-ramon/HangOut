@@ -1,5 +1,5 @@
 import { RECEIVE_GROUP } from '../actions/group_actions';
-import { RECEIVE_EVENTS } from '../actions/event_actions';
+import { RECEIVE_EVENTS, RECEIVE_EVENT  } from '../actions/event_actions';
 
 const eventsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -8,6 +8,8 @@ const eventsReducer = (state = {}, action) => {
       return Object.assign({}, state, action.events);
     case RECEIVE_EVENTS:
       return action.events;
+    case RECEIVE_EVENT:
+      return Object.assign({}, state, { [action.event.id]: action.event});
     default:
       return state;
   }

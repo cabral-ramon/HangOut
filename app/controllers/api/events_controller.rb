@@ -16,8 +16,8 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    render "api/events/show"
+    @event = Event.includes(:attendees).find(params[:id])
+    render :show
   end
 
   private

@@ -5,12 +5,12 @@ export const fetchEvents = () => (
   })
 );
 
-export const fetchEvent = ({ eventId, groupId}) => (
-  $.ajax({
+export const fetchEvent = ({ eventId, groupId}) => {
+  return $.ajax({
     url: `/api/groups/${groupId}/events/${eventId}`,
     method: "get"
   })
-);
+}
 
 export const createEvent = ({ groupId, event}) => (
   $.ajax({

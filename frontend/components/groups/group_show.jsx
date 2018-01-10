@@ -104,9 +104,16 @@ class GroupShow extends React.Component {
               <ul>
                 {this.props.events.map( (event) => (
                   <li key={event.id}>
-                    {event.date}: <Link to={`/groups/${this.props.group.id}/events/${event.id}`}>
-                    {event.name}
-                  </Link>
+                    <div className="event-list-container">
+                      <p className="event-list-date">{event.date}</p>
+                       <Link to={`/groups/${this.props.group.id}/events/${event.id}`}
+                         className="event-list-name">
+                         {event.name}
+                       </Link>
+                       <article className="event-list-desc">
+                         {event.description}
+                       </article>
+                    </div>
                   </li>
                 ))}
               </ul>

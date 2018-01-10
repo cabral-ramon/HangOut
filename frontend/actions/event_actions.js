@@ -6,7 +6,8 @@ export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 const receiveEvent = (event) => {
   return {
     type: RECEIVE_EVENT,
-    event: event
+    event: event,
+    rsvps: event.attendees
   };
 };
 
@@ -23,8 +24,8 @@ export const fetchEvents = () => (dispatch) => {
   });
 };
 
-export const fetchEvent = ({ eventId, groupId}) => (dispatch) => {
-  return EventAPIUtil.fetchEvent({ eventId, groupId}).then( (event) => {
+export const fetchEvent = (eventParams) => (dispatch) => {
+  return EventAPIUtil.fetchEvent(eventParams).then( (event) => {
     dispatch(receiveEvent(event));
   });
 };

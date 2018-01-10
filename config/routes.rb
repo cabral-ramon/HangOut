@@ -8,11 +8,13 @@ Rails.application.routes.draw do
    resource :session, only: [:create, :destroy, :show]
    resources :groups, only: [:create, :show, :update, :index, :destroy] do
      resources :memberships, only: [:create, :index]
-     resources :events, only: [:create, :show]
+       resources :events, only: [:create, :show] do
+         resources :rsvps, only: [:create]
+     end
    end
    resources :events, only: [:index]
  end
 
   delete 'api/groups/:group_id/memberships', to: 'api/memberships#destroy'
-  delete 'api/groups/:group_id/events', to: 'api/events#destroy'
+  delete 'api/groups/:group_id/rsvps', to: 'api/rsvps#destroy'
 end
