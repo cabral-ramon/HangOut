@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SessionFormContainer from '../session/session_form_container';
 
 const Video = () => {
   return (
@@ -12,8 +13,9 @@ const Video = () => {
       <div className="video-text">
         <h3>What do you love?</h3>
         <p>do more of it with Hangout</p>
-        <Link to={'/signup'}
-          className="video-signup-btn">Sign up</Link>
+
+
+          <SessionFormContainer formType="signup" id="2"/>
       </div>
     </div>
   );

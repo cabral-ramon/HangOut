@@ -12,7 +12,6 @@
 
 .video {
   position: absolute;
-  z-index: 20;
   min-width: 100%;
   min-height: 100%;
   top: 50%;
@@ -23,7 +22,6 @@
 }
 
 .video-text {
-  z-index: 30;
   position: absolute;
   top: 19%;
   left: 34%;

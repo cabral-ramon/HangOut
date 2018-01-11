@@ -16,6 +16,8 @@
   text-align: center;
   padding: 10px;
   vertical-align: -webkit-baseline-middle;
+  display: flex;
+  flex-direction: row;
 }
 .navbar-user-container {
   position: absolute;

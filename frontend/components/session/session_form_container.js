@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
 import { login, signup } from '../../actions/session_actions';
-import SessionForm from './session_form';
+import SessionFormModal from './session_form_modal';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.currentUser,
-    errors: state.errors.session
+    errors: state.errors.session,
+    formType: ownProps.formType,
+    id: ownProps.id
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  if (ownProps.match.path === "/signup") {
+  if (ownProps.formType === "/signup") {
     return {
       processForm: (user) => dispatch(signup(user)),
       guestLogin: (user) => dispatch(login(user))
@@ -23,4 +25,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionFormModal);

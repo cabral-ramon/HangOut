@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SessionFormContainer from '../session/session_form_container';
 
 
 
@@ -24,8 +25,8 @@ class NavBar extends React.Component {
       return (
         <div className="navbar-links-container">
           <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
-          <Link to={`/login`} className="navbar-links">Login</Link>
-          <Link to={`/signup`} className="navbar-links">signup</Link>
+          <SessionFormContainer formType="Login" id="0"/>
+          <SessionFormContainer formType="signup" id="1"/>
         </div>
       );
     }
