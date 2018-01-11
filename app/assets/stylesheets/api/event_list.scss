@@ -1,0 +1,19 @@
+.event-index-container {
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 3px;
+  .event-item-container {
+    font-size: 16px;
+    border-bottom: 1px solid transparent;
+    .event-time-container {
+      font-size: 16px;
+    }
+    .event-info-container {
+      p {
+        text-transform: uppercase;
+        color: rgba(0,0,0,.54);
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+  }
+}

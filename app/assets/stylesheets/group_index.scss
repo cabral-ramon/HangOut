@@ -19,21 +19,26 @@
   margin: 10px;
   font-size: 20px;
   position: relative;
+}
+
+.group-image {
+  object-fit: cover;
+  height: 250px;
 
 }
 
-.group-name {
+.group-container > .gradient {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
   position: absolute;
-  left: 16px;
-  top: 5px;
-}
-
-.group-description {
-
-}
-
-.group-location {
-  position: absolute;
-  top: 115px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: calc(50% - 30px);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.26);
+  .group-name {
+    padding-left: 10px;
+  }
+  .group-location {
+    padding-left: 10px
+  }
 }
