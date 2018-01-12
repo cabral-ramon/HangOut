@@ -114,24 +114,27 @@ group9 = Group.create(
   image: File.open('app/assets/images/paint.jpeg')
   )
 
+Event.delete_all
  100.times do
-   times = ["7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00AM", "6:00AM", "5:00AM", "4:00AM", "3:00AM", "2:00AM", "1:00AM", "7:00PM", "8:00PM", "9:00PM", "10:00PM", "11:00PM", "12:00PM", "6:00PM", "5:00PM", "4:00PM", "3:00PM", "2:00PM", "1:00PM"]
+   # times = ["7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00AM", "6:00AM", "5:00AM", "4:00AM", "3:00AM", "2:00AM", "1:00AM", "7:00PM", "8:00PM", "9:00PM", "10:00PM", "11:00PM", "12:00PM", "6:00PM", "5:00PM", "4:00PM", "3:00PM", "2:00PM", "1:00PM"]
    name = Faker::Lorem.unique.sentence
    description = Faker::Lorem.unique.paragraph(5)
    location = Faker::Address.city
    time = times.shuffle[0]
    date = Faker::Date.forward(60)
-   event = Event.Create(name: name, description: description, location: location, date: date, time: time)
+   event = Event.create(name: name, description: description, location: location, date: date)
  end
 
+Membership.delete_all
  200.times do
-   group_id = Group.shuffle[0]
-   user_id = User.shuffle[0]
-   membership = (group_id: group_id, user_id: user_id)
+   group_id = Group.all.shuffle[0].id
+   user_id = User.all.shuffle[0].id
+   membership = Membership.create(group_id: group_id, user_id: user_id)
  end
 
+Rsvp.delete_all
  200.times do
-   event_id = Event.shuffle[0]
-   user_id = User.shuffle[0]
-   rsvp = (event_id: event_id, user_id: user_id)
+   event_id = Event.all.shuffle[0].id
+   user_id = User.all.shuffle[0].id
+   rsvp = Rsvp.create(event_id: event_id, user_id: user_id)
  end
