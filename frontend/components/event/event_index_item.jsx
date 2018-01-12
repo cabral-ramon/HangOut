@@ -14,7 +14,6 @@ const EventIndexItem = ({event, group}) => {
               <div className="event-container">
                 <div className="event-time-container">
                   <p>{event.date}</p>
-                  <p>{parseInt(event.time) > 12 ? `${event.time} PM` : `${event.time} AM`}</p>
                 </div>
                 <div className="event-info-container">
                   <p className="event-group-name">{group.name}</p>

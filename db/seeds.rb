@@ -16,17 +16,17 @@
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
 
-# User.delete_all
-#
-# 100.times do
-#   username = Faker::LeagueOfLegends.unique.champion
-#   email = Faker::Internet.unique.email
-#   password = "password"
-#   location = Faker::Address.city
-#   user = User.create(username: username, email: email, password: password, location: location)
-# end
-#
-# user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
+User.delete_all
+
+100.times do
+  username = Faker::LeagueOfLegends.unique.champion
+  email = Faker::Internet.unique.email
+  password = "password"
+  location = Faker::Address.city
+  user = User.create(username: username, email: email, password: password, location: location)
+end
+
+user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
 
 
 Group.delete_all
@@ -120,9 +120,10 @@ Event.delete_all
    name = Faker::Lorem.unique.sentence
    description = Faker::Lorem.unique.paragraph(5)
    location = Faker::Address.city
-   time = times.shuffle[0]
+   # time = times.shuffle[0]
    date = Faker::Date.forward(60)
-   event = Event.create(name: name, description: description, location: location, date: date)
+   group_id = Group.all.shuffle[0].id
+   event = Event.create(name: name, description: description, location: location, date: date, group_id: group_id)
  end
 
 Membership.delete_all

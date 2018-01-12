@@ -102,7 +102,7 @@ class EventShow extends React.Component {
             </div>
             <div className="event-show-time-location">
               <p>{this.props.event.time}</p>
-              <p>{this.props.event.location}</p>
+              <p>Location: {this.props.event.location}</p>
             </div>
           </div>
         </div>

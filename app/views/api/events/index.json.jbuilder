@@ -12,7 +12,6 @@ end
 
 json.groups do
   @events.map { |event| event.group }.each do |group|
-    debugger
     json.set! group.id do
       json.extract! group, :id, :name
     end

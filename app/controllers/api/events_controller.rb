@@ -11,7 +11,7 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.includes(:group, :rsvps).all.sort_by { |event| event.date }
+    @events = Event.includes(:group, :rsvps).sort_by { |event| event.date }[0...20]
     render "api/events/index"
   end
 
