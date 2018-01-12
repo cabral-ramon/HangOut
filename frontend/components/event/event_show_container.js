@@ -5,12 +5,17 @@ import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
   let eventId = parseInt(ownProps.match.params.eventId);
-    let groupId = parseInt(ownProps.match.params.groupId);
+  let eventMembers = Object.values(state.members);
+
+  const event = state.events[eventId] || {};
+
   return {
-    event: state.events[eventId],
+    event,
     eventId: eventId,
-    groupId: groupId,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    rsvps: event.rsvps,
+    group: state.groups[event.group_id] || {},
+    eventMembers: eventMembers
   };
 };
 

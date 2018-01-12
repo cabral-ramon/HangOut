@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -8,12 +9,10 @@ class EventShow extends React.Component {
     this.deleteRsvp = this.deleteRsvp.bind(this);
   }
 
+
+
   componentDidMount() {
-    let eventParams = {
-      eventId: this.props.eventId,
-      groupId: this.props.groupId
-    };
-    this.props.fetchEvent(eventParams);
+    this.props.fetchEvent(this.props.eventId);
   }
 
   deleteRsvp(e) {
@@ -34,14 +33,14 @@ class EventShow extends React.Component {
 
   renderButton() {
     let buttonText;
-    if (this.props.event.attendees) {
-      if ( this.props.currentUser ) {
-        const eventMembers = this.props.event.attendees;
-        if ( eventMembers.includes(this.props.currentUser.id) ) {
+    if (this.props.rsvps) {
+      if ( this.props.currentUser && this.props.eventMembers ) {
+        const eventMembers = this.props.rsvps;
+        if ( eventMembers.includes( this.props.currentUser.id) ) {
           buttonText = "Cancel";
           return (
             <button
-              className="group-show-button"
+              className="event-rsvp-btn"
               onClick={this.deleteRsvp}>{buttonText}</button>
           );
         }
@@ -50,37 +49,59 @@ class EventShow extends React.Component {
     buttonText = "RSVP";
     return (
       <button
-       className="group-show-button"
+       className="event-rsvp-btn"
        onClick={this.handleSubmit}
        >{buttonText}</button>
     );
   }
 
   render() {
-    let attendees;
+    let rsvps;
     if (this.props.event) {
-      if (this.props.event.attendees) {
-        attendees = this.props.event.attendees.map( (attendee) => {
+      if (this.props.eventMembers) {
+        rsvps = this.props.eventMembers.map( (member) => {
           return (
-            <li key={attendee}>{attendee}</li>
+            <li key={member.id}
+              className="event-show-rsvp-list">{member.username}</li>
           );
         });
       } else {
-        attendees = [];
+        rsvps = [];
       }
     }
     if (this.props.event) {
       return (
-        <div>
-          <h1>{this.props.event.name}</h1>
-          <p>{this.props.event.description}</p>
-          <p>{this.props.event.location}</p>
-          <p>{this.props.event.date}</p>
-          <p>{this.props.event.time}</p>
-          {this.renderButton()}
-          <ul>
-            {attendees}
-          </ul>
+        <div className="event-show-container">
+          <div className="event-show-head-wrapper">
+            <div className="event-show-head">
+              <div className="page-head">
+                <div className="event-show-date">
+                </div>
+                <div className="event-show-name">
+                  <p>{this.props.event.date}</p>
+                  <h1>{this.props.event.name}</h1>
+                  <p>Hosted by <Link to="">{this.props.group.name}</Link></p>
+                </div>
+                <div className="event-rsvp-wrapper">
+                  {this.renderButton()}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="event-show-body-wrapper">
+            <div className="event-show-details">
+              <h1>Details</h1>
+              <p>{this.props.event.description}</p>
+              <h1>Attendees</h1>
+              <ul className="event-show-ul">
+                {rsvps}
+              </ul>
+            </div>
+            <div className="event-show-time-location">
+              <p>{this.props.event.time}</p>
+              <p>{this.props.event.location}</p>
+            </div>
+          </div>
         </div>
       );
     } else {

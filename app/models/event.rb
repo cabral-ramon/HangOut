@@ -21,7 +21,7 @@ class Event < ApplicationRecord
     foreign_key: :group_id,
     class_name: :Group
 
-  has_many :attendees,
+  has_many :rsvps,
     primary_key: :id,
     foreign_key: :event_id,
     class_name: "Rsvp"

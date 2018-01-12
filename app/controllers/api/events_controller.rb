@@ -11,12 +11,13 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.includes(:group, :rsvps).all.sort_by { |event| event.date }
     render "api/events/index"
   end
 
   def show
-    @event = Event.includes(:attendees).find(params[:id])
+    @event = Event.includes(:rsvps).find(params[:id])
+    @rsvps = @event.rsvps.map { |rsvp| rsvp.user.id }
     render :show
   end
 

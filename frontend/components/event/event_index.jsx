@@ -5,7 +5,6 @@ class EventIndex extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = this.props.events;
 
   }
 
@@ -16,14 +15,21 @@ class EventIndex extends React.Component {
 
   render() {
     const eventIndexItems = Object.values(this.props.events).map ( (event) => {
-      return (
-        <EventIndexItem event={event} key={event.id}/>
-      );
+      let group = this.props.groups[event.group_id];
+      if (group) {
+        return (
+          <EventIndexItem event={event} group={group} key={event.id}/>
+        );
+      } else {
+        return null;
+      }
     });
     return(
-      <ul className="event-index-container">
-        {eventIndexItems}
-      </ul>
+      <div>
+        <ul className="event-index-container">
+          {eventIndexItems}
+        </ul>
+      </div>
     );
   }
 

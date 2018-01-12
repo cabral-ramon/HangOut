@@ -89,16 +89,16 @@ class GroupShow extends React.Component {
                 <h2>About this Hangout:</h2>
                 <p>{this.props.group.description}</p>
               </article>
-              <div className="event-contain">
-                <EventForm groupId={this.props.group.id}/>
-                <ul>
-                </ul>
-              </div>
+
               <aside className="members-container">
+
                 <h3><span>({this.props.memberIds.length})</span> Members</h3>
                 {this.renderMembers()}
               </aside>
             </section>
+            <div className="event-contain">
+              <EventForm groupId={this.props.group.id}/>
+            </div>
             <div className="group-events-container">
               <h3>Events:</h3>
               <ul>
@@ -106,7 +106,7 @@ class GroupShow extends React.Component {
                   <li key={event.id}>
                     <div className="event-list-container">
                       <p className="event-list-date">{event.date}</p>
-                       <Link to={`/groups/${this.props.group.id}/events/${event.id}`}
+                       <Link to={`/events/${event.id}`}
                          className="event-list-name">
                          {event.name}
                        </Link>

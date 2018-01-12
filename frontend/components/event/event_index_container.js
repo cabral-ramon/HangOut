@@ -4,7 +4,8 @@ import EventIndex from './event_index';
 
 const mapStateToProps = (state) => {
   return {
-    events: state.events
+    events: state.events,
+    groups: state.groups
   };
 };
 

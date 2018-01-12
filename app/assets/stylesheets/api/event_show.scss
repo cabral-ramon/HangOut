@@ -1,0 +1,69 @@
+.event-show-container {
+  background: #f6f7f8;
+  .event-show-head-wrapper {
+    padding: 0 200px;
+    background-color: white;
+    border-bottom: 1px solid rgba(46,62,72,.12);
+    .event-show-head {
+      .page-head {
+        display: flex;
+        margin: 24px 20px 0;
+        .event-show-date {
+
+        }
+        .event-show-name {
+          font-size: 32px;
+          font-weight: 600;
+          p {
+            color: rgba(46,62,72,.6);
+            font-size: 16px;
+          }
+        }
+        .event-rsvp-wrapper {
+          padding-left: 20px;
+          width: 300px;
+          margin-left: 45%;
+          .event-rsvp-btn {
+            text-align: center;
+            width: 100%;
+            background-color: crimson;
+            color: white;
+            padding: 5px 10px;
+            margin-top: 10px;
+            border: 1px solid crimson;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .event-show-body-wrapper {
+    padding: 50px 200px;
+    margin: 24px 20px 0;
+    display: flex;
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding-bottom: 20px;
+    }
+    .event-show-details {
+      width: 900px;
+      .event-show-ul {
+        .event-show-rsvp-list {
+          width: 125px;
+          background-color: white;
+          padding: 10px;
+          border: 1px solid white;
+          border-radius: 10px;
+        }
+      }
+    }
+    .event-show-time-location {
+      background-color: white;
+      padding: 50px;
+      border: 1px solid white;
+      border-radius: 10px;
+    }
+  }
+}
