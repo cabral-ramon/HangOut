@@ -16,20 +16,32 @@
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
 
-User.delete_all
+# User.delete_all
+#
+# 100.times do
+#   username = Faker::LeagueOfLegends.unique.champion
+#   email = Faker::Internet.unique.email
+#   password = "password"
+#   location = Faker::Address.city
+#   user = User.create(username: username, email: email, password: password, location: location)
+# end
+#
+# user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
 
-100.times do
-  username = Faker::LeagueOfLegends.unique.champion
-  email = Faker::Internet.unique.email
-  password = "password"
-  location = Faker::Address.city
-  user = User.create(username: username, email: email, password: password, location: location)
-end
-
-user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
 
 Group.delete_all
 
+
+30.times do
+
+  images = ['app/assets/images/animal.jpg', 'app/assets/images/business.jpeg', 'app/assets/images/cat.jpeg', 'app/assets/images/cycle.jpeg', 'app/assets/images/food.jpg', 'app/assets/images/game.jpeg', 'app/assets/images/hack.jpeg', 'app/assets/images/health.jpeg', 'app/assets/images/language.jpeg', 'app/assets/images/learn.jpg', 'app/assets/images/mom.jpeg', 'app/assets/images/music.jpg', 'app/assets/images/paint.jpeg', 'app/assets/images/paint.jpeg', 'app/assets/images/photography.jpg', 'app/assets/images/picture.jpeg', 'app/assets/images/picture2.jpeg', 'app/assets/images/picture3.jpeg', 'app/assets/images/picture4.jpeg']
+
+  name = Faker::Lorem.unique.sentence
+  description = Faker::Lorem.unique.paragraph(5)
+  location = Faker::Address.city
+  image = File.open(images.shuffle[0])
+  group = Group.create(name: name, description: description, location: location, image: image)
+end
 
 group1 = Group.create(
   name: "Brooklyn Pickup Soccer Group",
@@ -101,3 +113,25 @@ group9 = Group.create(
   location: "White Plains, NY",
   image: File.open('app/assets/images/paint.jpeg')
   )
+
+ 100.times do
+   times = ["7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00AM", "6:00AM", "5:00AM", "4:00AM", "3:00AM", "2:00AM", "1:00AM", "7:00PM", "8:00PM", "9:00PM", "10:00PM", "11:00PM", "12:00PM", "6:00PM", "5:00PM", "4:00PM", "3:00PM", "2:00PM", "1:00PM"]
+   name = Faker::Lorem.unique.sentence
+   description = Faker::Lorem.unique.paragraph(5)
+   location = Faker::Address.city
+   time = times.shuffle[0]
+   date = Faker::Date.forward(60)
+   event = Event.Create(name: name, description: description, location: location, date: date, time: time)
+ end
+
+ 200.times do
+   group_id = Group.shuffle[0]
+   user_id = User.shuffle[0]
+   membership = (group_id: group_id, user_id: user_id)
+ end
+
+ 200.times do
+   event_id = Event.shuffle[0]
+   user_id = User.shuffle[0]
+   rsvp = (event_id: event_id, user_id: user_id)
+ end

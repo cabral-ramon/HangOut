@@ -23,7 +23,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.includes(:members).all.shuffle[0...12]
+    @groups = Group.includes(:members).all.shuffle
     render :index
   end
 
