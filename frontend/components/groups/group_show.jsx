@@ -46,9 +46,8 @@ class GroupShow extends React.Component {
 
   renderButton() {
     let buttonText;
-    const groupMembers = this.props.memberIds;
     if ( this.props.currentUser ) {
-      if ( groupMembers.includes(this.props.currentUser.id) ) {
+      if ( this.props.memberIds.includes(this.props.currentUser.id) ) {
         buttonText = "Leave Group";
         return (
           <button
@@ -100,7 +99,7 @@ class GroupShow extends React.Component {
               </aside>
             </section>
             <div className="event-contain">
-              <EventForm groupId={this.props.group.id}/>
+              <EventForm groupId={this.props.groupId}/>
             </div>
             <div className="group-events-container">
               <h3>Events:</h3>

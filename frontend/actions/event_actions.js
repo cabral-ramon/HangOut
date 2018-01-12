@@ -4,12 +4,13 @@ import * as RsvpAPIUtil from "../util/rsvp_api_util";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 
-const receiveEvent = ({event, rsvps, groups}) => {
+const receiveEvent = ({event, rsvps, groups, members}) => {
   return {
     type: RECEIVE_EVENT,
     event,
     rsvps,
-    groups
+    groups,
+    members,
   };
 };
 

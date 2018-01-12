@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const EventIndexItem = ({event, group}) => {
-  if(event.attendees) {
+  if(event.rsvps) {
     return (
       <div className="event-main">
         <Link
@@ -22,7 +22,7 @@ const EventIndexItem = ({event, group}) => {
                     {event.name.length > 30 ?
                       event.name.slice(0,30) + '...' : event.name}
                     </h4>
-                    <p>{event.attendees.length} Member(s) going</p>
+                    <p>{event.rsvps.length} Member(s) going</p>
                   </div>
                 </div>
               </li>

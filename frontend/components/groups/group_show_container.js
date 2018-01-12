@@ -8,22 +8,23 @@ const mapStateToProps = (state, ownProps) => {
   const events = Object.values(state.events).filter( (event) =>
     event.group_id === groupId
   );
-  // const group = state.groups[groupId] || { memberIds: [] };
-  const members = Object.values(state.members).filter( (member) =>
-    member.username);
-    let memberIds;
-    if(state.groups[groupId]){
-      memberIds = state.groups[groupId].memberIds;
-    } else {
-      memberIds = [];
-    }
+  const group = state.groups[groupId] || { memberIds: [] };
+  // const members = Object.values(state.members).filter( (member) =>
+  //   member.username);
+    // let memberIds;
+    // if(state.groups[groupId]){
+    //   memberIds = state.groups[groupId].memberIds;
+    // } else {
+    //   memberIds = [];
+    // }
+
   return {
-    group: state.groups[groupId],
+    group: group,
     groupId: groupId,
     currentUser: state.session.currentUser,
     events: events,
-    memberIds: memberIds,
-    members: members
+    memberIds: group.memberIds || [],
+    members: Object.values(state.members)
     // members: group.memberIds.map( id => state.members[id] )
   };
 };

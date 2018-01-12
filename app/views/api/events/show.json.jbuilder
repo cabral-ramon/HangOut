@@ -17,6 +17,14 @@ json.rsvps do
   end
 end
 
+json.members do
+  @event.rsvps.map { |rsvp| rsvp.user }.each do |user|
+    json.set! user.id do
+      json.extract! user, :id, :username
+    end
+  end
+end
+
 json.groups do
     json.set! @event.group.id do
       json.extract! @event.group, :id, :name
