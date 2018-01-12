@@ -33,17 +33,14 @@ class EventShow extends React.Component {
 
   renderButton() {
     let buttonText;
-    if (this.props.rsvps) {
-      if ( this.props.currentUser && this.props.eventMembers ) {
-        const eventMembers = this.props.rsvps;
-        if ( eventMembers.includes( this.props.currentUser.id) ) {
-          buttonText = "Cancel";
-          return (
-            <button
-              className="event-rsvp-btn"
-              onClick={this.deleteRsvp}>{buttonText}</button>
-          );
-        }
+    if ( this.props.currentUser ) {
+      if ( this.props.eventMembers.map( m => m.id ).includes( this.props.currentUser.id) ) {
+        buttonText = "Cancel";
+        return (
+          <button
+            className="event-rsvp-btn"
+            onClick={this.deleteRsvp}>{buttonText}</button>
+        );
       }
     }
     buttonText = "RSVP";

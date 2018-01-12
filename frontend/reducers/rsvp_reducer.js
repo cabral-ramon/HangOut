@@ -6,7 +6,8 @@ const rsvpsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_EVENT:
-      return Object.assign({}, state, action.rsvps);
+    // debugger
+      return action.rsvps;
     default:
       return state;
   }

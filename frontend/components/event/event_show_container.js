@@ -5,9 +5,8 @@ import EventShow from './event_show';
 
 const mapStateToProps = (state, ownProps) => {
   let eventId = parseInt(ownProps.match.params.eventId);
-  let eventMembers = Object.values(state.members);
-
-  const event = state.events[eventId] || {};
+  const event = state.events[eventId] || {rsvps: []};
+  let eventMembers = event.rsvps.map( rsvp => state.members[rsvp.user_id] );
 
   return {
     event,

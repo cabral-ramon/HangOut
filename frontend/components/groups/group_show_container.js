@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   const events = Object.values(state.events).filter( (event) =>
     event.group_id === groupId
   );
+  // const group = state.groups[groupId] || { memberIds: [] };
   const members = Object.values(state.members).filter( (member) =>
     member.username);
     let memberIds;
@@ -23,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     events: events,
     memberIds: memberIds,
     members: members
-
+    // members: group.memberIds.map( id => state.members[id] )
   };
 };
 

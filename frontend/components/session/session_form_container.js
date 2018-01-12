@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  if (ownProps.formType === "/signup") {
+  if (ownProps.formType === "signup") {
     return {
       processForm: (user) => dispatch(signup(user)),
       guestLogin: (user) => dispatch(login(user))
