@@ -9,15 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     event.group_id === groupId
   );
   const group = state.groups[groupId] || { memberIds: [] };
-  // const members = Object.values(state.members).filter( (member) =>
-  //   member.username);
-    // let memberIds;
-    // if(state.groups[groupId]){
-    //   memberIds = state.groups[groupId].memberIds;
-    // } else {
-    //   memberIds = [];
-    // }
-
+  
   return {
     group: group,
     groupId: groupId,
@@ -25,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
     events: events,
     memberIds: group.memberIds || [],
     members: Object.values(state.members)
-    // members: group.memberIds.map( id => state.members[id] )
   };
 };
 
