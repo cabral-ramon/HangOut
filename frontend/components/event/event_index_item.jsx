@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const EventIndexItem = ({event, group}) => {
+  if(event.attendees) {
     return (
       <div className="event-main">
         <Link
@@ -24,11 +25,14 @@ const EventIndexItem = ({event, group}) => {
                     </h4>
                     <p>{event.attendees.length} Member(s) going</p>
                   </div>
-              </div>
+                </div>
               </li>
             </Link>
-      </div>
-    );
-  };
+          </div>
+        );
+  } else {
+    return null;
+  }
+};
 
 export default EventIndexItem;

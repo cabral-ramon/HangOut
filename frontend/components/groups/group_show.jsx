@@ -73,6 +73,9 @@ class GroupShow extends React.Component {
       return (
 
         <div className="group-show-main">
+          <Link
+            to="/homepage"
+            className="back-to-link">back to Homepage</Link>
           <div className="group-show-container">
             <section className="group-show-image-container">
               <img className="group-show-image"

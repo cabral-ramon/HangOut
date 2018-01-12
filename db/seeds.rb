@@ -16,9 +16,20 @@
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
 
-Group.delete_all
+User.delete_all
+
+100.times do
+  username = Faker::LeagueOfLegends.unique.champion
+  email = Faker::Internet.unique.email
+  password = "password"
+  location = Faker::Address.city
+  user = User.create(username: username, email: email, password: password, location: location)
+end
 
 user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
+
+Group.delete_all
+
 
 group1 = Group.create(
   name: "Brooklyn Pickup Soccer Group",

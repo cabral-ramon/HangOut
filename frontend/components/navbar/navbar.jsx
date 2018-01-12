@@ -36,7 +36,11 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <h1 className="logo"><Link to="/" >HangOut</Link></h1>
+        <h1 className="logo"><Link
+          to={this.props.currentUser ? "/homepage" : "/"}>
+          HangOut
+        </Link>
+      </h1>
         {this.userIcon()}
       </nav>
     );

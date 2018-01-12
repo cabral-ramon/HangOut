@@ -55,7 +55,7 @@ class SessionFormModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    const user = this.state.credentials
     this.props.processForm(user).then( () => {
       this.props.history.push("/homepage");
     });
@@ -153,8 +153,7 @@ class SessionFormModal extends React.Component {
                       type="text"
                       value={this.state.credentials.username}
                       onChange={this.update('username')}
-                      className="session-input"
-                      tabIndex="0"/>
+                      className="session-input"/>
                   </label>
                 </div>
                 <br/>
@@ -165,8 +164,7 @@ class SessionFormModal extends React.Component {
                       type="password"
                       value={this.state.credentials.password}
                       onChange={this.update('password')}
-                      className="session-input"
-                      tabIndex="1"/>
+                      className="session-input"/>
                     <br />
                   </label>
                 </div>

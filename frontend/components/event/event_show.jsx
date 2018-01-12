@@ -73,6 +73,9 @@ class EventShow extends React.Component {
       return (
         <div className="event-show-container">
           <div className="event-show-head-wrapper">
+            <Link
+              to="/homepage/events"
+              className="back-to-link">back to Events</Link>
             <div className="event-show-head">
               <div className="page-head">
                 <div className="event-show-date">
