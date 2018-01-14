@@ -15,9 +15,7 @@ React was great for this project. React allowed me to keep a normalized state on
 data held in my backend. This allowed me to create a responsive single page application. Components only render or re-render
 by checking if their state (data) has changed.
 
-here is sample of how I set up state on the frontend:
-![alt text](https://github.com/cabral-ramon/HangOut/wiki/Sample-State)
-
+[Here](https://github.com/cabral-ramon/HangOut/wiki/Sample-State) is sample of how I set up state on the frontend.
 
 ## Challenges
 One of the biggest challenges of this app was managing the frontend data from all the different sources on a single page.

@@ -32,6 +32,7 @@ const App = () => (
       <Route path="/signup" component={Video}/>
       <Route exact path="/" component={GroupIndexContainer}/>
 
+
     <Footer />
   </main>
 );

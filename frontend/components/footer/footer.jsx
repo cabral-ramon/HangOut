@@ -4,13 +4,19 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <footer className="footer-container">
-        <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-        <script type="IN/MemberProfile"
-          data-id="https://www.linkedin.com/in/cabral-ramon"
-          data-format="hover" data-related="false" data-text="Ramon Cabral">
-        </script>
-      </footer>
+      <div className="footer-container">
+        <div className="github">
+        <a target="_blank" href="https://github.com/cabral-ramon">
+          <i className="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+        </div>
+
+        <div className="linkedin">
+          <a target="_blank" href="https://www.linkedin.com/in/cabral-ramon/">
+            <i className="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
     );
   }
 
