@@ -64,8 +64,8 @@
   border: 1px solid cornflowerblue;
   border-radius: 4px;
   position: relative;
-  left: 326px;
-  bottom: 42px;
+  left: 214px;
+  bottom: 2px;
 }
 .close-btn {
   margin-left: 425px;
@@ -89,4 +89,13 @@
   margin: 0 16px;
   margin-top: 4px;
   padding-top: 10px;
+}
+
+.errors-container {
+  padding: 5px;
+  margin-left: 20px;
+  color: red;
+  .error-item {
+
+  }
 }

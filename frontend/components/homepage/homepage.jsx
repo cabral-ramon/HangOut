@@ -23,18 +23,29 @@ class Homepage extends React.Component {
     <main>
       <div className="homepage-search-container">
         <h1>Find a Hangout</h1>
-        <ul className="homepage-btn-container">
-          <li>
-            <Link to="/homepage"
-              className={this.chooseClassName('/homepage')}
-              >Groups</Link>
-          </li>
-          <li>
-            <Link to="/homepage/events"
-              className={this.chooseClassName('/homepage/events')}
-              >Events</Link>
-          </li>
-        </ul>
+        <div className="homepage-btn-wrapper">
+          <div className="homepage-btn-container">
+            <div className="search-bar-container">
+              <input type="search"
+                className="search-bar"
+                placeholder="Under Construction..."></input>
+            </div>
+            <div className="homepage-btn-list-wrapper">
+              <ul className="homepage-btn-list">
+                <li>
+                  <Link to="/homepage"
+                    className={this.chooseClassName('/homepage')}
+                    >Groups</Link>
+                </li>
+                <li>
+                  <Link to="/homepage/events"
+                    className={this.chooseClassName('/homepage/events')}
+                    >Events</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <Route exact path="/homepage" component={GroupIndexContainer}/>
       <Route path="/homepage/events" component={EventIndexContainer} />

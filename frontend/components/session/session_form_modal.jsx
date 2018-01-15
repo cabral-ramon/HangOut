@@ -72,9 +72,10 @@ class SessionFormModal extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="errors-container">
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li key={`error-${i}`}
+            className="error-item">
             {error}
           </li>
         ))}
@@ -170,9 +171,9 @@ class SessionFormModal extends React.Component {
                 </div>
                 {signupInputs}
                 <button className="session-button">{buttonText}</button>
-                {this.renderErrors()}
                 <a className="guest-button"
                   onClick={this.demoLogin}>Guest User</a>
+                {this.renderErrors()}
               </form>
         </Modal>
       </div>
