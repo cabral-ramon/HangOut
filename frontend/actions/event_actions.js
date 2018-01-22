@@ -1,5 +1,6 @@
 import * as EventAPIUtil from "../util/event_api_util";
 import * as RsvpAPIUtil from "../util/rsvp_api_util";
+import { receiveGroup } from "./group_actions";
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
@@ -34,12 +35,12 @@ export const fetchEvent = (eventParams) => (dispatch) => {
   });
 };
 
-export const createEvent = ({ groupId, event}) => (dispatch) => {
-  return EventAPIUtil.createEvent({groupId, event}).then( (event) => {
-    dispatch(receiveEvent(event));
-    return event;
-  });
-};
+// export const createEvent = ({ groupId, event}) => (dispatch) => {
+//   return EventAPIUtil.createEvent({groupId, event}).then( (response) => {
+//     dispatch(receiveGroup( response));
+//     return event;
+//   });
+// };
 
 export const createRsvp = (rsvpParams) => (dispatch) => {
   return RsvpAPIUtil.createRsvp(rsvpParams).then( (event) => {

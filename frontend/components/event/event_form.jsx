@@ -77,6 +77,7 @@ class EventForm extends React.Component {
           onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Example Modal"
+          ariaHideApp={false}
         >
 
           <h2 ref={subtitle => this.subtitle = subtitle}

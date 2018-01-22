@@ -4,7 +4,8 @@ class Api::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.group_id = params[:group_id]
     if @event.save
-      render "api/events/show"
+      @group = @event.group
+      render "api/groups/show"
     else
       render json: @event.errors.full_messages, status: 422
     end

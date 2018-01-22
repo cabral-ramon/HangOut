@@ -1,5 +1,6 @@
 import * as GroupAPIUtil from "../util/group_api_util";
 import * as MembershipAPIUtil from "../util/membership_api_util";
+import * as EventAPIUtil from "../util/event_api_util";
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
@@ -95,6 +96,13 @@ export const createMembership = (membership) => (dispatch) => {
 export const removeMembership = (groupId) => (dispatch) => {
   return MembershipAPIUtil.removeMembership(groupId).then( (group) => {
     return dispatch(receiveGroup(group));
+  });
+};
+
+export const createEvent = ({ groupId, event}) => (dispatch) => {
+  return EventAPIUtil.createEvent({groupId, event}).then( (response) => {
+    dispatch(receiveGroup( response));
+    return event;
   });
 };
 
