@@ -53,11 +53,10 @@ class EventShow extends React.Component {
   }
 
   render() {
-    debugger
     let rsvps;
     if (this.props.event) {
       if (this.props.eventMembers) {
-        rsvps = this.props.eventMembers.map( (member) => { 
+        rsvps = this.props.eventMembers.map( (member) => {
           return (
             <li key={member.id}
               className="event-show-rsvp-list">{member.username}</li>

@@ -138,6 +138,7 @@ class SessionFormModal extends React.Component {
           onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Example Modal"
+          ariaHideApp={false}
         >
         <div className="session-form-header">
           <h2 ref={subtitle => this.subtitle = subtitle}
