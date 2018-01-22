@@ -4,6 +4,7 @@ class Api::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.owner_id = current_user.id
 
     if @group.save
       render "api/groups/show"

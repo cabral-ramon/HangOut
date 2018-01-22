@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
-import { createGroup } from '../../actions/group_actions.js';
+import { createGroup, createMembership } from '../../actions/group_actions.js';
 import GroupForm from './group_form';
 
 const mapStateToProps = (state) => {
   return {
+    //test
+    currentUser: state.session.currentUser,
+    //test
     errors: state.errors.group
   };
 };
@@ -11,7 +14,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 
     return {
-      createGroup: (group) => dispatch(createGroup(group))
+      createGroup: (group) => dispatch(createGroup(group)),
+
+      //test
+      createMembership: (membership) => dispatch(createMembership(membership))
+      //test
   };
 };
 

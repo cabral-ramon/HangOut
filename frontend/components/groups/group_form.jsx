@@ -23,6 +23,14 @@ class GroupForm extends React.Component {
     formData.append("group[description]", this.state.description);
     formData.append("group[image]", this.state.image);
     this.props.createGroup(formData).then( (group) => {
+
+      //test//
+      const groupId = group.id;
+      const userId = this.props.currentUser.id;
+      const membership = Object.assign({}, { group_id: groupId, user_id: userId});
+      this.props.createMembership(membership);
+      //test//
+
       this.props.history.push(`/groups/${group.id}`);
     });
   }

@@ -34,7 +34,7 @@ class Group < ApplicationRecord
     foreign_key: :group_id,
     class_name: "Event"
 
-  has_one :owner,
+  belongs_to :owner,
     primary_key: :id,
     foreign_key: :owner_id,
     class_name: "User"
