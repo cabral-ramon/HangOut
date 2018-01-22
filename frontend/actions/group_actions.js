@@ -91,8 +91,15 @@ export const createMembership = (membership) => (dispatch) => {
     return dispatch(receiveGroup(group));
   });
 };
+
 export const removeMembership = (groupId) => (dispatch) => {
   return MembershipAPIUtil.removeMembership(groupId).then( (group) => {
     return dispatch(receiveGroup(group));
   });
 };
+
+export const searchGroups = (query) => (dispatch) => {
+  return GroupAPIUtil.searchGroups(query).then( (groups) => {
+    return dispatch(receiveGroups(groups));
+  });
+}

@@ -33,4 +33,12 @@ class Group < ApplicationRecord
     foreign_key: :group_id,
     class_name: "Event"
 
+  def self.search(query)
+    Group.where("
+      lower(name) LIKE lower(?) OR
+      lower(description) LIKE lower(?) OR
+      lower(location) LIKE lower(?)", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
+
+
 end

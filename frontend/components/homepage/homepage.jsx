@@ -4,10 +4,16 @@ import { Route, Switch, Link } from 'react-router-dom';
 import NavBar from '../navbar/navbar_container';
 import GroupIndexContainer from '../groups/group_index_container';
 import EventIndexContainer from '../event/event_index_container';
+import { merge } from 'lodash';
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      query: ""
+    };
+    this.updateSearchBar = this.updateSearchBar.bind(this);
+    this.searchGroups = this.searchGroups.bind(this);
   }
 
   chooseClassName(url) {
@@ -18,6 +24,17 @@ class Homepage extends React.Component {
     return "homepage-btn";
   }
 
+  searchGroups(e){
+    e.preventDefault();
+    this.props.searchGroups(this.state);
+  }
+
+  updateSearchBar() {
+    return (e) => {
+      this.setState(merge({}, this.state, {group: {query: e.currentTarget.value}}));
+    };
+  }
+
   render() {
     return (
     <main>
@@ -26,9 +43,13 @@ class Homepage extends React.Component {
         <div className="homepage-btn-wrapper">
           <div className="homepage-btn-container">
             <div className="search-bar-container">
-              <input type="search"
-                className="search-bar"
-                placeholder="Under Construction..."></input>
+              <form onSubmit={this.searchGroups}>
+                <input type="search"
+                  className="search-bar"
+                  placeholder="Under Construction..."
+                  onChange={this.updateSearchBar()}
+                  ></input>
+              </form>
             </div>
             <div className="homepage-btn-list-wrapper">
               <ul className="homepage-btn-list">

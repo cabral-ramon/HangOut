@@ -36,8 +36,13 @@ class Api::GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+  def search
+    @group = Group.search(group_params[:query])
+    render :index
+  end
+
   private
   def group_params
-    params.require(:group).permit(:name, :location, :description, :image)
+    params.require(:group).permit(:name, :location, :description, :image, :query)
   end
 end
