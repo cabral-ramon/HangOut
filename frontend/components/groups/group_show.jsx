@@ -8,6 +8,7 @@ class GroupShow extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.leaveGroup = this.leaveGroup.bind(this);
+    this.renderEventForm = this.renderEventForm.bind(this);
   }
 
   componentDidMount() {
@@ -38,10 +39,12 @@ class GroupShow extends React.Component {
     this.props.createMembership(membership);
   }
 
-  renderEventForm() {
-    return(
-      <EventForm />
-    );
+  renderEventForm(){
+    if (this.props.memberIds.includes(this.props.currentUser.id)) {
+      return (
+        <EventForm groupId={this.props.groupId}/>
+      );
+    }
   }
 
   renderButton() {
@@ -99,7 +102,7 @@ class GroupShow extends React.Component {
               </aside>
             </section>
             <div className="event-contain">
-              <EventForm groupId={this.props.groupId}/>
+              {this.renderEventForm()}
             </div>
             <div className="group-events-container">
               <h3>Events:</h3>
