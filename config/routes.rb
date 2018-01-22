@@ -14,8 +14,8 @@ Rails.application.routes.draw do
    resources :rsvps, only: [:create]
  end
 
+ get 'api/search', to: 'api/groups#search'
   delete 'api/groups/:group_id/memberships', to: 'api/memberships#destroy'
   delete 'api/events/:event_id/rsvps', to: 'api/rsvps#destroy'
-  get 'api/groups/search', to: 'api/groups#search'
 
 end

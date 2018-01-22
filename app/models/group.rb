@@ -10,6 +10,7 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  owner_id           :integer
 #
 
 class Group < ApplicationRecord
@@ -32,6 +33,11 @@ class Group < ApplicationRecord
     primary_key: :id,
     foreign_key: :group_id,
     class_name: "Event"
+
+  has_one :owner,
+    primary_key: :id,
+    foreign_key: :owner_id,
+    class_name: "User"
 
   def self.search(query)
     Group.where("

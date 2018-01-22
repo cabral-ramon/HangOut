@@ -46,7 +46,7 @@ class Homepage extends React.Component {
               <form onSubmit={this.searchGroups}>
                 <input type="search"
                   className="search-bar"
-                  placeholder="Under Construction..."
+                  placeholder="Search by groups..."
                   onChange={this.updateSearchBar()}
                   ></input>
               </form>

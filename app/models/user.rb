@@ -36,6 +36,11 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: "Rsvp"
 
+  has_many :owned_groups,
+    primary_key: :id,
+    foreign_key: :owner_id,
+    class_name: "Group"
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
     return nil unless user

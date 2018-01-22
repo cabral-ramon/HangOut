@@ -37,7 +37,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def search
-    @group = Group.search(group_params[:query])
+    @groups = Group.search(group_params[:query])
     render :index
   end
 

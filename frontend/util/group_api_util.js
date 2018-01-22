@@ -47,7 +47,7 @@ export const fetchGroupMembers = (groupId) => (
 
 export const searchGroups = (query) => (
   $.ajax({
-    url: '/api/groups/search',
+    url: '/api/search',
     method: "get",
     data: query
   })
