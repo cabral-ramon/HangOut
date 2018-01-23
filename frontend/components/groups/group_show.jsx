@@ -40,7 +40,7 @@ class GroupShow extends React.Component {
   }
 
   renderEventForm(){
-    if (this.props.memberIds.includes(this.props.currentUser.id)) {
+    if (this.props.currentUser && this.props.memberIds.includes(this.props.currentUser.id)) {
       return (
         <EventForm groupId={this.props.groupId}/>
       );

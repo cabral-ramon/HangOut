@@ -27,3 +27,7 @@ body {
 .back-to-link {
   color: blue;
 }
+
+.errors {
+  color: red;
+}
