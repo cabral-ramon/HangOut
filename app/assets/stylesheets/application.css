@@ -25,7 +25,15 @@ body {
 }
 
 .back-to-link {
-  color: blue;
+  text-align: center;
+  width: 100%;
+  background-color: crimson;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: 1px solid crimson;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .errors {
