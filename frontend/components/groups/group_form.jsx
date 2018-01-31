@@ -24,12 +24,10 @@ class GroupForm extends React.Component {
     formData.append("group[image]", this.state.image);
     this.props.createGroup(formData).then( (group) => {
 
-
       const groupId = group.id;
       const userId = this.props.currentUser.id;
       const membership = Object.assign({}, { group_id: groupId, user_id: userId});
       this.props.createMembership(membership);
-
 
       this.props.history.push(`/groups/${group.id}`);
     });
@@ -58,14 +56,16 @@ class GroupForm extends React.Component {
 
 
   renderErrors() {
-    if (this.props.errors.length > 0) {
-      const errors = this.props.errors.map( (error) => (
-        <p className="group-form-errors">{error}</p>
-      ));
     return(
-      {errors}
+      <ul className="errors-container">
+        {this.props.errors.map( (error, i) => (
+          <li key={`error-${i}`}
+            className="error-item">
+            {error}
+          </li>
+        ))}
+      </ul>
     );
-    }
   }
 
   requireLogin() {

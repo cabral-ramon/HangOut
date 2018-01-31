@@ -43,7 +43,7 @@ const removeGroup = (groupId) => {
 const receiveGroupErrors = (errors) => {
   return {
     type: RECEIVE_GROUP_ERRORS,
-    errors: errors.responseText
+    errors: errors.responseJSON
   };
 };
 

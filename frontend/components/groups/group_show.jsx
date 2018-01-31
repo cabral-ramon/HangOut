@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import EventForm from '../event/event_form_container';
 import { Link } from 'react-router-dom';
+import SessionFormContainer from '../session/session_form_container';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -33,10 +34,15 @@ class GroupShow extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const groupId = this.props.group.id;
-    const userId = this.props.currentUser.id;
-    const membership = Object.assign({}, { group_id: groupId, user_id: userId});
-    this.props.createMembership(membership);
+    this.joinButtonClicked = true;
+    if (this.props.currentUser) {
+      const groupId = this.props.group.id;
+      const userId = this.props.currentUser.id;
+      const membership = Object.assign({}, { group_id: groupId, user_id: userId});
+      this.props.createMembership(membership);
+    } else {
+      window.alert("Please log in to join a group.");
+    }
   }
 
   renderEventForm(){
@@ -67,8 +73,6 @@ class GroupShow extends React.Component {
        >{buttonText}</button>
     );
   }
-
-
 
   render() {
     if (this.props.group) {
