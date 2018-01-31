@@ -7,6 +7,14 @@ export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
 export const REMOVE_GROUP = "REMOVE_GROUP";
 export const RECEIVE_GROUP_ERRORS = "RECEIVE_GROUP_ERRORS";
 export const RECEIVE_MEMBERS = "RECEIVE_MEMBERS";
+export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
+
+const receiveEventErrors = (errors) => {
+  return {
+    type: RECEIVE_EVENT_ERRORS,
+    errors: errors.responseJSON
+  };
+};
 
 const receiveGroup = ({group, members, events, rsvps}) => {
   return {
@@ -101,8 +109,10 @@ export const removeMembership = (groupId) => (dispatch) => {
 
 export const createEvent = ({ groupId, event}) => (dispatch) => {
   return EventAPIUtil.createEvent({groupId, event}).then( (response) => {
-    dispatch(receiveGroup( response));
+    dispatch(receiveGroup(response));
     return event;
+  }, (errors) => {
+    dispatch(receiveEventErrors(errors));
   });
 };
 

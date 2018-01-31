@@ -4,6 +4,7 @@ import { receiveGroup } from "./group_actions";
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
+export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 
 const receiveEvent = ({event, rsvps, groups, members}) => {
   return {
@@ -23,6 +24,12 @@ const receiveEvents = ({events, groups}) => {
   };
 };
 
+const receiveEventErrors = () => {
+  return {
+
+  };
+};
+
 export const fetchEvents = () => (dispatch) => {
   return EventAPIUtil.fetchEvents().then( (events) => {
     dispatch(receiveEvents(events));
@@ -35,12 +42,6 @@ export const fetchEvent = (eventParams) => (dispatch) => {
   });
 };
 
-// export const createEvent = ({ groupId, event}) => (dispatch) => {
-//   return EventAPIUtil.createEvent({groupId, event}).then( (response) => {
-//     dispatch(receiveGroup( response));
-//     return event;
-//   });
-// };
 
 export const createRsvp = (rsvpParams) => (dispatch) => {
   return RsvpAPIUtil.createRsvp(rsvpParams).then( (event) => {

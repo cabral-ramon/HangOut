@@ -4,7 +4,8 @@ import EventForm from './event_form';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    groupId: ownProps.groupId
+    groupId: ownProps.groupId,
+    errors: state.errors.event
   };
 };
 

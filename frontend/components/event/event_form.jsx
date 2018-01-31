@@ -63,7 +63,16 @@ class EventForm extends React.Component {
   }
 
   renderErrors() {
-
+    return(
+      <ul className="errors-container">
+        {this.props.errors.map( (error, i) => (
+          <li key={`error-${i}`}
+            className="error-item">
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
