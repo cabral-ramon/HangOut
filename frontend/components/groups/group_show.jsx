@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import EventForm from '../event/event_form_container';
-import { Link } from 'react-router-dom';
-import SessionFormContainer from '../session/session_form_container';
+import { Link, Route } from 'react-router-dom';
+import GroupEventsContainer from './group_events_container';
+import GroupCommentsContainer from './group_comments_container';
+import GroupAboutContainer from './group_about_container';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -10,6 +12,9 @@ class GroupShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.leaveGroup = this.leaveGroup.bind(this);
     this.renderEventForm = this.renderEventForm.bind(this);
+    this.showEvents = this.showEvents.bind(this);
+    this.showComments = this.showComments.bind(this);
+    this.showAbout = this.showAbout.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +79,16 @@ class GroupShow extends React.Component {
     );
   }
 
+  showEvents(){
+    this.props.history.push(`/groups/${this.props.group.id}/events`);
+  }
+  showComments(){
+    this.props.history.push(`/groups/${this.props.group.id}/comments`);
+  }
+  showAbout(){
+    this.props.history.push(`/groups/${this.props.group.id}`);
+  }
+
   render() {
     if (this.props.group) {
       return (
@@ -93,42 +108,32 @@ class GroupShow extends React.Component {
                 {this.renderButton()}
               </div>
             </section>
+            <nav className="group-show-menu-container">
+              <ul className="group-show-menu">
+                <li>
+                  <button onClick={this.showAbout}>Group</button>
+                </li>
+                <li>
+                    <button onClick={this.showEvents}>Events</button>
+                </li>
+                <li>
+                    <button onClick={this.showComments}>Discussions</button>
+                </li>
+
+              </ul>
+            </nav>
             <section className="group-show-section">
-              <article>
-                <h2>About this Hangout:</h2>
-                <p>{this.props.group.description}</p>
-              </article>
-
+              <Route exact path="/groups/:id" component={GroupAboutContainer} />
+              <Route exact path="/groups/:id/events" component={GroupEventsContainer} />
+              <Route exact path="/groups/:id/comments" component={GroupCommentsContainer} />
               <aside className="members-container">
-
                 <h3><span>({this.props.memberIds.length})</span> Members</h3>
                 {this.renderMembers()}
               </aside>
             </section>
-            <div className="event-contain">
-              {this.renderEventForm()}
-            </div>
-            <div className="group-events-container">
-              <h3>Events:</h3>
-              <ul>
-                {this.props.events.map( (event) => (
-                  <li key={event.id}>
-                    <div className="event-list-container">
-                      <p className="event-list-date">{event.date}</p>
-                       <Link to={`/events/${event.id}`}
-                         className="event-list-name">
-                         {event.name}
-                       </Link>
-                       <article className="event-list-desc">
-                         {event.description}
-                       </article>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+
         </div>
+      </div>
       );
     } else {
       return null;
