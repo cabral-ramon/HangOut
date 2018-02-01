@@ -9,14 +9,15 @@ const mapStateToProps = (state, ownProps) => {
     event.group_id === groupId
   );
   const group = state.groups[groupId] || { memberIds: [] };
-  
+
   return {
     group: group,
     groupId: groupId,
     currentUser: state.session.currentUser,
     events: events,
     memberIds: group.memberIds || [],
-    members: Object.values(state.members)
+    members: Object.values(state.members),
+    comments: group.comments || []
   };
 };
 

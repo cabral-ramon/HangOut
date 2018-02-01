@@ -25,4 +25,9 @@ class Event < ApplicationRecord
     primary_key: :id,
     foreign_key: :event_id,
     class_name: "Rsvp"
+
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :event_id,
+    class_name: "Comment"
 end

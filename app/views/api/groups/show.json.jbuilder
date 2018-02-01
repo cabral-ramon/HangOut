@@ -5,6 +5,7 @@ json.group do
   json.location @group.location
   json.image @group.image
   json.memberIds @group.member_ids
+  json.comments @group.comments
 end
 
 json.members do
