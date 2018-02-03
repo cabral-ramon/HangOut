@@ -16,6 +16,7 @@
       font-size: 22px;
       font-weight: 600;
       margin-bottom: 14px;
+
     }
   }
 }
@@ -78,4 +79,14 @@
 
 .event-list-name {
   color: blue;
+}
+
+.group-show-menu-container {
+
+  .group-show-menu {
+    display: flex;
+    li {
+      padding: 5px 10px 5px 10px;
+    }
+  }
 }
