@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GroupAbout from './group_About';
+import GroupAbout from './group_about';
 
 const mapStateToProps = (state, ownProps) => {
   const group = state.groups[parseInt(ownProps.match.params.id)];
