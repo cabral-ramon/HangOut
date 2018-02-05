@@ -34,19 +34,21 @@ class GroupComments extends React.Component {
 
   renderCommentForm(){
     if (this.props.members) {
-      if (this.props.members[this.props.currentUser.id]){
-        return (
-          <div id="new-comment-wrapper">
-            <span className="comment-form-username">{this.props.currentUser.username}</span>
-            <form onSubmit={this.createComment}
-              className="comment-form">
-              <input type="textarea" placeholder="Start a discussion..."
-                onChange={this.update()}
-                value={this.state.body}></input>
-              <button id="comment-form-button">Comment</button>
-            </form>
-          </div>
-        );
+      if (this.props.currentUser) {
+        if (this.props.members[this.props.currentUser.id]){
+          return (
+            <div id="new-comment-wrapper">
+              <span className="comment-form-username">{this.props.currentUser.username}</span>
+              <form onSubmit={this.createComment}
+                className="comment-form">
+                <input type="textarea" placeholder="Start a discussion..."
+                  onChange={this.update()}
+                  value={this.state.body}></input>
+                <button id="comment-form-button">Comment</button>
+              </form>
+            </div>
+          );
+        }
       }
     }
     return null;
