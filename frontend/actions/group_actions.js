@@ -1,6 +1,7 @@
 import * as GroupAPIUtil from "../util/group_api_util";
 import * as MembershipAPIUtil from "../util/membership_api_util";
 import * as EventAPIUtil from "../util/event_api_util";
+import * as CommentAPIUtil from "../util/comment_api_util";
 
 export const RECEIVE_GROUP = "RECEIVE_GROUP";
 export const RECEIVE_GROUPS = "RECEIVE_GROUPS";
@@ -116,8 +117,14 @@ export const createEvent = ({ groupId, event}) => (dispatch) => {
   });
 };
 
+export const createComment = (commentParams) => (dispatch) => {
+  return CommentAPIUtil.createComment(commentParams).then( (group) => {
+    return dispatch(receiveGroup(group));
+  });
+};
+
 export const searchGroups = (query) => (dispatch) => {
   return GroupAPIUtil.searchGroups(query).then( (groups) => {
     return dispatch(receiveGroups(groups));
   });
-}
+};

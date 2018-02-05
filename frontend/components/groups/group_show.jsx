@@ -5,6 +5,7 @@ import { Link, Route } from 'react-router-dom';
 import GroupEventsContainer from './group_events_container';
 import GroupCommentsContainer from './group_comments_container';
 import GroupAboutContainer from './group_about_container';
+import GroupMembersContainer from './group_members_container';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -15,20 +16,11 @@ class GroupShow extends React.Component {
     this.showEvents = this.showEvents.bind(this);
     this.showComments = this.showComments.bind(this);
     this.showAbout = this.showAbout.bind(this);
+    this.showMembers = this.showMembers.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchGroup(this.props.groupId);
-  }
-
-  renderMembers() {
-    return (
-      <ul>
-        {this.props.members.map( (member) => (
-          <li key={member.id}>{member.username}</li>
-        ))}
-      </ul>
-    );
   }
 
   leaveGroup(e) {
@@ -88,6 +80,9 @@ class GroupShow extends React.Component {
   showAbout(){
     this.props.history.push(`/groups/${this.props.group.id}`);
   }
+  showMembers(){
+    this.props.history.push(`/groups/${this.props.group.id}/members`);
+  }
 
   render() {
     if (this.props.group) {
@@ -114,10 +109,13 @@ class GroupShow extends React.Component {
                   <button onClick={this.showAbout}>Group</button>
                 </li>
                 <li>
-                    <button onClick={this.showEvents}>Events</button>
+                    <button onClick={this.showEvents}>Hangouts</button>
                 </li>
                 <li>
                     <button onClick={this.showComments}>Discussions</button>
+                </li>
+                <li>
+                    <button onClick={this.showMembers}>Members</button>
                 </li>
 
               </ul>
@@ -126,10 +124,7 @@ class GroupShow extends React.Component {
               <Route exact path="/groups/:id" component={GroupAboutContainer} />
               <Route exact path="/groups/:id/events" component={GroupEventsContainer} />
               <Route exact path="/groups/:id/comments" component={GroupCommentsContainer} />
-              <aside className="members-container">
-                <h3><span>({this.props.memberIds.length})</span> Members</h3>
-                {this.renderMembers()}
-              </aside>
+              <Route exact path="/groups/:id/members" component={GroupMembersContainer} />
             </section>
 
         </div>
