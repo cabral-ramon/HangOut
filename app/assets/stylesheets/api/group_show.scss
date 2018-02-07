@@ -218,3 +218,13 @@
 .comment-body {
   margin-top: 0px;
 }
+
+.group-event-li{
+  padding: 16px 16px 0;
+  font-size: 16px;
+  a {
+    :hover {
+      cursor: pointer;
+    }
+  }
+}

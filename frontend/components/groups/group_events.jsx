@@ -16,7 +16,8 @@ class GroupEvents extends React.Component {
             <h3>Events:</h3>
             <ul>
               {this.props.events.map( (event) => (
-                <li key={event.id}>
+                <li key={event.id}
+                  className="group-event-li">
                   <div className="event-list-container">
                     <p className="event-list-date">{event.date}</p>
                     <Link to={`/events/${event.id}`}
