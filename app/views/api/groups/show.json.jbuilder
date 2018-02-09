@@ -6,6 +6,7 @@ json.group do
   json.image @group.image
   json.memberIds @group.member_ids
   json.comments @group.comments
+  json.ownerId @group.owner_id
 end
 
 json.members do

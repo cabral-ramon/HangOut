@@ -1,16 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class GroupForm extends React.Component {
+class GroupEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      location: "",
-      description: "",
-      image: "",
-      imageUrl: ""
+      name: this.props.group.name,
+      location: this.props.group.location,
+      description: this.props.group.description,
+      id: this.props.group.id
     };
+    this.edit = true;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
   }
@@ -21,15 +21,12 @@ class GroupForm extends React.Component {
     formData.append("group[name]", this.state.name);
     formData.append("group[location]", this.state.location);
     formData.append("group[description]", this.state.description);
-    formData.append("group[image]", this.state.image);
-    this.props.createGroup(formData).then( (group) => {
-
-      const groupId = group.id;
-      const userId = this.props.currentUser.id;
-      const membership = Object.assign({}, { group_id: groupId, user_id: userId});
-      this.props.createMembership(membership);
-
-      this.props.history.push(`/groups/${group.id}`);
+    if (this.state.image) {
+      formData.append("group[image]", this.state.image);
+    }
+    formData.append("group[id]", this.state.id);
+    this.props.updateGroup(formData).then( (response) => {
+      this.props.history.push(`/groups/${this.props.group.id}`);
     });
   }
 
@@ -87,11 +84,6 @@ class GroupForm extends React.Component {
     }
     return (
       <div className="group-form-main">
-        <header className="group-form-header">
-          <img className="group-form-image" src="https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb" />
-            <h2>Create a new Hangout</h2>
-            <p>We'll help you find the right people to make it happen.</p>
-        </header>
         <div className="group-form-container">
           <form onSubmit={this.handleSubmit}
             className="group-form">
@@ -123,7 +115,7 @@ class GroupForm extends React.Component {
                 onChange={this.updateFile}
                 className="group-form-image"/>
             </label>
-              <button className="group-form-btn">Create Hangout!</button>
+              <button className="group-form-btn">Edit Hangout!</button>
             {this.renderErrors()}
           </form>
         </div>
@@ -132,4 +124,4 @@ class GroupForm extends React.Component {
   }
 }
 
-export default withRouter(GroupForm);
+export default withRouter(GroupEdit);

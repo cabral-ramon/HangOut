@@ -12,9 +12,11 @@ class GroupAbout extends React.Component {
     if (this.props.group) {
       return (
         <article className="group-about-wrapper">
-          <div>
-            <h2>About this Hangout:</h2>
-            <p>{this.props.group.description}</p>
+          <div id="about-container-wrapper">
+            <div id="about-container">
+              <h2>About this Hangout:</h2>
+              <p>{this.props.group.description}</p>
+            </div>
             <div className="members-container">
               <h3><span>({this.props.members.length})</span> Members:</h3>
               <ul>

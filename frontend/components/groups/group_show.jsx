@@ -6,6 +6,7 @@ import GroupEventsContainer from './group_events_container';
 import GroupCommentsContainer from './group_comments_container';
 import GroupAboutContainer from './group_about_container';
 import GroupMembersContainer from './group_members_container';
+import GroupEditContainer from './group_edit_container';
 
 class GroupShow extends React.Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class GroupShow extends React.Component {
     this.showComments = this.showComments.bind(this);
     this.showAbout = this.showAbout.bind(this);
     this.showMembers = this.showMembers.bind(this);
+    this.showEditForm = this.showEditForm.bind(this);
+    this.renderEditButton = this.renderEditButton.bind(this);
   }
 
   componentDidMount() {
@@ -74,14 +77,31 @@ class GroupShow extends React.Component {
   showEvents(){
     this.props.history.push(`/groups/${this.props.group.id}/events`);
   }
+
   showComments(){
     this.props.history.push(`/groups/${this.props.group.id}/comments`);
   }
+
   showAbout(){
     this.props.history.push(`/groups/${this.props.group.id}`);
   }
+
   showMembers(){
     this.props.history.push(`/groups/${this.props.group.id}/members`);
+  }
+
+  showEditForm(){
+    this.props.history.push(`/groups/${this.props.group.id}/edit`);
+  }
+
+  renderEditButton(){
+    if(this.props.isOwner) {
+      return (
+        <li>
+            <button onClick={this.showEditForm}>Edit</button>
+        </li>
+      );
+    }
   }
 
   render() {
@@ -117,7 +137,7 @@ class GroupShow extends React.Component {
                 <li>
                     <button onClick={this.showMembers}>Members</button>
                 </li>
-
+                {this.renderEditButton()}
               </ul>
             </nav>
             <section className="group-show-section">
@@ -125,6 +145,7 @@ class GroupShow extends React.Component {
               <Route exact path="/groups/:id/events" component={GroupEventsContainer} />
               <Route exact path="/groups/:id/comments" component={GroupCommentsContainer} />
               <Route exact path="/groups/:id/members" component={GroupMembersContainer} />
+              <Route exact path="/groups/:id/edit" render={()=> <GroupEditContainer group={this.props.group}/>}/>
             </section>
 
         </div>

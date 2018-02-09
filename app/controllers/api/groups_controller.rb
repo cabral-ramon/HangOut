@@ -14,10 +14,10 @@ class Api::GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.new(group_params)
+    @group = Group.find(group_params[:id])
 
-    if @group.save
-      render "/api/groups/"
+    if @group.update(group_params)
+      render "api/groups/show"
     else
       render json: @group.errors.full_messages, status: 422
     end
@@ -42,8 +42,11 @@ class Api::GroupsController < ApplicationController
     render :index
   end
 
+  def edit
+  end
+
   private
   def group_params
-    params.require(:group).permit(:name, :location, :description, :image, :query)
+    params.require(:group).permit(:name, :location, :description, :image, :query, :id)
   end
 end

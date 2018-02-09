@@ -16,7 +16,9 @@ export const updateGroup = (group) => (
   $.ajax({
     url: `/api/groups/${group.id}`,
     method: "patch",
-    data: { group }
+    contentType: false,
+    processData: false,
+    data: group 
   })
 );
 
