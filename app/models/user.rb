@@ -41,6 +41,11 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: "Group"
 
+  has_many :events,
+    primary_key: :id,
+    foreign_key: :organizer_id,
+    class_name: :Event
+
   has_many :comments,
     primary_key: :id,
     foreign_key: :author_id,

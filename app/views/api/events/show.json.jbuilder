@@ -7,6 +7,7 @@ json.event do
   json.time @event.time
   json.group_id @event.group_id
   json.rsvps @event.rsvps
+  json.organizer_id @event.organizer_id
 end
 
 json.rsvps do

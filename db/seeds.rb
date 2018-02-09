@@ -16,14 +16,21 @@
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
 
-Comment.delete_all
-
-30.times do
-  group = Group.all.shuffle[0]
-  author_id = group.members.shuffle[0].id
-  body = Faker::HowIMetYourMother.quote
-  Comment.create(group_id: group.id, author_id: author_id, body: body)
+Event.all.each do |event|
+  organizer = event.group.members.shuffle[0]
+  event.organizer_id = organizer.id
+  event.organizer = organizer
+  event.save
+  Rsvp.create(event_id: event.id, user_id: organizer.id)
 end
+# Comment.delete_all
+#
+# 30.times do
+#   group = Group.all.shuffle[0]
+#   author_id = group.members.shuffle[0].id
+#   body = Faker::HowIMetYourMother.quote
+#   Comment.create(group_id: group.id, author_id: author_id, body: body)
+# end
 
 
 # User.delete_all

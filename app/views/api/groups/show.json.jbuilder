@@ -20,7 +20,7 @@ end
 json.events do
   @group.events.each do |event|
     json.set! event.id do
-      json.extract! event, :id, :name, :date, :time, :location, :description, :group_id
+      json.extract! event, :id, :name, :date, :time, :location, :description, :group_id, :organizer_id
       json.rsvps event.rsvps
     end
   end

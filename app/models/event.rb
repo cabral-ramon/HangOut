@@ -2,15 +2,16 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  name        :string           not null
-#  description :text
-#  location    :string           not null
-#  group_id    :integer          not null
-#  date        :date             not null
-#  time        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string           not null
+#  description  :text
+#  location     :string           not null
+#  group_id     :integer          not null
+#  date         :date             not null
+#  time         :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  organizer_id :integer
 #
 
 class Event < ApplicationRecord
@@ -20,6 +21,11 @@ class Event < ApplicationRecord
     primary_key: :id,
     foreign_key: :group_id,
     class_name: :Group
+
+  belongs_to :organizer,
+    primary_key: :id,
+    foreign_key: :organizer_id,
+    class_name: :User
 
   has_many :rsvps,
     primary_key: :id,

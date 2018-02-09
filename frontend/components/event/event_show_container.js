@@ -7,14 +7,15 @@ const mapStateToProps = (state, ownProps) => {
   let eventId = parseInt(ownProps.match.params.eventId);
   const event = state.events[eventId] || {rsvps: []};
   let eventMembers = event.rsvps.map( rsvp => state.members[rsvp.user_id] || {} );
-
+  let organizer = eventMembers.filter( (member) => member.id === event.organizer_id)[0] || {};
   return {
     event,
     eventId: eventId,
     currentUser: state.session.currentUser,
     rsvps: event.rsvps,
     group: state.groups[event.group_id] || {},
-    eventMembers: eventMembers
+    eventMembers: eventMembers,
+    organizer
   };
 };
 

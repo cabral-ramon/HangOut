@@ -1,12 +1,14 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
+import { dateToDayMonth, dateToWordDate } from '../../util/date_converter';
 
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteRsvp = this.deleteRsvp.bind(this);
+    this.renderDayMonth = this.renderDayMonth.bind(this);
+    this.renderWordDate = this.renderWordDate.bind(this);
   }
 
 
@@ -52,6 +54,24 @@ class EventShow extends React.Component {
     );
   }
 
+  renderDayMonth(){
+    if(this.props.event.date) {
+      return (
+        <p>{dateToDayMonth(this.props.event.date)}</p>
+      );
+    }
+    return null;
+  }
+
+  renderWordDate(){
+    if(this.props.event.date) {
+      return (
+        <p>{dateToWordDate(this.props.event.date)}</p>
+      );
+    }
+    return null;
+  }
+
   render() {
     let rsvps;
     if (this.props.event) {
@@ -76,11 +96,13 @@ class EventShow extends React.Component {
             <div className="event-show-head">
               <div className="page-head">
                 <div className="event-show-date">
+                  {this.renderDayMonth()}
                 </div>
                 <div className="event-show-name">
-                  <p>{this.props.event.date}</p>
+                  {this.renderWordDate()}
                   <h1>{this.props.event.name}</h1>
-                  <p>Hosted by <Link to="">{this.props.group.name}</Link></p>
+                  <p>Hosted by {this.props.organizer.username}</p>
+                  <p>From <Link to="">{this.props.group.name}</Link></p>
                 </div>
                 <div className="event-rsvp-wrapper">
                   {this.renderButton()}
@@ -98,7 +120,15 @@ class EventShow extends React.Component {
               </ul>
             </div>
             <div className="event-show-time-location">
-              <p>{this.props.event.time}</p>
+              <div>
+                <div>
+                  <i className="far fa-clock"></i>
+                </div>
+                <div>
+                  <p>{this.props.event.date}</p>
+                  <p>{this.props.event.time}</p>
+                </div>
+              </div>
               <p>Location: {this.props.event.location}</p>
             </div>
           </div>
