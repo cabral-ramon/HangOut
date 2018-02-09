@@ -7,13 +7,13 @@ class Footer extends React.Component {
       <div className="footer-container">
         <div className="github">
         <a target="_blank" href="https://github.com/cabral-ramon">
-          <i className="fa fa-github fa-lg" aria-hidden="true"></i>
+          <i class="fab fa-github"></i>
         </a>
         </div>
 
         <div className="linkedin">
           <a target="_blank" href="https://www.linkedin.com/in/cabral-ramon/">
-            <i className="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+            <i class="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
