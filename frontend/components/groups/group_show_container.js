@@ -10,8 +10,10 @@ const mapStateToProps = (state, ownProps) => {
   );
   const group = state.groups[groupId] || { memberIds: [] };
   let isOwner = false;
-  if (group.ownerId === state.session.currentUser.id) {
-    isOwner = true;
+  if (state.session.currentUser) {
+    if (group.ownerId === state.session.currentUser.id) {
+      isOwner = true;
+    }
   }
   return {
     group: group,
