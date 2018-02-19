@@ -10,6 +10,7 @@ class GroupEvents extends React.Component {
 
   render() {
     if (this.props.events) {
+      console.log(this.props.events);
       return (
         <div className="event-container">
           <div className="group-events-container">

@@ -8,8 +8,30 @@
       .page-head {
         display: flex;
         margin: 24px 20px 0;
-        .event-show-date {
-
+        #event-show-date-wrapper {
+          margin-right: 15px;
+          #event-show-date {
+            padding: 8px;
+            border: 1px solid rgba(46, 62, 72, 0.12);
+            background-color: rgb(246, 247, 248);
+            border-radius: 8px;
+            text-align: center;
+            width: 35px;
+            #event-show-day {
+              color: #f13a59;
+              font-size: 20px;
+              text-align: center;
+              line-height: 1.1;
+              font-weight: 500;
+            }
+            #event-show-month {
+              color: rgba(46, 62, 72, 0.6);
+              font-weight: 700;
+              font-size: 12px;
+              text-transform: uppercase;
+              line-height: 13.2px;
+            }
+          }
         }
         .event-show-name {
           font-size: 32px;

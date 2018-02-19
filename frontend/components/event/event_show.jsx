@@ -57,7 +57,10 @@ class EventShow extends React.Component {
   renderDayMonth(){
     if(this.props.event.date) {
       return (
-        <p>{dateToDayMonth(this.props.event.date)}</p>
+        <div id="event-show-date">
+          <p id="event-show-day">{dateToDayMonth(this.props.event.date).slice(0,2)}</p>
+          <p id="event-show-month">{dateToDayMonth(this.props.event.date).slice(2,5)}</p>
+        </div>
       );
     }
     return null;
@@ -95,7 +98,7 @@ class EventShow extends React.Component {
               className="back-to-link">back to Events</Link>
             <div className="event-show-head">
               <div className="page-head">
-                <div className="event-show-date">
+                <div id="event-show-date-wrapper">
                   {this.renderDayMonth()}
                 </div>
                 <div className="event-show-name">
