@@ -28,7 +28,7 @@
       flex-direction: column;
     }
     .navbar-links {
-      padding: 15px;
+      padding: 20px;
       color: dimgrey;
     }
     .navbar-links:hover {
@@ -62,4 +62,9 @@
 .fa-bars:hover {
   color: cadetblue;
   cursor: pointer;
+}
+
+#user-image {
+  width: 60px;
+  height: 60px;
 }

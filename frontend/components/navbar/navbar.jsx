@@ -9,18 +9,18 @@ class NavBar extends React.Component {
     super(props);
   }
 
-
   userIcon() {
     if (this.props.currentUser !== null) {
       return (
         <div>
-          <i class="fas fa-bars"></i>
+          <i className="fas fa-bars"></i>
           <div className="navbar-user-container">
-            <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
+              <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
             <button
               onClick={this.props.logout}
               className="logout-button">Log Out</button>
-            <h3 className="username">{this.props.currentUser.username}</h3>
+            <img id="user-image"
+              src={this.props.currentUser.image}/>
           </div>
         </div>
       );

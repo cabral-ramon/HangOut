@@ -25,7 +25,9 @@ class SessionFormModal extends React.Component {
         username: "",
         password: "",
         location: "",
-        email: ""
+        email: "",
+        image: "",
+        imageUrl: ""
       }
     };
 
@@ -55,10 +57,22 @@ class SessionFormModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = this.state.credentials
-    this.props.processForm(user).then( () => {
-      this.props.history.push("/homepage");
-    });
+    if (this.props.formType === "signup") {
+      var formData = new FormData();
+      formData.append("user[username]", this.state.name);
+      formData.append("user[password]", this.state.password);
+      formData.append("user[email]", this.state.email);
+      formData.append("user[location]", this.state.location);
+      formData.append("user[image]", this.state.image);
+      this.props.processForm(formData).then( (user) => {
+        this.props.history.push("/homepage");
+      });
+    } else {
+      const user = this.state.credentials;
+      this.props.processForm(user).then( () => {
+        this.props.history.push("/homepage");
+      });
+    }
   }
 
   demoLogin() {
@@ -98,6 +112,21 @@ class SessionFormModal extends React.Component {
     }
   }
 
+  updateFile(e) {
+    e.preventDefault();
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({image: file, imageUrl: fileReader.result});
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", image: null });
+    }
+  }
+
   render() {
     const buttonText = this.props.formType === "signup" ? "Sign up" : "Log in";
     let signupInputs;
@@ -120,6 +149,13 @@ class SessionFormModal extends React.Component {
               type="text"
               value={this.state.credentials.location}
               onChange={this.update('location')}
+              className="session-input"/>
+          </label>
+
+          <label>location
+            <input
+              type="file"
+              onChange={this.updateFile}
               className="session-input"/>
           </label>
         </div>
