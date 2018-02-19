@@ -16,10 +16,10 @@
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
 
-# User.all.each do |user|
-#   user.image = File.open('app/assets/images/default.png')
-#   user.save
-# end
+User.all.each do |user|
+  user.image = File.open('app/assets/images/default.png')
+  user.save
+end
 # Event.all.each do |event|
 #   organizer = event.group.members.shuffle[0]
 #   event.organizer_id = organizer.id
