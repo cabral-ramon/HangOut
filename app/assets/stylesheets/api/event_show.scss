@@ -1,13 +1,20 @@
 .event-show-container {
   background: #f6f7f8;
   .event-show-head-wrapper {
-    padding: 0 200px;
+    padding: 0 10%;
     background-color: white;
     border-bottom: 1px solid rgba(46,62,72,.12);
+    @media(max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+    }
     .event-show-head {
       .page-head {
         display: flex;
-        margin: 24px 20px 0;
+        margin: 3% 2% 0;
+        @media(max-width: 800px) {
+          flex-direction: column;
+        }
         #event-show-date-wrapper {
           margin-right: 15px;
           #event-show-date {
@@ -44,15 +51,14 @@
         .event-rsvp-wrapper {
           padding-left: 20px;
           width: 300px;
-          margin-left: 45%;
           .event-rsvp-btn {
             text-align: center;
             width: 100%;
-            background-color: crimson;
+            background-color: cadetblue;
             color: white;
             padding: 5px 10px;
             margin-top: 10px;
-            border: 1px solid crimson;
+            border: 1px solid cadetblue;
             border-radius: 5px;
             cursor: pointer;
           }
@@ -61,36 +67,69 @@
     }
   }
   .event-show-body-wrapper {
-    padding: 50px 200px;
+    padding: 50px 12%;
     margin: 24px 20px 0;
     display: flex;
+    @media(max-width: 800px) {
+      flex-direction: column;
+    }
     h1 {
       font-size: 1.25rem;
       font-weight: 600;
       padding-bottom: 20px;
     }
     .event-show-details {
-      width: 900px;
-      .event-show-ul {
-        .event-show-rsvp-list {
-          width: 125px;
-          background-color: white;
-          padding: 10px;
-          border: 1px solid white;
-          border-radius: 10px;
+      width: 80%;
+      @media(max-width: 800px) {
+        margin: auto;
+      }
+      #event-show-attendees {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        .event-show-ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          .event-show-rsvp-list {
+            margin-top: 5%;
+            width: 125px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 10px;
+          }
         }
       }
     }
     .event-show-time-location {
       background-color: white;
-      padding: 50px;
+      padding: 35px 30px;
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      min-width: 225px;
+      max-height: 100px;
       border: 1px solid white;
       border-radius: 10px;
+      margin-left: 10%;
+      justify-content: space-evenly;
+      #event-show-time {
+        display: flex;
+        justify-content: space-between;
+      }
+      #event-show-location {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20%;
+      }
+      @media(max-width: 800px) {
+        margin: auto;
+      }
     }
   }
 }
 
-.event-show-ul {
-  display: flex;
-  flex-wrap: wrap;
+
+.general-link {
+  color: cadetblue;
 }

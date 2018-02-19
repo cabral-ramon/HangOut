@@ -69,7 +69,7 @@ class EventShow extends React.Component {
   renderWordDate(){
     if(this.props.event.date) {
       return (
-        <p>{dateToWordDate(this.props.event.date)}</p>
+        <span>{dateToWordDate(this.props.event.date)}</span>
       );
     }
     return null;
@@ -105,7 +105,8 @@ class EventShow extends React.Component {
                   {this.renderWordDate()}
                   <h1>{this.props.event.name}</h1>
                   <p>Hosted by {this.props.organizer.username}</p>
-                  <p>From <Link to="">{this.props.group.name}</Link></p>
+                  <p>From <Link className="general-link"
+                    to="">{this.props.group.name}</Link></p>
                 </div>
                 <div className="event-rsvp-wrapper">
                   {this.renderButton()}
@@ -117,22 +118,27 @@ class EventShow extends React.Component {
             <div className="event-show-details">
               <h1>Details</h1>
               <p>{this.props.event.description}</p>
-              <h1>Attendees</h1>
-              <ul className="event-show-ul">
-                {rsvps}
-              </ul>
+              <div id="event-show-attendees">
+                <h1>Attendees</h1>
+                <ul className="event-show-ul">
+                  {rsvps}
+                </ul>
+              </div>
             </div>
             <div className="event-show-time-location">
               <div>
-                <div>
+                <div id="event-show-time">
                   <i className="far fa-clock"></i>
+                  <p>{this.renderWordDate()}</p>
                 </div>
                 <div>
-                  <p>{this.props.event.date}</p>
                   <p>{this.props.event.time}</p>
                 </div>
               </div>
-              <p>Location: {this.props.event.location}</p>
+              <div id="event-show-location">
+                <i className="fas fa-map-marker-alt"></i>
+                <p>{this.props.event.location}</p>
+              </div>
             </div>
           </div>
         </div>

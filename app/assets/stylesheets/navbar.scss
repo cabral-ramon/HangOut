@@ -7,56 +7,62 @@
   background-color: #fff;
   position: relative;
   margin: 0;
-}
+  @media(max-width: 500px) {
 
-.navbar-links-container {
-  position: absolute;
-  right: 20px;
-  color: dimgrey;
-  text-align: center;
-  padding: 10px;
-  vertical-align: -webkit-baseline-middle;
-  display: flex;
-  flex-direction: row;
-}
-.navbar-user-container {
-  position: absolute;
-  right: 20px;
-  color: white;
-  text-align: center;
-  padding: 0px;
-  vertical-align: -webkit-baseline-middle;
-  display: flex;
-  flex-direction: row;
-  a {
-    margin-top: 5px;
+  }
+  .logo {
+    padding-left: 22px;
+    padding-bottom: 7px;
+  }
+  .navbar-user-container {
+    position: absolute;
+    right: 20px;
+    color: white;
+    text-align: center;
+    padding: 0px;
+    vertical-align: -webkit-baseline-middle;
+    display: flex;
+    flex-direction: row;
+    @media(max-width: 500px) {
+      display: none;
+      flex-direction: column;
+    }
+    a {
+      margin-top: 5px;
+    }
+    .navbar-links {
+      padding: 15px;
+      color: dimgrey;
+    }
+    .navbar-links:hover {
+      color: cadetblue;
+    }
+    .logout-button {
+      padding: 8px;
+      margin-right: 15px;
+      color: dimgrey;
+    }
+    .logout-button:hover {
+      color: cadetblue;
+    }
+    .username {
+      color: crimson;
+    }
   }
 }
 
-.navbar-links {
-  padding: 15px;
-  color: dimgrey;
+.fa-bars {
+  display: none;
+  @media(max-width: 500px) {
+    display: block;
+    font-size: 40px;
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    color: dimgray;
+  }
 }
-
-.navbar-links:hover {
-  color: crimson;
-}
-
-.logo {
-  padding-left: 22px;
-  padding-bottom: 7px;
-}
-
-.username {
-  color: crimson;
-}
-
-.logout-button {
-  padding: 8px;
-  margin-right: 15px;
-  color: dimgrey;
-}
-
-.logout-button:hover {
-  color: crimson;
+.fa-bars:hover {
+  color: cadetblue;
+  cursor: pointer;
 }

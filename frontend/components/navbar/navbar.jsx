@@ -13,20 +13,26 @@ class NavBar extends React.Component {
   userIcon() {
     if (this.props.currentUser !== null) {
       return (
-      <div className="navbar-user-container">
-        <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
-        <button
-          onClick={this.props.logout}
-          className="logout-button">Log Out</button>
-        <h3 className="username">{this.props.currentUser.username}</h3>
-      </div>
+        <div>
+          <i class="fas fa-bars"></i>
+          <div className="navbar-user-container">
+            <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
+            <button
+              onClick={this.props.logout}
+              className="logout-button">Log Out</button>
+            <h3 className="username">{this.props.currentUser.username}</h3>
+          </div>
+        </div>
       );
     } else {
       return (
-        <div className="navbar-links-container">
-          <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
-          <SessionFormContainer formType="Login" id="0"/>
-          <SessionFormContainer formType="signup" id="1"/>
+        <div>
+          <i className="fas fa-bars"></i>
+          <div className="navbar-links-container">
+            <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
+            <SessionFormContainer formType="Login" id="0"/>
+            <SessionFormContainer formType="signup" id="1"/>
+          </div>
         </div>
       );
     }
