@@ -8,7 +8,6 @@
 .group-form-header {
   margin: auto;
   text-align: center;
-  // position: absolute;
   color: white;
   h2 {
     margin: auto;
@@ -68,6 +67,8 @@
   max-width: 100%;
   padding: 8px;
   width: 100%;
+  height: 250px;
+  font-size: 16px;
 }
 
 .group-form-image {
@@ -104,5 +105,8 @@
   width: 500px;
   label {
     padding-bottom: 25px;
+    input {
+      font-size: 16px;
+    }
   }
 }

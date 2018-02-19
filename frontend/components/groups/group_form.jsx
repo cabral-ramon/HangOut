@@ -101,21 +101,24 @@ class GroupForm extends React.Component {
                 type="text"
                 value={this.state.name}
                 onChange={this.update('name')}
-                className="group-form-name"/>
+                className="group-form-name"
+                placeHolder="What do you want your group to be called?"/>
             </label>
             <label>Location:
               <input
                 type="text"
                 value={this.state.location}
                 onChange={this.update('location')}
-                className="group-form-location"/>
+                className="group-form-location"
+                placeHolder="i.e. Queens, NY"/>
             </label>
             <label>Description:
               <textarea
                 type="textarea"
                 value={this.state.description}
                 onChange={this.update('description')}
-                className="group-form-description"/>
+                className="group-form-description"
+                placeHolder="Tell us about your group"/>
             </label>
             <label>Image:
               <input

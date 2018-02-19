@@ -28,7 +28,7 @@ class NavBar extends React.Component {
       return (
         <div>
           <i className="fas fa-bars"></i>
-          <div className="navbar-links-container">
+          <div className="navbar-user-container">
             <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
             <SessionFormContainer formType="Login" id="0"/>
             <SessionFormContainer formType="signup" id="1"/>
