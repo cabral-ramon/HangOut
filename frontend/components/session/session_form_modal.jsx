@@ -36,6 +36,7 @@ class SessionFormModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
 
@@ -53,17 +54,18 @@ class SessionFormModal extends React.Component {
 
   update(field) {
     return (e) => this.setState(merge({}, this.state, {credentials: {[field]: e.currentTarget.value}}));
+
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.formType === "signup") {
       var formData = new FormData();
-      formData.append("user[username]", this.state.name);
-      formData.append("user[password]", this.state.password);
-      formData.append("user[email]", this.state.email);
-      formData.append("user[location]", this.state.location);
-      formData.append("user[image]", this.state.image);
+      formData.append("user[username]", this.state.credentials.username);
+      formData.append("user[password]", this.state.credentials.password);
+      formData.append("user[email]", this.state.credentials.email);
+      formData.append("user[location]", this.state.credentials.location);
+      formData.append("user[image]", this.state.credentials.image);
       this.props.processForm(formData).then( (user) => {
         this.props.history.push("/homepage");
       });
@@ -118,12 +120,12 @@ class SessionFormModal extends React.Component {
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      this.setState({image: file, imageUrl: fileReader.result});
+      this.setState(merge({}, this.state, {credentials: {image: file, imageUrl: fileReader.result}}));
     };
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
-      this.setState({ imageUrl: "", image: null });
+      this.setState(merge({}, this.state, {credentials: { imageUrl: "", image: null }}));
     }
   }
 
@@ -136,7 +138,7 @@ class SessionFormModal extends React.Component {
        title = "Sign Up";
        signupInputs = (
         <div className="session-element">
-          <label>email
+          <label>Email:
             <input
               type="text"
               value={this.state.credentials.email}
@@ -144,7 +146,7 @@ class SessionFormModal extends React.Component {
               className="session-input"/>
           </label>
 
-          <label>location
+          <label>Location:
             <input
               type="text"
               value={this.state.credentials.location}
@@ -152,7 +154,7 @@ class SessionFormModal extends React.Component {
               className="session-input"/>
           </label>
 
-          <label>location
+          <label>User Icon:
             <input
               type="file"
               onChange={this.updateFile}

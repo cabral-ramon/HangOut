@@ -4,7 +4,7 @@ export const signup = (user) => (
       method: "post",
       contentType: false,
       processData: false,
-      data: { user }
+      data: user
   })
 );
 
