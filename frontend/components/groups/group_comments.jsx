@@ -38,7 +38,7 @@ class GroupComments extends React.Component {
         if (this.props.members[this.props.currentUser.id]){
           return (
             <div id="new-comment-wrapper">
-              <span className="comment-form-username">{this.props.currentUser.username}</span>
+              <div className="comment-form-username">{this.props.currentUser.username}</div>
               <form onSubmit={this.createComment}
                 className="comment-form">
                 <input type="textarea" placeholder="Start a discussion..."
