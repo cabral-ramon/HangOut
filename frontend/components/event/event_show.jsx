@@ -106,7 +106,7 @@ class EventShow extends React.Component {
                   <h1>{this.props.event.name}</h1>
                   <p>Hosted by {this.props.organizer.username}</p>
                   <p>From <Link className="general-link"
-                    to="">{this.props.group.name}</Link></p>
+                    to={`/groups/${this.props.group.id}`}>{this.props.group.name}</Link></p>
                 </div>
                 <div className="event-rsvp-wrapper">
                   {this.renderButton()}
