@@ -12,7 +12,7 @@ end
 json.members do
   @group.members.each do |member|
     json.set! member.id do
-      json.extract! member, :id, :username, :location
+      json.extract! member, :id, :username, :location, :image
     end
   end
 end
