@@ -13,6 +13,7 @@ Rails.application.routes.draw do
    end
    resources :events, only: [:index, :show]
    resources :rsvps, only: [:create]
+   resources :tags, only: [:create]
  end
 
  get 'api/search', to: 'api/groups#search'

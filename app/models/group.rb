@@ -44,6 +44,11 @@ class Group < ApplicationRecord
     foreign_key: :group_id,
     class_name: "Comment"
 
+  has_many :tags,
+    primary_key: :id,
+    foreign_key: :group_id,
+    class_name: "Tag"
+
   def self.search(query)
     Group.where("
       lower(name) LIKE lower(?) OR
