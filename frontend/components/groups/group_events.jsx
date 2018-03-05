@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import EventFormContainer from '../event/event_form_container';
 
 class GroupEvents extends React.Component {
   constructor(props) {
@@ -10,11 +11,15 @@ class GroupEvents extends React.Component {
 
   render() {
     if (this.props.events) {
-      console.log(this.props.events);
       return (
         <div className="event-container">
           <div className="group-events-container">
-            <h3>Events:</h3>
+            <div id="group-events-head">
+              <div>
+                <h3>Events:</h3>
+              </div>
+              <EventFormContainer />
+            </div>
             <ul>
               {this.props.events.map( (event) => (
                 <li key={event.id}

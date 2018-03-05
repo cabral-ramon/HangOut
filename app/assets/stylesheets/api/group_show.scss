@@ -166,6 +166,12 @@
 
 .group-events-container {
   // width: 350px;
+  #group-events-head {
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
   padding-left: 30px;
   .group-events-header{
     display: flex;

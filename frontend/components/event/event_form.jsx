@@ -79,7 +79,7 @@ class EventForm extends React.Component {
     return (
       <div>
         <button onClick={this.openModal}
-          className="event-form-btn">Create new Event</button>
+          className="event-form-btn">New Event</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
