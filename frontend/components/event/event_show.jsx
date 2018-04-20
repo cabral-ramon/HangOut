@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { dateToDayMonth, dateToWordDate } from '../../util/date_converter';
+import GroupMembersContainer from '../groups/group_members_container';
+
 
 class EventShow extends React.Component {
   constructor(props) {

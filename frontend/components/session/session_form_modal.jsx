@@ -154,11 +154,12 @@ class SessionFormModal extends React.Component {
               className="session-input"/>
           </label>
 
-          <label>User Icon:
+          <label htmlFor="file">User Icon:
             <input
               type="file"
               onChange={this.updateFile}
-              className="session-input"/>
+              className="session-input"
+              />
           </label>
         </div>
       );
