@@ -19,8 +19,8 @@ class NavBar extends React.Component {
             <button
               onClick={this.props.logout}
               className="logout-button">Log Out</button>
-            <img id="user-image"
-              src={this.props.currentUser.image}/>
+            <div id="user-image" style={{backgroundImage: `url(${this.props.currentUser.image})`}}>
+            </div>
           </div>
         </div>
       );
