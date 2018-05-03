@@ -4,7 +4,8 @@ import { searchGroups } from '../../actions/group_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-
+    groups: Object.values(state.groups),
+    events: Object.values(state.events)
   };
 };
 

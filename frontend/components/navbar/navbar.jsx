@@ -11,7 +11,6 @@ class NavBar extends React.Component {
 
   userIcon() {
     if (this.props.currentUser !== null) {
-      console.log(this.props);
       return (
         <div>
           <i className="fas fa-bars"></i>

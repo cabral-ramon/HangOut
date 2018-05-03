@@ -14,6 +14,7 @@ class Homepage extends React.Component {
     };
     this.updateSearchBar = this.updateSearchBar.bind(this);
     this.searchGroups = this.searchGroups.bind(this);
+    this.renderCount = this.renderCount.bind(this);
   }
 
   chooseClassName(url) {
@@ -35,11 +36,20 @@ class Homepage extends React.Component {
     };
   }
 
+  renderCount(){
+    if (this.props.location.pathname == "/homepage/events") {
+      return `${this.props.events.length} Events`;
+    } else {
+      return `${this.props.groups.length} Groups`;
+    }
+  }
+
   render() {
     return (
     <main>
       <div className="homepage-search-container">
         <h1>Find a Hangout</h1>
+        <p className="homepage-count">{this.renderCount()} Available</p>
         <div className="homepage-btn-wrapper">
           <div className="homepage-btn-container">
             <div className="search-bar-container">
