@@ -44,16 +44,17 @@
 }
 
 .video-signup-btn {
-  background-color: crimson;
+  background-color: rgb(241, 58, 89);
   padding-left: 95px;
   padding-right: 95px;
   padding-bottom: 10px;
   padding-top: 10px;
   margin-top: 10px;
   border: 1px solid crimson;
-  border-radius: 10px;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 .video-signup-btn:hover {
-  background-color: darkred;
+  background-color: rgb(232, 16, 53);
 }

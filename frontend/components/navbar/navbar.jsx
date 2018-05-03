@@ -16,7 +16,9 @@ class NavBar extends React.Component {
         <div>
           <i className="fas fa-bars"></i>
           <div className="navbar-user-container">
-              <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
+              <Link to={'/create'} className="navbar-links create-btn">
+                Create a Hangout
+              </Link>
             <button
               onClick={this.props.logout}
               className="logout-button">Log Out</button>
@@ -30,7 +32,9 @@ class NavBar extends React.Component {
         <div>
           <i className="fas fa-bars"></i>
           <div className="navbar-user-container">
-            <Link to={'/create'} className="navbar-links">Create a Hangout</Link>
+            <Link to={'/create'} className="navbar-links create-btn">
+              Create a Hangout
+            </Link>
             <SessionFormContainer formType="Login" id="0"/>
             <SessionFormContainer formType="signup" id="1"/>
           </div>
