@@ -1,0 +1,28 @@
+@media (min-width: 480px) {
+
+  .navbar-links {
+    font-size: 1.25em;
+  }
+
+  .video-container {
+    .video-text {
+      position: relative;
+      left: 0px;
+    }
+  }
+
+  .group-container {
+    width: auto;
+  }
+
+  .group-show-image-container {
+    flex-direction: column;
+    .group-show-image {
+      width: 100%;
+    }
+    .group-info-container {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
