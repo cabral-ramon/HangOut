@@ -26,13 +26,17 @@ class EventShow extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const eventId = this.props.eventId;
-    const userId = this.props.currentUser.id;
-    const rsvpParams = {
+    if (this.props.currentUser != null) {
+      const eventId = this.props.eventId;
+      const userId = this.props.currentUser.id;
+      const rsvpParams = {
         user_id: userId,
         event_id: eventId
-    };
-    this.props.createRsvp(rsvpParams);
+      };
+      this.props.createRsvp(rsvpParams);
+    } else {
+      alert("You must login before you can RSVP to an Event.");
+    }
   }
 
   renderButton() {
