@@ -9,11 +9,20 @@ class NavBar extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    $(document).ready(function(){
+      $('#hamburger').click(function(){
+        $('.navbar-user-container').slideToggle("slow");
+        console.log("hits");
+      });
+    });
+  }
+
   userIcon() {
     if (this.props.currentUser !== null) {
       return (
         <div>
-          <i className="fas fa-bars"></i>
+          <i id="hamburger" className="fas fa-bars"></i>
           <div className="navbar-user-container">
               <Link to={'/create'} className="navbar-links create-btn">
                 Create a Hangout
@@ -29,7 +38,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div>
-          <i className="fas fa-bars"></i>
+          <i id="hamburger" className="fas fa-bars"></i>
           <div className="navbar-user-container">
             <Link to={'/create'} className="navbar-links create-btn">
               Create a Hangout
