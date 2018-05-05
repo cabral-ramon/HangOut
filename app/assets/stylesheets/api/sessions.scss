@@ -22,6 +22,10 @@
   p {
     margin-bottom: 16px;
   }
+  @media (max-width: 500px) {
+    width: auto;
+    margin: 10px auto;
+  }
 }
 
 
@@ -57,15 +61,19 @@
 }
 
 .guest-button {
-  cursor: pointer;
+  // cursor: pointer;
   background-color: cornflowerblue;
-  color: white;
-  padding: 5px 10px;
+  // color: white;
+  // padding: 5px 10px;
   border: 1px solid cornflowerblue;
-  border-radius: 4px;
-  position: relative;
-  left: 214px;
-  bottom: 2px;
+  // border-radius: 4px;
+  // position: relative;
+  // left: 214px;
+  // bottom: 2px;
+  // @media (max-width: 500px) {
+  //   position: inherit;
+  //   min-height: 32px;
+  // }
 }
 .close-btn {
   margin-left: 425px;

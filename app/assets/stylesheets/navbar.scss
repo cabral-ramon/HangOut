@@ -42,6 +42,9 @@
     .create-btn {
       color: rgb(0, 162, 199);
       font-weight: bold;
+      @media (max-width: 500px) {
+        
+      }
     }
     .navbar-links:hover {
       color: cadetblue;

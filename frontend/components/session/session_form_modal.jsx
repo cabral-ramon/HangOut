@@ -211,8 +211,10 @@ class SessionFormModal extends React.Component {
                 </div>
                 {signupInputs}
                 <button className="session-button">{buttonText}</button>
-                <a className="guest-button"
-                  onClick={this.demoLogin}>Guest User</a>
+                <button className="session-button guest-button"
+                  onClick={this.demoLogin}>
+                  Guest User
+                </button>
                 {this.renderErrors()}
               </form>
         </Modal>
