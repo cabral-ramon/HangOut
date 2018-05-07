@@ -14,12 +14,18 @@
     position: absolute;
     top: 28%;
     left: 45%;
+    @media (max-width: 500px) {
+      left: 16%;
+    }
   }
   p {
     margin: auto;
     position: absolute;
     top: 40%;
     left: 34%;
+    @media (max-width: 500px) {
+      left: 9%;
+    }
   }
   img {
     object-fit: cover;
@@ -73,7 +79,9 @@
 
 .group-form-image {
   padding: 10px;
-
+  @media (max-width: 500px) {
+    padding: 0;
+  }
 }
 
 .group-form-btn {
@@ -103,6 +111,10 @@
   border: 1px solid dimgray;
   padding: 38px;
   width: 500px;
+  @media (max-width: 500px) {
+    width: auto;
+    margin: 25px 10px;
+  }
   label {
     padding-bottom: 25px;
     input {
