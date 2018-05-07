@@ -43,7 +43,7 @@
       color: rgb(0, 162, 199);
       font-weight: bold;
       @media (max-width: 500px) {
-        
+
       }
     }
     .navbar-links:hover {
@@ -84,4 +84,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: -22px;
+  @media (max-width: 500px) {
+    display: none;
+  }
 }

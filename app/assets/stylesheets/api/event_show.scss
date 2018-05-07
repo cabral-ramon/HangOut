@@ -43,6 +43,9 @@
         .event-show-name {
           font-size: 32px;
           font-weight: 600;
+          @media (max-width: 500px) {
+            font-size: 18px;
+          }
           p {
             color: rgba(46,62,72,.6);
             font-size: 16px;
@@ -51,6 +54,10 @@
         .event-rsvp-wrapper {
           padding-left: 20px;
           width: 300px;
+          @media (max-width: 500px) {
+            padding-left: 0;
+            width: auto;
+          }
           .event-rsvp-btn {
             text-align: center;
             width: 100%;
@@ -61,6 +68,9 @@
             border: 1px solid cadetblue;
             border-radius: 5px;
             cursor: pointer;
+            @media (max-width: 500px) {
+              margin-bottom: 8px;
+            }
           }
         }
       }
@@ -72,6 +82,7 @@
     display: flex;
     @media(max-width: 800px) {
       flex-direction: column;
+      padding: 10px 1%;
     }
     h1 {
       font-size: 1.25rem;
@@ -91,6 +102,9 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: space-evenly;
+          @media (max-width: 500px) {
+            justify-content: unset;
+          }
           .event-show-rsvp-list {
             margin-top: 5%;
             width: 125px;
