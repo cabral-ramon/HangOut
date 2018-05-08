@@ -77,7 +77,8 @@ class SessionFormModal extends React.Component {
     }
   }
 
-  demoLogin() {
+  demoLogin(e) {
+    e.preventDefault();
     this.props.guestLogin({
       username: 'Guest User',
       password: 'password'
