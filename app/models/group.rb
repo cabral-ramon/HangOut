@@ -18,7 +18,7 @@ class Group < ApplicationRecord
   validates :name, uniqueness: { scope: :location }
 
   has_attached_file :image,
-    default_url: ActionController::Base.helpers.asset_path("test.jpeg", :digest => false)
+  :default_url => ActionController::Base.helpers.asset_path('missing.jpeg')
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :memberships,
