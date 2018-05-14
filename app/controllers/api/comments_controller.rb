@@ -17,6 +17,12 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment
+      @group = @comment.group
+      @comment.delete
+      render "api/groups/show"
+    end
   end
 
   private

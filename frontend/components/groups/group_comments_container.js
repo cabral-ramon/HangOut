@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import GroupComments from './group_comments';
 import { createComment } from '../../actions/group_actions';
+import { deleteComment } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = {};
@@ -23,7 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createComment: (commentParams) => dispatch(createComment(commentParams))
+    createComment: (commentParams) => dispatch(createComment(commentParams)),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId))
   };
 };
 

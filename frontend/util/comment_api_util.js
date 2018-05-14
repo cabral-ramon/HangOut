@@ -5,3 +5,10 @@ export const createComment = ({groupId, comment}) => (
     data: { comment }
   })
 );
+
+export const deleteComment = (commentId) => (
+  $.ajax({
+    url: `/api/comments/${commentId}`,
+    method: "delete"
+  })
+);

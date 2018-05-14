@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :memberships, only: [:create, :index]
       resources :events, only: [:create]
    end
+   resources :comments, only: [:destroy]
    resources :events, only: [:index, :show]
    resources :rsvps, only: [:create]
    resources :tags, only: [:create]

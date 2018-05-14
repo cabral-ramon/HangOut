@@ -10,6 +10,8 @@ class GroupComments extends React.Component {
     };
     this.createComment = this.createComment.bind(this);
     this.renderCommentForm = this.renderCommentForm.bind(this);
+    this.renderDeleteButton = this.renderDeleteButton.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
 
   }
 
@@ -54,6 +56,31 @@ class GroupComments extends React.Component {
     return null;
   }
 
+  renderDeleteButton(authorId, commentId) {
+    if (this.props.currentUser) {
+
+      if (this.props.currentUser.id === authorId) {
+        return (
+          <div className="comment-delete-container">
+            <button
+              className="comment-delete-button"
+              onClick={this.deleteComment(commentId)}>
+              X
+            </button>
+          </div>
+        );
+      }
+    }
+    return null;
+  }
+
+  deleteComment(commentId) {
+    return (e) => {
+      e.preventDefault();
+       this.props.deleteComment(commentId);
+    };
+  }
+
   render() {
     if (this.props.comments) {
       return (
@@ -66,14 +93,17 @@ class GroupComments extends React.Component {
                 if (this.props.members[comment.author_id]) {
                   return (
                     <div className="comment-list-wrapper" key={comment.id}>
-                      <div>
-                        <span className="comment-form-username">
-                          {this.props.members[comment.author_id].username}
-                        </span>
-                        <span>|</span>
-                        <span className="comment-time-stamp">
-                          {comment.created_at.slice(0,10)}
-                        </span>
+                      <div className="comment-menu-wrapper">
+                        <div className="comment-menu">
+                          <span className="comment-form-username">
+                            {this.props.members[comment.author_id].username}
+                          </span>
+                          <span>|</span>
+                          <span className="comment-time-stamp">
+                            {comment.created_at.slice(0,10)}
+                          </span>
+                        </div>
+                        {this.renderDeleteButton(comment.author_id, comment.id)}
                       </div>
                       <li>
                         <div className="comment-form">
