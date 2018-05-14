@@ -20,6 +20,8 @@ class GroupShow extends React.Component {
     this.showMembers = this.showMembers.bind(this);
     this.showEditForm = this.showEditForm.bind(this);
     this.renderEditButton = this.renderEditButton.bind(this);
+    this.renderDeleteButton = this.renderDeleteButton.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -104,6 +106,24 @@ class GroupShow extends React.Component {
     }
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    // console.log(this.props);
+    this.props.deleteGroup(this.props.groupId).then( (response)=> {
+      console.log(response);
+      this.props.history.push('/homepage');
+    });
+  }
+  renderDeleteButton(){
+    if(this.props.isOwner) {
+      return (
+        <li>
+            <button onClick={this.handleDelete}>Delete</button>
+        </li>
+      );
+    }
+  }
+
   render() {
     if (this.props.group) {
       return (
@@ -138,6 +158,7 @@ class GroupShow extends React.Component {
                     <button onClick={this.showMembers}>Members</button>
                 </li>
                 {this.renderEditButton()}
+                {this.renderDeleteButton()}
               </ul>
             </nav>
             <section className="group-show-section">

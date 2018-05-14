@@ -18,11 +18,11 @@ export const updateGroup = (group) => (
     method: "patch",
     contentType: false,
     processData: false,
-    data: group 
+    data: group
   })
 );
 
-export const deleteGroup = (groupId) => (
+export const removeGroup = (groupId) => (
   $.ajax({
     url: `/api/groups/${groupId}`,
     method: "delete"

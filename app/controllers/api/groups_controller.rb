@@ -35,6 +35,9 @@ class Api::GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
+    if @group
+      @group.delete
+    end
   end
 
   def search
