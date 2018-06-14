@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import GroupComments from './group_comments';
-import { createComment } from '../../actions/group_actions';
-import { deleteComment } from '../../actions/comment_actions';
+import { createComment } from '../../../actions/group_actions';
+import { deleteComment } from '../../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = {};

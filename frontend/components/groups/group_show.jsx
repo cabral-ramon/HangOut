@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import EventForm from '../event/event_form_container';
 import { Link, Route } from 'react-router-dom';
-import GroupEventsContainer from './group_events_container';
-import GroupCommentsContainer from './group_comments_container';
-import GroupAboutContainer from './group_about_container';
-import GroupMembersContainer from './group_members_container';
+import GroupEventsContainer from './GroupEvents/group_events_container';
+import GroupCommentsContainer from './GroupComments/group_comments_container';
+import GroupAboutContainer from './GroupAbout/group_about_container';
+import GroupMembersContainer from './GroupMembers/group_members_container';
 import GroupEditContainer from './group_edit_container';
 
 class GroupShow extends React.Component {

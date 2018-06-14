@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EventFormContainer from '../event/event_form_container';
+import EventFormContainer from '../../event/event_form_container';
 
 class GroupEvents extends React.Component {
   constructor(props) {
