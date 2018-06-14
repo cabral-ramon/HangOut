@@ -2,14 +2,16 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import EventForm from '../event/event_form_container';
 import { Link, Route } from 'react-router-dom';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 import GroupEventsContainer from './GroupEvents/group_events_container';
 import GroupCommentsContainer from './GroupComments/group_comments_container';
 import GroupAboutContainer from './GroupAbout/group_about_container';
 import GroupMembersContainer from './GroupMembers/group_members_container';
 import GroupEditContainer from './group_edit_container';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 
 class GroupShow extends React.Component {
   constructor(props) {

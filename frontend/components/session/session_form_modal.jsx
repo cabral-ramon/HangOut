@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 import { merge } from 'lodash';
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
 
 const customStyles = {
   content : {
@@ -183,7 +185,9 @@ class SessionFormModal extends React.Component {
         <div className="session-form-header">
           <h2 ref={subtitle => this.subtitle = subtitle}
             className="event-form-header">{title}</h2>
-          <button onClick={this.closeModal}>close</button>
+          <IconButton onClick={this.closeModal}>
+            <CloseIcon />
+          </IconButton>
         </div>
               <form onSubmit={this.handleSubmit}
                     className="login-signup-form">
