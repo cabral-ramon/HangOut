@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GroupMembers from './../GroupMembers/group_members_container';
 
 class GroupAbout extends React.Component {
   constructor(props) {
@@ -17,16 +18,7 @@ class GroupAbout extends React.Component {
               <h2>About this Hangout:</h2>
               <p>{this.props.group.description}</p>
             </div>
-            <div className="members-container">
-              <h3><span>({this.props.members.length})</span> Members:</h3>
-              <ul>
-                {this.props.members.map( (member) => (
-                  <li key={member.id}>
-                    {member.username}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <GroupMembers members={this.props.members} />
           </div>
           <div className="event-container">
             <div className="group-events-container">

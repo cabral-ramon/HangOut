@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
 
 class GroupMembers extends React.Component {
   constructor(props) {
     super(props);
   }
-
-
 
   render() {
     if (this.props.members) {
@@ -16,12 +17,16 @@ class GroupMembers extends React.Component {
             <ul className="members-ul">
               {this.props.members.map( (member) => (
                 <li key={member.id} className="member-wrapper">
-                  <div className="member-container">
-                    <div id="member-image-container">
-                      <img src={member.image}/>
-                    </div>
-                    <h3 className="member-username">{member.username}</h3>
-                  </div>
+                  <Avatar alt={member.username} src={member.image}
+                    style={{
+                      width: 60,
+                      height: 60,
+                      alignSelf: 'center'
+                    }}
+                  />
+                  <Typography variant="subheading">
+                    {member.username}
+                  </Typography>
                 </li>
               ))}
             </ul>
