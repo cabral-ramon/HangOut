@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GroupMembers from './../GroupMembers/group_members_container';
+import Typography from '@material-ui/core/Typography';
 
 class GroupAbout extends React.Component {
   constructor(props) {
@@ -15,8 +16,12 @@ class GroupAbout extends React.Component {
         <article className="group-about-wrapper">
           <div id="about-container-wrapper">
             <div id="about-container">
-              <h2>About this Hangout:</h2>
-              <p>{this.props.group.description}</p>
+              <Typography variant="display1" gutterBottom>
+                About this Hangout:
+              </Typography>
+              <Typography variant="body1" align='left'>
+                {this.props.group.description}
+              </Typography>
             </div>
             <GroupMembers members={this.props.members} />
           </div>
