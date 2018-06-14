@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SessionFormContainer from '../session/session_form_container';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
@@ -14,6 +14,7 @@ class NavBar extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.renderHomePageNav = this.renderHomePageNav.bind(this);
   }
 
   handleClick(event){
@@ -31,6 +32,31 @@ class NavBar extends React.Component {
         console.log("hits");
       });
     });
+  }
+
+  renderHomePageNav() {
+    if (this.props.currentUser &&  this.props.history.location.pathname == '/homepage') {
+      return (
+        <Link
+          to='/homepage' replace={true}>
+          HangOut
+        </Link>
+      );
+    } else if (this.props.currentUser) {
+      return (
+        <Link
+          to='/homepage'>
+          HangOut
+        </Link>
+      );
+    } else {
+      return (
+        <Link
+          to='/' replace>
+          HangOut
+        </Link>
+      );
+    }
   }
 
   userIcon() {
@@ -89,10 +115,8 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <h1 className="logo"><Link
-          to={this.props.currentUser ? "/homepage" : "/"}>
-          HangOut
-        </Link>
+        <h1 className="logo">
+          {this.renderHomePageNav()}
       </h1>
         {this.userIcon()}
       </nav>
@@ -100,4 +124,4 @@ class NavBar extends React.Component {
   }
 
 }
-export default NavBar;
+export default withRouter(NavBar);
