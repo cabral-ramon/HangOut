@@ -2,19 +2,21 @@
   "name": "HangOut",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "@material-ui/icons": "^1.1.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "react": "^16.2.0",
+    "react": "^16.4.1",
     "react-calendar": "^2.10.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.4.1",
     "react-modal": "^3.1.10",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "webpack": "^3.10.0"
+    "webpack": "^3.12.0"
   },
   "engines": {
     "node": "6.7.0",
@@ -40,5 +42,8 @@
   "bugs": {
     "url": "https://github.com/cabral-ramon/HangOut/issues"
   },
-  "homepage": "https://github.com/cabral-ramon/HangOut#readme"
+  "homepage": "https://github.com/cabral-ramon/HangOut#readme",
+  "devDependencies": {
+    "webpack-cli": "^3.0.6"
+  }
 }
