@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 
 const GroupIndexItem = ({group}) => {
-  
+
     return (
       <Link
         to={`/groups/${group.id}`}
@@ -14,7 +14,8 @@ const GroupIndexItem = ({group}) => {
           textDecoration: 'none'}}
           className='group-link'>
         <li className="group-container">
-          <Card>
+          <Card
+          >
             <CardMedia style={{height: 0, paddingTop: '56.25%'}}
               image={group.image}
               title={group.name}

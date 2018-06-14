@@ -7,10 +7,16 @@ import GroupCommentsContainer from './GroupComments/group_comments_container';
 import GroupAboutContainer from './GroupAbout/group_about_container';
 import GroupMembersContainer from './GroupMembers/group_members_container';
 import GroupEditContainer from './group_edit_container';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: 0,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.leaveGroup = this.leaveGroup.bind(this);
     this.renderEventForm = this.renderEventForm.bind(this);
@@ -22,6 +28,7 @@ class GroupShow extends React.Component {
     this.renderEditButton = this.renderEditButton.bind(this);
     this.renderDeleteButton = this.renderDeleteButton.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -99,32 +106,32 @@ class GroupShow extends React.Component {
   renderEditButton(){
     if(this.props.isOwner) {
       return (
-        <li>
-            <button onClick={this.showEditForm}>Edit</button>
-        </li>
+        <Tab label="Edit" onClick={this.showEditForm}/>
       );
     }
   }
 
   handleDelete(e) {
     e.preventDefault();
-    // console.log(this.props);
     this.props.deleteGroup(this.props.groupId).then( (response)=> {
-      console.log(response);
       this.props.history.push('/homepage');
     });
   }
   renderDeleteButton(){
     if(this.props.isOwner) {
       return (
-        <li>
-            <button onClick={this.handleDelete}>Delete</button>
-        </li>
+        <Tab label="Delete" onClick={this.handleDelete}/>
       );
     }
   }
 
+  handleChange(event, value) {
+    this.setState({ value });
+  }
+
   render() {
+    const { value } = this.state;
+
     if (this.props.group) {
       return (
 
@@ -144,22 +151,14 @@ class GroupShow extends React.Component {
               </div>
             </section>
             <nav className="group-show-menu-container">
-              <ul className="group-show-menu">
-                <li>
-                  <button onClick={this.showAbout}>Group</button>
-                </li>
-                <li>
-                    <button onClick={this.showEvents}>Hangouts</button>
-                </li>
-                <li>
-                    <button onClick={this.showComments}>Discussions</button>
-                </li>
-                <li>
-                    <button onClick={this.showMembers}>Members</button>
-                </li>
+              <Tabs value={value} onChange={this.handleChange}>
+                <Tab label="Group" onClick={this.showAbout}/>
+                <Tab label="Hangouts" onClick={this.showEvents}/>
+                <Tab label="Discussions" onClick={this.showComments}/>
+                <Tab label="Members" onClick={this.showMembers}/>
                 {this.renderEditButton()}
                 {this.renderDeleteButton()}
-              </ul>
+              </Tabs>
             </nav>
             <section className="group-show-section">
               <Route exact path="/groups/:id" component={GroupAboutContainer} />
