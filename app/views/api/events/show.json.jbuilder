@@ -13,7 +13,7 @@ end
 json.rsvps do
   @event.rsvps.map { |rsvp| rsvp.user }.each do |user|
     json.set! user.id do
-      json.extract! user, :id, :username
+      json.extract! user, :id, :username, :image
     end
   end
 end

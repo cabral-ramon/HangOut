@@ -13,7 +13,10 @@ class GroupMembers extends React.Component {
     if (this.props.members) {
       return (
         <div className="members-container">
-              <h3><span>({this.props.members.length})</span> Members:</h3>
+              <h3>
+                <span>({this.props.members.length})</span>
+                { this.props.title ? this.props.title : 'Members:'}
+              </h3>
             <ul className="members-ul">
               {this.props.members.map( (member) => (
                 <li key={member.id} className="member-wrapper">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { dateToDayMonth, dateToWordDate } from '../../util/date_converter';
-import GroupMembersContainer from '../groups/GroupMembers/group_members_container';
+import GroupMembers from '../groups/GroupMembers/group_members_container';
 
 
 class EventShow extends React.Component {
@@ -124,12 +124,7 @@ class EventShow extends React.Component {
             <div className="event-show-details">
               <h1>Details</h1>
               <p>{this.props.event.description}</p>
-              <div id="event-show-attendees">
-                <h1>Attendees</h1>
-                <ul className="event-show-ul">
-                  {rsvps}
-                </ul>
-              </div>
+              <GroupMembers title={"Attendees"} members={rsvps} />
             </div>
             <div className="event-show-time-location">
               <div>
