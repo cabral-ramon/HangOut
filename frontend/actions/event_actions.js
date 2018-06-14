@@ -6,13 +6,13 @@ export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 
-const receiveEvent = ({event, rsvps, groups, members}) => {
+const receiveEvent = ({event, rsvps, groups, members, group_id}) => {
   return {
     type: RECEIVE_EVENT,
     event,
     rsvps,
     groups,
-    members,
+    members
   };
 };
 

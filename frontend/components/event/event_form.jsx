@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 import { merge } from 'lodash';
+import TextField from '@material-ui/core/TextField';
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
 
 const customStyles = {
   content : {
@@ -32,17 +35,12 @@ class EventForm extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   openModal() {
     this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    this.subtitle.style.color = '#f00';
   }
 
   closeModal() {
@@ -88,42 +86,43 @@ class EventForm extends React.Component {
           contentLabel="Example Modal"
           ariaHideApp={false}
         >
-
-          <h2 ref={subtitle => this.subtitle = subtitle}
-            className="event-form-header">New Event</h2>
-          <button onClick={this.closeModal}>close</button>
+          <IconButton onClick={this.closeModal} style={{position: 'relative', left: '90%'}}>
+            <CloseIcon />
+          </IconButton>
             <form onSubmit={this.handleSubmit}
               className="event-form">
               <label>Name:
-                <input
+                <TextField
                   type="text"
                   value={this.state.event.name}
                   onChange={this.update('name')}
                   className="event-form-name"/>
               </label>
               <label>Location:
-                <input
+                <TextField
                   type="text"
                   value={this.state.event.location}
                   onChange={this.update('location')}
                   className="event-form-location"/>
               </label>
               <label>Description:
-                <textarea
+                <TextField
+                  multiline={true}
                   type="textarea"
                   value={this.state.event.description}
                   onChange={this.update('description')}
                   className="event-form-description"/>
               </label>
               <label>Date:
-                <input
+                <TextField
                   type="date"
                   value={this.state.event.date}
                   onChange={this.update('date')}
-                  className="event-form-date"/>
+                  className="event-form-date"
+                />
               </label>
               <label>Time:
-                <input
+                <TextField
                   type="time"
                   value={this.state.event.time}
                   onChange={this.update('time')}
