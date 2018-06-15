@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 
 import GroupEventsContainer from './GroupEvents/group_events_container';
 import GroupCommentsContainer from './GroupComments/group_comments_container';
-import GroupAboutContainer from './GroupAbout/group_about_container';
+import GroupAbout from './GroupAbout/group_about';
 import GroupMembersContainer from './GroupMembers/group_members_container';
 import GroupEditContainer from './group_edit_container';
 
@@ -163,7 +163,16 @@ class GroupShow extends React.Component {
               </Tabs>
             </nav>
             <section className="group-show-section">
-              <Route exact path="/groups/:id" component={GroupAboutContainer} />
+              <Route exact path="/groups/:id" render={
+                  () => (
+                    <GroupAbout
+                      members={this.props.members}
+                      group={this.props.group}
+                      events={this.props.events}
+                      />
+                    )
+                  }
+              />
               <Route exact path="/groups/:id/events" component={GroupEventsContainer} />
               <Route exact path="/groups/:id/comments" component={GroupCommentsContainer} />
               <Route exact path="/groups/:id/members" component={GroupMembersContainer} />
