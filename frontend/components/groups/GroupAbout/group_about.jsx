@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 import GroupMembers from './../GroupMembers/group_members_container';
 import UpcomingEventsSideBar
-from './../../event/UpcomingEventsSideBar/upcoming_events_sidebar';
+from './../../event/UpcomingEventsSidebar/upcoming_events_sidebar';
 
 const GroupAbout = ({events, members, group}) =>  {
     return (

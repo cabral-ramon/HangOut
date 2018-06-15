@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import EventItem from './event_item';
 
-const UpcomingEventSideBar = ({events, groupId}) => (
+const UpcomingEventsSideBar = ({events, groupId}) => (
   <div className="event-container">
     <div className="group-events-container">
       <div className="group-events-header">
@@ -19,4 +19,5 @@ const UpcomingEventSideBar = ({events, groupId}) => (
   </div>
 );
 
-export default UpcomingEventSideBar;
+
+export default UpcomingEventsSideBar;
