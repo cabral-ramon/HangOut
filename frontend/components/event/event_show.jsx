@@ -96,6 +96,7 @@ class EventShow extends React.Component {
       }
     }
     if (this.props.event) {
+      console.log(this.props);
       return (
         <div className="event-show-container">
           <div className="event-show-head-wrapper">
@@ -113,6 +114,7 @@ class EventShow extends React.Component {
                   <p>Hosted by {this.props.organizer.username}</p>
                   <p>From <Link className="general-link"
                     to={`/groups/${this.props.group.id}`}>{this.props.group.name}</Link></p>
+                  <img style={{width: '50%', marginBottom: '20px'}} src={this.props.group.image} />
                 </div>
                 <div className="event-rsvp-wrapper">
                   {this.renderButton()}

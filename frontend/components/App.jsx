@@ -5,7 +5,7 @@ import SessionFormContainer from './session/session_form_container';
 import { AuthRoute } from '../util/route_util.jsx';
 import NavBar from './navbar/navbar_container';
 import GroupIndexContainer from './groups/group_index_container';
-import GroupFormContainer from './groups/group_form_container';
+import GroupFormContainer from './groups/GroupForm/group_form_container';
 import GroupShowContainer from './groups/group_show_container';
 import EventShowContainer from './event/event_show_container';
 import HomepageContainer from './homepage/homepage_container';

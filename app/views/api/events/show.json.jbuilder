@@ -28,6 +28,6 @@ end
 
 json.groups do
     json.set! @event.group.id do
-      json.extract! @event.group, :id, :name
+      json.extract! @event.group, :id, :name, :image
     end
 end
