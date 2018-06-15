@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import EventFormContainer from '../../event/event_form_container';
 
 class GroupEvents extends React.Component {
@@ -20,6 +21,7 @@ class GroupEvents extends React.Component {
               </div>
               <EventFormContainer />
             </div>
+
             <ul>
               {this.props.events.map( (event) => (
                 <li key={event.id}

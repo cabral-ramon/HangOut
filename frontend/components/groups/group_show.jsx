@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import GroupEventsContainer from './GroupEvents/group_events_container';
+import EventIndexContainer from './../event/event_index_container';
+
 import GroupCommentsContainer from './GroupComments/group_comments_container';
 import GroupAbout from './GroupAbout/group_about';
 import GroupMembersContainer from './GroupMembers/group_members_container';
@@ -173,7 +175,7 @@ class GroupShow extends React.Component {
                     )
                   }
               />
-              <Route exact path="/groups/:id/events" component={GroupEventsContainer} />
+            <Route exact path="/groups/:id/events" component={EventIndexContainer} />
               <Route exact path="/groups/:id/comments" component={GroupCommentsContainer} />
               <Route exact path="/groups/:id/members" component={GroupMembersContainer} />
               <Route exact path="/groups/:id/edit" render={()=> <GroupEditContainer group={this.props.group}/>}/>
