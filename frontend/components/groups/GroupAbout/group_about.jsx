@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 
 import GroupMembers from './../GroupMembers/group_members_container';
-import UpcomingEventsSideBar from './../../event/UpcomingEventsSideBar';
+import UpcomingEventsSideBar
+from './../../event/UpcomingEventsSideBar/upcoming_events_sidebar';
 
 const GroupAbout = ({events, members, group}) =>  {
     return (
