@@ -16,8 +16,7 @@ class EventShow extends React.Component {
 
 
   componentDidMount() {
-    this.props.fetchEvent(this.props.eventId)
-      .then((res) => console.log(res));
+    this.props.fetchEvent(this.props.eventId);
   }
 
   deleteRsvp(e) {
