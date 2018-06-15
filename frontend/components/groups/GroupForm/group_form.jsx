@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
 
 class GroupForm extends React.Component {
   constructor(props) {
@@ -96,30 +97,32 @@ class GroupForm extends React.Component {
           <form onSubmit={this.handleSubmit}
             className="group-form">
             {this.requireLogin()}
-            <label>Name:
-              <input
-                type="text"
-                value={this.state.name}
-                onChange={this.update('name')}
-                className="group-form-name"
-                placeholder="What do you want your group to be called?"/>
-            </label>
-            <label>Location:
-              <input
-                type="text"
-                value={this.state.location}
-                onChange={this.update('location')}
-                className="group-form-location"
-                placeholder="i.e. Queens, NY"/>
-            </label>
-            <label>Description:
-              <textarea
-                type="textarea"
-                value={this.state.description}
-                onChange={this.update('description')}
-                className="group-form-description"
-                placeholder="Tell us about your group"/>
-            </label>
+            <TextField
+              label="Name"
+              type="text"
+              value={this.state.name}
+              onChange={this.update('name')}
+              className="group-form-name"
+              placeholder="What do you want your group to be called?"
+            />
+            <TextField
+              label="Location"
+              type="text"
+              value={this.state.location}
+              onChange={this.update('location')}
+              className="group-form-location"
+              placeholder="i.e. Queens, NY"
+            />
+            <TextField
+              style={{height: 'auto', marginBottom: '20px'}}
+              label="Description"
+              multiline
+              type="textarea"
+              value={this.state.description}
+              onChange={this.update('description')}
+              className="group-form-description"
+              placeholder="Tell us about your group"
+            />
             <label>Image:
               <input
                 type="file"
