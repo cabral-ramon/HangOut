@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import EventItem from './EventItem';
+import EventItem from './event_item';
 
 const UpcomingEventSideBar = ({events, groupId}) => (
   <div className="event-container">
