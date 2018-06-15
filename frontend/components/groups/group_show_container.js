@@ -19,10 +19,10 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
   return {
-    group: group,
-    groupId: groupId,
+    group,
+    groupId,
     currentUser: state.session.currentUser,
-    events: events,
+    events,
     memberIds: group.memberIds || [],
     members: Object.values(state.members),
     comments: group.comments || [],

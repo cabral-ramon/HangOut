@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GroupMembers from './../GroupMembers/group_members_container';
 import Typography from '@material-ui/core/Typography';
+
+import GroupMembers from './../GroupMembers/group_members_container';
+import UpcomingEventsSideBar from './../../event/UpcomingEventsSideBar';
 
 class GroupAbout extends React.Component {
   constructor(props) {
     super(props);
   }
 
-
+  componentDidMount() {
+    if (!this.props.group) {
+      this.props.fetchGroup(this.props.groupId);
+    }
+  }
 
   render() {
     if (this.props.group) {
@@ -25,30 +31,7 @@ class GroupAbout extends React.Component {
             </div>
             <GroupMembers members={this.props.members} />
           </div>
-          <div className="event-container">
-            <div className="group-events-container">
-              <div className="group-events-header">
-                <h3>Upcoming Hangouts</h3>
-                <Link to={`/groups/${this.props.group.id}/events`}>See all</Link>
-              </div>
-              <ul>
-                {this.props.events.slice(0, 3).map( (event, idx) => (
-                  <li key={event.id} className="event-list-wrapper">
-                    <div className="event-list-container">
-                      <p className="event-list-date">{event.date}</p>
-                      <Link to={`/events/${event.id}`}
-                        className="event-list-name">
-                        {event.name}
-                      </Link>
-                      <div id="going-bar">{event.rsvps.length} going</div>
-                      <Link to={`/events/${event.id}`}
-                        id="attend-link">Attend</Link>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <UpcomingEventsSideBar events={this.props.events} groupId={this.props.group.id}/>
         </article>
       );
     } else {
