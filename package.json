@@ -43,8 +43,5 @@
     "url": "https://github.com/cabral-ramon/HangOut/issues"
   },
   "homepage": "https://github.com/cabral-ramon/HangOut#readme",
-  "devDependencies": {
-    "webpack-cli": "^3.0.7",
-    "webpack-command": "^0.2.1"
-  }
+  "devDependencies": {}
 }
