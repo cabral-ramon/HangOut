@@ -18,6 +18,7 @@ Rails.application.routes.draw do
  end
 
  get 'api/search', to: 'api/groups#search'
+ get 'api/mygroups', to: 'api/groups#mygroups'
   delete 'api/groups/:group_id/memberships', to: 'api/memberships#destroy'
   delete 'api/events/:event_id/rsvps', to: 'api/rsvps#destroy'
 

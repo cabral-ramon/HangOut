@@ -28,6 +28,12 @@ class Api::GroupsController < ApplicationController
     render :index
   end
 
+  def mygroups
+    @user = User.find(params[:id])
+    @groups = @user.groups
+    render :index
+  end
+
   def show
     @group = Group.includes(:members).find(params[:id])
     render :show
