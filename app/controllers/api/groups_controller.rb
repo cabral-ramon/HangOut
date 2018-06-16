@@ -29,7 +29,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def mygroups
-    @user = User.find(params[:id])
+    @user = User.find(params[:userId])
     @groups = @user.groups
     render :index
   end

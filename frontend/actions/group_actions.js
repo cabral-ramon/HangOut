@@ -69,6 +69,12 @@ export const fetchGroups = () => (dispatch) => {
   });
 };
 
+export const fetchUsersGroups = (userId) => (dispatch) => {
+  return GroupAPIUtil.fetchUsersGroups(userId).then( (groups) => {
+    dispatch(receiveGroups(groups));
+  });
+};
+
 export const updateGroup = (group) => (dispatch) => {
   return GroupAPIUtil.updateGroup(group).then( (group) => {
     dispatch(receiveGroup(group));

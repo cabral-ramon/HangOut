@@ -1,19 +1,23 @@
 import { connect } from 'react-redux';
-import { fetchGroups } from '../../actions/group_actions';
+import { fetchGroups, fetchUsersGroups } from '../../actions/group_actions';
 import GroupIndex from './groups_index';
 
-const mapStateToProps = (state) => {
-  // add logic here for my groups / all groups
+const mapStateToProps = (state, { homepage }) => {
+
   return {
     groups: state.groups,
-    userId: state.session.currentUser.id
+    userId: state.session.currentUser ?
+      state.session.currentUser.id :
+      null
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // add logic here for my groups / all groups
+const mapDispatchToProps = (dispatch, { homepage }) => {
+  
   return {
-    fetchGroups: () => dispatch(fetchGroups())
+    fetchGroups:  homepage ?
+      (userId) => dispatch(fetchUsersGroups(userId)) :
+      () => dispatch(fetchGroups())
   };
 };
 

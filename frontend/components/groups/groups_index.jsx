@@ -6,12 +6,14 @@ class GroupsIndex extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = this.props.groups;
+    this.state = {
+      groups: this.props.groups
+    };
 
   }
 
   componentDidMount() {
-    this.props.fetchGroups();
+    this.props.fetchGroups(this.props.userId);
   }
 
 
