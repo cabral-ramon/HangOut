@@ -88,23 +88,23 @@ class NavBar extends React.Component {
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={this.handleClose}
-                  style={{top: '45px'}}
+                  style={{top: '20px'}}
                 >
+                <Link to='/homepage' >
                   <MenuItem onClick={this.handleClose}>
-                    <Link to='/homepage' >
                       Homepage
-                    </Link>
                   </MenuItem>
+                </Link>
+                <Link to='/homepage/myevents' >
                   <MenuItem onClick={this.handleClose}>
-                    <Link to='/homepage/myevents' >
                       My Events
-                    </Link>
                   </MenuItem>
-                  <MenuItem onClick={this.handleClose}>
+                </Link>
                     <Link to='/homepage/groups' >
+                      <MenuItem onClick={this.handleClose}>
                       My Groups
-                    </Link>
                   </MenuItem>
+                </Link>
                   <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                 </Menu>
           </div>
