@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { merge } from 'lodash';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
 
 const customStyles = {
   content : {
@@ -141,27 +142,25 @@ class SessionFormModal extends React.Component {
        title = "Sign Up";
        signupInputs = (
         <div className="session-element">
-          <label>Email:
-            <input
-              type="text"
-              value={this.state.credentials.email}
-              onChange={this.update('email')}
-              className="session-input"/>
-          </label>
-
-          <label>Location:
-            <input
-              type="text"
-              value={this.state.credentials.location}
-              onChange={this.update('location')}
-              className="session-input"/>
-          </label>
-
+          <TextField
+            label="Email"
+            type="text"
+            value={this.state.credentials.email}
+            onChange={this.update('email')}
+            />
+          <br />
+          <TextField
+            label="Location"
+            type="text"
+            value={this.state.credentials.location}
+            onChange={this.update('location')}
+            />
+          <br />
+          <br />
           <label htmlFor="file">User Icon:
             <input
               type="file"
               onChange={this.updateFile}
-              className="session-input"
               />
           </label>
         </div>
@@ -193,26 +192,22 @@ class SessionFormModal extends React.Component {
                     className="login-signup-form">
 
                 <div className="session-element">
-                  <label >Username:
-                    <br/>
-                    <input
-                      type="text"
-                      value={this.state.credentials.username}
-                      onChange={this.update('username')}
-                      className="session-input"/>
-                  </label>
+                  <TextField
+                    type="text"
+                    value={this.state.credentials.username}
+                    label="Username"
+                    onChange={this.update('username')}
+                    margin="normal"
+                    />
                 </div>
                 <br/>
                 <div className="session-element">
-                  <label >Password:
-                    <br/>
-                    <input
+                    <TextField
                       type="password"
                       value={this.state.credentials.password}
+                      label="Password"
                       onChange={this.update('password')}
-                      className="session-input"/>
-                    <br />
-                  </label>
+                      />
                 </div>
                 {signupInputs}
                 <button className="session-button">{buttonText}</button>
