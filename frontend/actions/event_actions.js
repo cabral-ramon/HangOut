@@ -36,6 +36,12 @@ export const fetchEvents = () => (dispatch) => {
   });
 };
 
+export const fetchUserEvents = (userId) => (dispatch) => {
+  return EventAPIUtil.fetchUserEvents(userId).then( (events) => {
+    dispatch(receiveEvents(events));
+  });
+};
+
 export const fetchEvent = (eventParams) => (dispatch) => {
   return EventAPIUtil.fetchEvent(eventParams).then( (event) => {
     dispatch(receiveEvent(event));

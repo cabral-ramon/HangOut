@@ -91,7 +91,7 @@ class NavBar extends React.Component {
                   style={{top: '45px'}}
                 >
                   <MenuItem onClick={this.handleClose}>
-                    <Link to='/homepage/events' >
+                    <Link to='/homepage/myevents' >
                       My Events
                     </Link>
                   </MenuItem>

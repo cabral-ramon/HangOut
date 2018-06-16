@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { fetchGroups, fetchUsersGroups } from '../../actions/group_actions';
 import GroupIndex from './groups_index';
 
-const mapStateToProps = (state, { homepage }) => {
+const mapStateToProps = (state) => {
 
   return {
     groups: state.groups,
@@ -13,7 +13,7 @@ const mapStateToProps = (state, { homepage }) => {
 };
 
 const mapDispatchToProps = (dispatch, { homepage }) => {
-  
+
   return {
     fetchGroups:  homepage ?
       (userId) => dispatch(fetchUsersGroups(userId)) :

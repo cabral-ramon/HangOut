@@ -16,6 +16,12 @@ class Api::EventsController < ApplicationController
     render "api/events/index"
   end
 
+  def myevents
+    @user = User.find(params[:userId])
+    @events = @user.events
+    render :index
+  end
+
   def show
     @event = Event.includes(:rsvps).find(params[:id])
     @rsvps = @event.rsvps.map { |rsvp| rsvp.user.id }
