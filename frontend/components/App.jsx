@@ -25,6 +25,8 @@ const App = () => (
       <Route path="/events/:eventId" component={EventShowContainer}/>
       <Route path="/groups/:groupId" component={GroupShowContainer}/>
       <Route path="/homepage" component={HomepageContainer}/>
+      <Route path="/homepage/groups" render={() => <div> My Groups</div>}/>
+      <Route path="/homepage/event" render={() => <div> My Events</div>}/>
     </Switch>
 
       <Route exact path="/" component={Video}/>

@@ -14,6 +14,7 @@ class NavBar extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.renderHomePageNav = this.renderHomePageNav.bind(this);
   }
 
@@ -25,11 +26,15 @@ class NavBar extends React.Component {
     this.setState({ anchorEl: null });
   }
 
+  handleLogout(){
+    this.props.logout();
+    this.handleClose();
+  }
+
   componentDidMount() {
     $(document).ready(function(){
       $('#hamburger').click(function(){
         $('.navbar-user-container').slideToggle("slow");
-        console.log("hits");
       });
     });
   }
@@ -69,9 +74,6 @@ class NavBar extends React.Component {
               <Link to={'/create'} className="navbar-links create-btn">
                 Create a Hangout
               </Link>
-            <button
-              onClick={this.props.logout}
-              className="logout-button">Log Out</button>
             <Avatar
               style={
                 {
@@ -88,9 +90,17 @@ class NavBar extends React.Component {
                   onClose={this.handleClose}
                   style={{top: '45px'}}
                 >
-                  <MenuItem onClick={this.handleClose}>My Events</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My Gruops</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                  <MenuItem onClick={this.handleClose}>
+                    <Link to='/homepage/events' >
+                      My Events
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose}>
+                    <Link to='/homepage/groups' >
+                      My Groups
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                 </Menu>
           </div>
         </div>
