@@ -25,7 +25,7 @@ const App = () => (
       <Route path="/create" component={GroupFormContainer}/>
       <Route path="/events/:eventId" component={EventShowContainer}/>
       <Route path="/groups/:groupId" component={GroupShowContainer}/>
-      <Route exact path="/homepage" component={HomepageContainer}/>
+      <Route path="/homepage" component={HomepageContainer}/>
     </Switch>
 
       <Route path="/homepage/groups" render={() => {
