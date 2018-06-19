@@ -96,7 +96,6 @@ class EventShow extends React.Component {
       }
     }
     if (this.props.event) {
-      console.log(this.props);
       return (
         <div className="event-show-container">
           <div className="event-show-head-wrapper">
