@@ -67,19 +67,15 @@ class SessionFormModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.formType === "signup") {
-      if (this.state.credentials.image === "") {
-        console.log("No image attached");
-      } else {
-        var formData = new FormData();
-        formData.append("user[username]", this.state.credentials.username);
-        formData.append("user[password]", this.state.credentials.password);
-        formData.append("user[email]", this.state.credentials.email);
-        formData.append("user[location]", this.state.credentials.location);
-        formData.append("user[image]", this.state.credentials.image);
-        this.props.processForm(formData).then(user => {
-          this.props.history.push("/homepage");
-        });
-      }
+      var formData = new FormData();
+      formData.append("user[username]", this.state.credentials.username);
+      formData.append("user[password]", this.state.credentials.password);
+      formData.append("user[email]", this.state.credentials.email);
+      formData.append("user[location]", this.state.credentials.location);
+      formData.append("user[image]", this.state.credentials.image);
+      this.props.processForm(formData).then(user => {
+        this.props.history.push("/homepage");
+      });
     } else {
       const user = this.state.credentials;
       this.props.processForm(user).then(() => {
@@ -164,7 +160,6 @@ class SessionFormModal extends React.Component {
             type="text"
             value={this.state.credentials.email}
             onChange={this.update("email")}
-            error={true}
           />
           <br />
           <TextField

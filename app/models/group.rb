@@ -18,8 +18,11 @@ class Group < ApplicationRecord
   validates :name, uniqueness: { scope: :location }
 
   has_attached_file :image,
-  :default_url => ActionController::Base.helpers.asset_path('missing.jpeg')
+  :default_url => 'https://s3.us-east-2.amazonaws.com/hangout-pro/groups/images/000/000/108/original/Awesome-Nice-Image.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  # has_attached_file :image,
+  # :default_url => ActionController::Base.helpers.asset_path('missing.jpeg')
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :memberships,
     primary_key: :id,
