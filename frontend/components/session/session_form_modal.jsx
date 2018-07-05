@@ -1,20 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import { withRouter } from 'react-router-dom';
-import { merge } from 'lodash';
-import CloseIcon from '@material-ui/icons/Close';
-import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
+import React from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import { withRouter } from "react-router-dom";
+import { merge } from "lodash";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+import TextField from "@material-ui/core/TextField";
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 
@@ -44,37 +44,45 @@ class SessionFormModal extends React.Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   afterOpenModal() {
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = "#f00";
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
   update(field) {
-    return (e) => this.setState(merge({}, this.state, {credentials: {[field]: e.currentTarget.value}}));
-
+    return e =>
+      this.setState(
+        merge({}, this.state, {
+          credentials: { [field]: e.currentTarget.value }
+        })
+      );
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.formType === "signup") {
-      var formData = new FormData();
-      formData.append("user[username]", this.state.credentials.username);
-      formData.append("user[password]", this.state.credentials.password);
-      formData.append("user[email]", this.state.credentials.email);
-      formData.append("user[location]", this.state.credentials.location);
-      formData.append("user[image]", this.state.credentials.image);
-      this.props.processForm(formData).then( (user) => {
-        this.props.history.push("/homepage");
-      });
+      if (this.state.credentials.image === "") {
+        console.log("No image attached");
+      } else {
+        var formData = new FormData();
+        formData.append("user[username]", this.state.credentials.username);
+        formData.append("user[password]", this.state.credentials.password);
+        formData.append("user[email]", this.state.credentials.email);
+        formData.append("user[location]", this.state.credentials.location);
+        formData.append("user[image]", this.state.credentials.image);
+        this.props.processForm(formData).then(user => {
+          this.props.history.push("/homepage");
+        });
+      }
     } else {
       const user = this.state.credentials;
-      this.props.processForm(user).then( () => {
+      this.props.processForm(user).then(() => {
         this.props.history.push("/homepage");
       });
     }
@@ -82,20 +90,21 @@ class SessionFormModal extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    this.props.guestLogin({
-      username: 'Guest User',
-      password: 'password'
-    }).then( () => {
-      this.props.history.push("/homepage");
-    });
+    this.props
+      .guestLogin({
+        username: "Guest User",
+        password: "password"
+      })
+      .then(() => {
+        this.props.history.push("/homepage");
+      });
   }
 
   renderErrors() {
-    return(
+    return (
       <ul className="errors-container">
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}
-            className="error-item">
+          <li key={`error-${i}`} className="error-item">
             {error}
           </li>
         ))}
@@ -104,16 +113,18 @@ class SessionFormModal extends React.Component {
   }
 
   modalButtonRender() {
-    if (this.props.id === "2"){
+    if (this.props.id === "2") {
       return (
-        <button onClick={this.openModal}
-          className="video-signup-btn">{title}</button>
+        <button onClick={this.openModal} className="video-signup-btn">
+          {title}
+        </button>
       );
     } else {
       let title = this.props.formType === "signup" ? "Sign up" : "Log in";
       return (
-        <button onClick={this.openModal}
-          className="navbar-links">{title}</button>
+        <button onClick={this.openModal} className="navbar-links">
+          {title}
+        </button>
       );
     }
   }
@@ -124,12 +135,18 @@ class SessionFormModal extends React.Component {
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      this.setState(merge({}, this.state, {credentials: {image: file, imageUrl: fileReader.result}}));
+      this.setState(
+        merge({}, this.state, {
+          credentials: { image: file, imageUrl: fileReader.result }
+        })
+      );
     };
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
-      this.setState(merge({}, this.state, {credentials: { imageUrl: "", image: null }}));
+      this.setState(
+        merge({}, this.state, { credentials: { imageUrl: "", image: null } })
+      );
     }
   }
 
@@ -139,40 +156,41 @@ class SessionFormModal extends React.Component {
     let title;
 
     if (this.props.formType === "signup") {
-       title = "Sign Up";
-       signupInputs = (
+      title = "Sign Up";
+      signupInputs = (
         <div className="session-element">
           <TextField
             label="Email"
             type="text"
             value={this.state.credentials.email}
-            onChange={this.update('email')}
-            />
+            onChange={this.update("email")}
+            error={true}
+          />
           <br />
           <TextField
             label="Location"
             type="text"
             value={this.state.credentials.location}
-            onChange={this.update('location')}
-            />
+            onChange={this.update("location")}
+          />
           <br />
           <br />
-          <label htmlFor="file">User Icon:
-            <input
-              type="file"
-              onChange={this.updateFile}
-              />
+          <label htmlFor="file">
+            User Icon:
+            <input type="file" onChange={this.updateFile} />
           </label>
         </div>
       );
     } else {
       title = "Log in";
     }
-    let buttonClass = this.props.id === "2" ? "video-signup-btn" : "navbar-links";
+    let buttonClass =
+      this.props.id === "2" ? "video-signup-btn" : "navbar-links";
     return (
       <div>
-        <button onClick={this.openModal}
-          className={buttonClass}>{title}</button>
+        <button onClick={this.openModal} className={buttonClass}>
+          {title}
+        </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -181,47 +199,50 @@ class SessionFormModal extends React.Component {
           contentLabel="Example Modal"
           ariaHideApp={false}
         >
-        <div className="session-form-header">
-          <h2 ref={subtitle => this.subtitle = subtitle}
-            className="event-form-header">{title}</h2>
-          <IconButton onClick={this.closeModal}>
-            <CloseIcon />
-          </IconButton>
-        </div>
-              <form onSubmit={this.handleSubmit}
-                    className="login-signup-form">
-
-                <div className="session-element">
-                  <TextField
-                    type="text"
-                    value={this.state.credentials.username}
-                    label="Username"
-                    onChange={this.update('username')}
-                    margin="normal"
-                    />
-                </div>
-                <br/>
-                <div className="session-element">
-                    <TextField
-                      type="password"
-                      value={this.state.credentials.password}
-                      label="Password"
-                      onChange={this.update('password')}
-                      />
-                </div>
-                {signupInputs}
-                <button className="session-button">{buttonText}</button>
-                <button className="session-button guest-button"
-                  onClick={this.demoLogin}>
-                  Guest User
-                </button>
-                {this.renderErrors()}
-              </form>
+          <div className="session-form-header">
+            <h2
+              ref={subtitle => (this.subtitle = subtitle)}
+              className="event-form-header"
+            >
+              {title}
+            </h2>
+            <IconButton onClick={this.closeModal}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <form onSubmit={this.handleSubmit} className="login-signup-form">
+            <div className="session-element">
+              <TextField
+                type="text"
+                value={this.state.credentials.username}
+                label="Username"
+                onChange={this.update("username")}
+                margin="normal"
+              />
+            </div>
+            <br />
+            <div className="session-element">
+              <TextField
+                type="password"
+                value={this.state.credentials.password}
+                label="Password"
+                onChange={this.update("password")}
+              />
+            </div>
+            {signupInputs}
+            <button className="session-button">{buttonText}</button>
+            <button
+              className="session-button guest-button"
+              onClick={this.demoLogin}
+            >
+              Guest User
+            </button>
+            {this.renderErrors()}
+          </form>
         </Modal>
       </div>
     );
   }
 }
-
 
 export default withRouter(SessionFormModal);
