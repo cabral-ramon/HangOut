@@ -12,12 +12,14 @@ import GroupCommentsContainer from './GroupComments/group_comments_container';
 import GroupAbout from './GroupAbout/group_about';
 import GroupMembersContainer from './GroupMembers/group_members_container';
 import GroupEditContainer from './group_edit_container';
+import AlertModal from '../common/AlertModal';
 
 class GroupShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0
+      value: 0,
+      alertError: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.leaveGroup = this.leaveGroup.bind(this);
@@ -37,7 +39,6 @@ class GroupShow extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.joinButtonClicked = true;
     if (this.props.currentUser) {
       const groupId = this.props.group.id;
       const userId = this.props.currentUser.id;
@@ -47,7 +48,7 @@ class GroupShow extends React.Component {
       );
       this.props.createMembership(membership);
     } else {
-      window.alert('Please log in to join a group.');
+      this.setState({ alertError: true });
     }
   }
 
@@ -101,12 +102,22 @@ class GroupShow extends React.Component {
     this.setState({ value });
   }
 
+  handleModalClose() {
+    this.setState({ alertError: false });
+  }
+
   render() {
-    const { value } = this.state;
+    const { value, alertError } = this.state;
 
     if (this.props.group) {
       return (
         <div className="group-show-main">
+          {alertError && (
+            <AlertModal
+              open={true}
+              handleClose={this.handleModalClose.bind(this)}
+            />
+          )}
           <Link to="/homepage" className="back-to-link">
             back to Homepage
           </Link>
