@@ -6,11 +6,12 @@ class GroupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      location: "",
-      description: "",
-      image: "",
-      imageUrl: ""
+      name: '',
+      location: '',
+      description: '',
+      image: '',
+      imageUrl: '',
+      authError: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
@@ -18,16 +19,23 @@ class GroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ authError: null });
+    if (this.props.currentUser === null) {
+      this.setState({ authError: true });
+      return;
+    }
     var formData = new FormData();
-    formData.append("group[name]", this.state.name);
-    formData.append("group[location]", this.state.location);
-    formData.append("group[description]", this.state.description);
-    formData.append("group[image]", this.state.image);
-    this.props.createGroup(formData).then( (group) => {
-
+    formData.append('group[name]', this.state.name);
+    formData.append('group[location]', this.state.location);
+    formData.append('group[description]', this.state.description);
+    formData.append('group[image]', this.state.image);
+    this.props.createGroup(formData).then(group => {
       const groupId = group.id;
       const userId = this.props.currentUser.id;
-      const membership = Object.assign({}, { group_id: groupId, user_id: userId});
+      const membership = Object.assign(
+        {},
+        { group_id: groupId, user_id: userId }
+      );
       this.props.createMembership(membership);
 
       this.props.history.push(`/groups/${group.id}`);
@@ -35,9 +43,10 @@ class GroupForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e =>
+      this.setState({
+        [field]: e.currentTarget.value
+      });
   }
 
   updateFile(e) {
@@ -46,22 +55,20 @@ class GroupForm extends React.Component {
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      this.setState({image: file, imageUrl: fileReader.result});
+      this.setState({ image: file, imageUrl: fileReader.result });
     };
     if (file) {
       fileReader.readAsDataURL(file);
     } else {
-      this.setState({ imageUrl: "", image: null });
+      this.setState({ imageUrl: '', image: null });
     }
   }
 
-
   renderErrors() {
-    return(
+    return (
       <ul className="errors-container">
-        {this.props.errors.map( (error, i) => (
-          <li key={`error-${i}`}
-            className="error-item">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`} className="error-item">
             {error}
           </li>
         ))}
@@ -69,34 +76,28 @@ class GroupForm extends React.Component {
     );
   }
 
-  requireLogin() {
-    if (!this.props.currentUser){
-      return (
-        <p className="errors">You must sign in to create a Hangout!</p>
-        );
-    } else {
-      return null;
-    }
-  }
-
   render() {
     let imageName;
     if (this.state.image) {
       imageName = this.state.image.name;
     } else {
-      imageName = "";
+      imageName = '';
     }
     return (
       <div className="group-form-main">
         <header className="group-form-header">
-          <img className="group-form-image" src="https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb" />
-            <h2>Create a new Hangout</h2>
-            <p>We'll help you find the right people to make it happen.</p>
+          <img
+            className="group-form-image"
+            src="https://images.pexels.com/photos/207896/pexels-photo-207896.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb"
+          />
+          <h2>Create a new Hangout</h2>
+          <p>We'll help you find the right people to make it happen.</p>
         </header>
         <div className="group-form-container">
-          <form onSubmit={this.handleSubmit}
-            className="group-form">
-            {this.requireLogin()}
+          <form onSubmit={this.handleSubmit} className="group-form">
+            {this.state.authError && (
+              <p className="error-item">Please sign in to create a hangout</p>
+            )}
             <TextField
               label="Name"
               type="text"
@@ -114,7 +115,7 @@ class GroupForm extends React.Component {
               placeholder="i.e. Queens, NY"
             />
             <TextField
-              style={{height: 'auto', marginBottom: '20px'}}
+              style={{ height: 'auto', marginBottom: '20px' }}
               label="Description"
               multiline
               type="textarea"
@@ -123,13 +124,15 @@ class GroupForm extends React.Component {
               className="group-form-description"
               placeholder="Tell us about your group"
             />
-            <label>Image:
+            <label>
+              Image:
               <input
                 type="file"
                 onChange={this.updateFile}
-                className="group-form-image"/>
+                className="group-form-image"
+              />
             </label>
-              <button className="group-form-btn">Create Hangout!</button>
+            <button className="group-form-btn">Create Hangout!</button>
             {this.renderErrors()}
           </form>
         </div>
