@@ -22,10 +22,6 @@ class GroupShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.leaveGroup = this.leaveGroup.bind(this);
     this.renderEventForm = this.renderEventForm.bind(this);
-    this.showEditForm = this.showEditForm.bind(this);
-    this.renderEditButton = this.renderEditButton.bind(this);
-    this.renderDeleteButton = this.renderDeleteButton.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -94,22 +90,11 @@ class GroupShow extends React.Component {
     this.props.history.push(`/groups/${this.props.group.id}/edit`);
   }
 
-  renderEditButton() {
-    if (this.props.isOwner) {
-      return <Tab label="Edit" onClick={this.showEditForm} />;
-    }
-  }
-
   handleDelete(e) {
     e.preventDefault();
     this.props.deleteGroup(this.props.groupId).then(response => {
       this.props.history.push('/homepage');
     });
-  }
-  renderDeleteButton() {
-    if (this.props.isOwner) {
-      return <Tab label="Delete" onClick={this.handleDelete} />;
-    }
   }
 
   handleChange(event, value) {
@@ -152,8 +137,12 @@ class GroupShow extends React.Component {
                   label="Members"
                   onClick={this.showSection.bind(this, 'members')}
                 />
-                {this.renderEditButton()}
-                {this.renderDeleteButton()}
+                {this.props.isOwner && (
+                  <Tab label="Edit" onClick={this.showEditForm.bind(this)} />
+                )}
+                {this.props.isOwner && (
+                  <Tab label="Delete" onClick={this.handleDelete.bind(this)} />
+                )}
               </Tabs>
             </nav>
             <section className="group-show-section">
