@@ -19,7 +19,6 @@
       font-size: 22px;
       font-weight: 600;
       margin-bottom: 14px;
-
     }
   }
 }
@@ -78,19 +77,16 @@
       display: block;
     }
   }
-
-  }
-  @media (max-width: 500px) {
-    display: block;
-  }
-
+}
+@media (max-width: 500px) {
+  display: block;
+}
 
 .members-container {
   max-width: 900px;
 }
 
 .members-ul {
-
   .member-wrapper {
     display: inline-flex;
     flex-direction: column;
@@ -121,8 +117,8 @@
 }
 
 .members-container {
-  h3{
-    span{
+  h3 {
+    span {
       color: darkgray;
       font-size: 16px;
     }
@@ -158,15 +154,17 @@
   }
 }
 
-
 .group-show-menu-container {
-  box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+  box-shadow: 0 0 2px 0 rgba(46, 62, 72, 0.12),
+    0 2px 4px 0 rgba(46, 62, 72, 0.12);
   padding: 12px;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.45;
   @media (max-width: 500px) {
     margin-top: 20px;
+    width: 141%;
+    margin-left: -59px;
   }
   .group-show-menu {
     display: flex;
@@ -195,7 +193,7 @@
     }
   }
   padding-left: 30px;
-  .group-events-header{
+  .group-events-header {
     display: flex;
     margin-bottom: 15px;
     justify-content: space-between;
@@ -215,7 +213,8 @@
   margin-bottom: 15px;
   background: white;
   :hover {
-    box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+    box-shadow: 0 0 2px 0 rgba(46, 62, 72, 0.12),
+      0 2px 4px 0 rgba(46, 62, 72, 0.12);
   }
 }
 
@@ -233,7 +232,6 @@
 .comment-container {
   width: 100%;
   .group-comment-container {
-
     #new-comment-wrapper {
       display: flex;
       background-color: white;
@@ -257,7 +255,6 @@
           text-align: center;
           padding: 8px 32px;
           margin-top: 10px;
-
         }
       }
     }
@@ -293,7 +290,7 @@
   margin-top: 0px;
 }
 
-.group-event-li{
+.group-event-li {
   padding: 16px 16px 0;
   font-size: 16px;
   a {
