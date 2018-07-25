@@ -4,12 +4,6 @@ import SessionFormContainer from "../session/session_form_container";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Typography from "@material-ui/core/Typography";
-// import AccountCircle from "@material-ui/icons/AccountCircle";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -43,7 +37,7 @@ class NavBar extends React.Component {
   componentDidMount() {
     $(document).ready(function() {
       $("#hamburger").click(function() {
-        $(".navbar-user-container").slideToggle("slow");
+        $(".navbar-user-container").slideToggle("fast");
       });
     });
   }
@@ -51,7 +45,7 @@ class NavBar extends React.Component {
   renderHomePageNav() {
     if (
       this.props.currentUser &&
-      this.props.history.location.pathname == "/homepage"
+      this.props.history.location.pathname === "/homepage"
     ) {
       return (
         <Link to="/homepage" replace={true}>
@@ -75,15 +69,14 @@ class NavBar extends React.Component {
       return (
         <div>
           <i id="hamburger" className="fas fa-bars" />
+          <div style={{ display: "inline-block", marginBottom: "2px" }} />
           <div className="navbar-user-container">
             <Link to={"/create"} className="navbar-links create-btn">
               Create a Hangout
             </Link>
             <Avatar
-              style={{
-                width: 60,
-                height: 60
-              }}
+              id="avatar"
+              style={{ width: 60, height: 60 }}
               src={this.props.currentUser.image}
               onClick={this.handleClick}
             />
@@ -105,6 +98,19 @@ class NavBar extends React.Component {
               </Link>
               <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
             </Menu>
+
+            <div id="responsive-menu">
+              <Link to="/homepage" onClick={this.handleClose}>
+                Homepage
+              </Link>
+              <Link to="/homepage/myevents" onClick={this.handleClose}>
+                My Events
+              </Link>
+              <Link to="/homepage/groups" onClick={this.handleClose}>
+                My Groups
+              </Link>
+              <button onClick={this.handleLogout}>Logout</button>
+            </div>
           </div>
         </div>
       );
@@ -112,6 +118,7 @@ class NavBar extends React.Component {
       return (
         <div>
           <i id="hamburger" className="fas fa-bars" />
+          <div style={{ display: "inline-block", marginBottom: "5px" }} />
           <div className="navbar-user-container">
             <Link to={"/create"} className="navbar-links create-btn">
               Create a Hangout

@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: row;
   padding: 16px 16px 8px;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   padding: 4px 0 0 0;
   background-color: #fff;
   position: relative;
   margin: 0;
   justify-content: space-between;
-  @media(max-width: 500px) {
-
+  @media (max-width: 500px) {
   }
   .logo {
     padding-left: 22px;
@@ -23,18 +22,17 @@
     vertical-align: -webkit-baseline-middle;
     display: flex;
     flex-direction: row;
-    @media(max-width: 500px) {
+    @media (max-width: 500px) {
       display: none;
       flex-direction: column;
-      display: flex;
-      margin-left: -30%;
-      margin-top: 20%;
+      margin-left: -75%;
+      margin-top: 30%;
       width: 100%;
     }
     .navbar-links {
       padding: 20px;
       color: dimgrey;
-      @media(max-width: 500px) {
+      @media (max-width: 500px) {
         margin-bottom: 10px;
         padding: 10px;
       }
@@ -43,7 +41,6 @@
       color: rgb(0, 162, 199);
       font-weight: bold;
       @media (max-width: 500px) {
-
       }
     }
     .navbar-links:hover {
@@ -65,7 +62,7 @@
 
 .fa-bars {
   display: none;
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     display: block;
     font-size: 40px;
     color: dimgray;
@@ -87,4 +84,32 @@
   @media (max-width: 500px) {
     display: none;
   }
+}
+
+#avatar {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.simple-menu {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+#responsive-menu {
+  display: none;
+  color: #00a2c7;
+  font-weight: bold;
+  font-size: 17.5px;
+  margin-bottom: 10px;
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#responsive-menu > a {
+  padding: 5px;
 }
