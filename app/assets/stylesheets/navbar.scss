@@ -113,3 +113,9 @@
 #responsive-menu > a {
   padding: 5px;
 }
+
+#create-hangout-link {
+  @media (max-width: 500px) {
+    display: none;
+  }
+}

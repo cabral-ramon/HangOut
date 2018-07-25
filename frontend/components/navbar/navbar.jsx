@@ -16,6 +16,11 @@ class NavBar extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.renderHomePageNav = this.renderHomePageNav.bind(this);
+    this.menuClose = this.menuClose.bind(this);
+    this.handleResponsiveClose = this.handleResponsiveClose.bind(this);
+  }
+  menuClose() {
+    $(".navbar-user-container").slideToggle("fast");
   }
 
   handleClick(event) {
@@ -29,15 +34,20 @@ class NavBar extends React.Component {
     this.setState({ anchorEl: null });
   }
 
+  handleResponsiveClose() {
+    this.setState({ anchorEl: null });
+    this.menuClose();
+  }
+
   handleLogout() {
     this.props.logout();
     this.handleClose();
   }
 
   componentDidMount() {
-    $(document).ready(function() {
-      $("#hamburger").click(function() {
-        $(".navbar-user-container").slideToggle("fast");
+    $(document).ready(() => {
+      $("#hamburger").click(() => {
+        this.menuClose();
       });
     });
   }
@@ -71,7 +81,11 @@ class NavBar extends React.Component {
           <i id="hamburger" className="fas fa-bars" />
           <div style={{ display: "inline-block", marginBottom: "2px" }} />
           <div className="navbar-user-container">
-            <Link to={"/create"} className="navbar-links create-btn">
+            <Link
+              id="create-hangout-link"
+              to={"/create"}
+              className="navbar-links create-btn"
+            >
               Create a Hangout
             </Link>
             <Avatar
@@ -100,13 +114,19 @@ class NavBar extends React.Component {
             </Menu>
 
             <div id="responsive-menu">
-              <Link to="/homepage" onClick={this.handleClose}>
+              <Link to={"/create"} onClick={this.handleResponsiveClose}>
+                Create a Hangout
+              </Link>
+              <Link to="/homepage" onClick={this.handleResponsiveClose}>
                 Homepage
               </Link>
-              <Link to="/homepage/myevents" onClick={this.handleClose}>
+              <Link
+                to="/homepage/myevents"
+                onClick={this.handleResponsiveClose}
+              >
                 My Events
               </Link>
-              <Link to="/homepage/groups" onClick={this.handleClose}>
+              <Link to="/homepage/groups" onClick={this.handleResponsiveClose}>
                 My Groups
               </Link>
               <button onClick={this.handleLogout}>Logout</button>
