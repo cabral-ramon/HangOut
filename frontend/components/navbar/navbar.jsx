@@ -77,9 +77,7 @@ class NavBar extends React.Component {
     if (this.props.currentUser !== null) {
       const { anchorEl } = this.state;
       return (
-        <div>
-          <i id="hamburger" className="fas fa-bars" />
-          <div style={{ display: "inline-block", marginBottom: "2px" }} />
+        <div className="navbar-menu-wrapper">
           <div className="navbar-user-container">
             <Link
               id="create-hangout-link"
@@ -112,7 +110,6 @@ class NavBar extends React.Component {
               </Link>
               <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
             </Menu>
-
             <div id="responsive-menu">
               <Link to={"/create"} onClick={this.handleResponsiveClose}>
                 Create a Hangout
@@ -136,9 +133,7 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
-          <i id="hamburger" className="fas fa-bars" />
-          <div style={{ display: "inline-block", marginBottom: "5px" }} />
+        <div className="navbar-menu-wrapper">
           <div className="navbar-user-container">
             <Link to={"/create"} className="navbar-links create-btn">
               Create a Hangout
@@ -154,7 +149,10 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar">
-        <h1 className="logo">{this.renderHomePageNav()}</h1>
+        <div className="navbar">
+          <h1 className="logo">{this.renderHomePageNav()}</h1>
+          <i id="hamburger" className="fas fa-bars" />
+        </div>
         {this.userIcon()}
       </nav>
     );

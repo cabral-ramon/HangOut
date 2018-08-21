@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   display: flex;
   flex-direction: row;
   padding: 16px 16px 8px;
@@ -8,7 +9,9 @@
   position: relative;
   margin: 0;
   justify-content: space-between;
+  width: 100%;
   @media (max-width: 500px) {
+    flex-flow: wrap;
   }
   .logo {
     padding-left: 22px;
@@ -25,8 +28,6 @@
     @media (max-width: 500px) {
       display: none;
       flex-direction: column;
-      margin-left: -75%;
-      margin-top: 30%;
       width: 100%;
     }
     .navbar-links {
@@ -117,5 +118,18 @@
 #create-hangout-link {
   @media (max-width: 500px) {
     display: none;
+  }
+}
+
+.navbar-menu-wrapper {
+  min-width: fit-content;
+  @media (max-width: 500px) {
+    display: flex;
+    margin-bottom: 2px;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 69px;
+    background: white;
   }
 }
