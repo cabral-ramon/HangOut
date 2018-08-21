@@ -31,11 +31,12 @@
       width: 100%;
     }
     .navbar-links {
-      padding: 20px;
+      // padding: 20px;
       color: dimgrey;
       @media (max-width: 500px) {
-        margin-bottom: 10px;
-        padding: 10px;
+        // padding: 10px;
+        padding: 0px;
+        margin: 5px;
       }
     }
     .create-btn {
