@@ -1,5 +1,4 @@
 @media only screen and (max-width: 800px) {
-
   .navbar-links {
     font-size: 1.25em;
   }
@@ -11,14 +10,10 @@
     }
   }
 
-  .group-container {
-    width: auto;
-  }
-
   .group-show-image-container {
     flex-direction: column;
     .group-show-image {
-      width: 100% ;
+      width: 100%;
     }
     .group-info-container {
       padding: 0;
