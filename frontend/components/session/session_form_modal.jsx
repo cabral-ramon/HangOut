@@ -92,7 +92,9 @@ class SessionFormModal extends React.Component {
         password: "password"
       })
       .then(() => {
-        this.props.history.push("/homepage");
+        this.setState({ modalIsOpen: false }, () =>
+          this.props.history.push("/homepage")
+        );
       });
   }
 
@@ -109,6 +111,7 @@ class SessionFormModal extends React.Component {
   }
 
   modalButtonRender() {
+    let title = this.props.formType === "signup" ? "Sign up" : "Log in";
     if (this.props.id === "2") {
       return (
         <button onClick={this.openModal} className="video-signup-btn">
@@ -116,7 +119,6 @@ class SessionFormModal extends React.Component {
         </button>
       );
     } else {
-      let title = this.props.formType === "signup" ? "Sign up" : "Log in";
       return (
         <button onClick={this.openModal} className="navbar-links">
           {title}

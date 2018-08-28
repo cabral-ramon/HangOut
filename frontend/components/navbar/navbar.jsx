@@ -32,7 +32,10 @@ class NavBar extends React.Component {
 
   handleLogout() {
     this.props.logout();
-    this.setState({ mobileMenuOpen: !this.state.mobileMenuOpen });
+    this.setState({
+      mobileMenuOpen: !this.state.mobileMenuOpen,
+      anchorEl: null
+    });
   }
 
   renderHomePageNav() {
