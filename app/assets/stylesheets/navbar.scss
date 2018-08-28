@@ -22,19 +22,22 @@
     color: white;
     text-align: center;
     padding: 0px;
-    vertical-align: -webkit-baseline-middle;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
     @media (max-width: 500px) {
       display: none;
       flex-direction: column;
       width: 100%;
+      background: white;
+      z-index: 100;
+      padding-bottom: 20px;
     }
     .navbar-links {
-      // padding: 20px;
       color: dimgrey;
+      margin: 0px 10px;
       @media (max-width: 500px) {
-        // padding: 10px;
         padding: 0px;
         margin: 5px;
       }
@@ -117,6 +120,8 @@
 }
 
 #create-hangout-link {
+  align-self: center;
+  margin-right: 10px;
   @media (max-width: 500px) {
     display: none;
   }
@@ -124,13 +129,20 @@
 
 .navbar-menu-wrapper {
   min-width: fit-content;
+  display: flex;
+  margin-right: 10px;
   @media (max-width: 500px) {
-    display: flex;
     margin-bottom: 2px;
     width: 100%;
     margin: auto;
     position: absolute;
     top: 69px;
     background: white;
+  }
+}
+
+.open-menu {
+  @media (max-width: 500px) {
+    display: flex !important;
   }
 }

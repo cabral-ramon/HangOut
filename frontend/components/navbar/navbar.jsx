@@ -9,18 +9,14 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      anchorEl: null
+      anchorEl: null,
+      mobileMenuOpen: false
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleMenu = this.handleMenu.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleBurgerClick = this.handleBurgerClick.bind(this);
     this.renderHomePageNav = this.renderHomePageNav.bind(this);
-    this.menuClose = this.menuClose.bind(this);
-    this.handleResponsiveClose = this.handleResponsiveClose.bind(this);
-  }
-  menuClose() {
-    $(".navbar-user-container").slideToggle("fast");
   }
 
   handleClick(event) {
@@ -34,21 +30,9 @@ class NavBar extends React.Component {
     this.setState({ anchorEl: null });
   }
 
-  handleResponsiveClose() {
-    this.setState({ anchorEl: null });
-    this.menuClose();
-  }
-
   handleLogout() {
     this.props.logout();
-  }
-
-  componentDidMount() {
-    $(document).ready(() => {
-      $("#hamburger").click(() => {
-        this.menuClose();
-      });
-    });
+    this.setState({ mobileMenuOpen: !this.state.mobileMenuOpen });
   }
 
   renderHomePageNav() {
@@ -72,12 +56,17 @@ class NavBar extends React.Component {
     }
   }
 
+  handleBurgerClick() {
+    this.setState({ mobileMenuOpen: !this.state.mobileMenuOpen });
+  }
+
   userIcon() {
+    const { anchorEl, mobileMenuOpen } = this.state;
+    const open = mobileMenuOpen ? " open-menu" : "";
     if (this.props.currentUser !== null) {
-      const { anchorEl } = this.state;
       return (
         <div className="navbar-menu-wrapper">
-          <div className="navbar-user-container">
+          <div className={"navbar-user-container" + open}>
             <Link
               id="create-hangout-link"
               to={"/create"}
@@ -110,19 +99,16 @@ class NavBar extends React.Component {
               <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
             </Menu>
             <div id="responsive-menu">
-              <Link to={"/create"} onClick={this.handleResponsiveClose}>
+              <Link to={"/create"} onClick={this.handleClose}>
                 Create a Hangout
               </Link>
-              <Link to="/homepage" onClick={this.handleResponsiveClose}>
+              <Link to="/homepage" onClick={this.handleClose}>
                 Homepage
               </Link>
-              <Link
-                to="/homepage/myevents"
-                onClick={this.handleResponsiveClose}
-              >
+              <Link to="/homepage/myevents" onClick={this.handleClose}>
                 My Events
               </Link>
-              <Link to="/homepage/groups" onClick={this.handleResponsiveClose}>
+              <Link to="/homepage/groups" onClick={this.handleClose}>
                 My Groups
               </Link>
               <button onClick={this.handleLogout}>Logout</button>
@@ -133,7 +119,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className="navbar-menu-wrapper">
-          <div className="navbar-user-container">
+          <div className={"navbar-user-container" + open}>
             <Link to={"/create"} className="navbar-links create-btn">
               Create a Hangout
             </Link>
@@ -150,7 +136,11 @@ class NavBar extends React.Component {
       <nav className="navbar">
         <div className="navbar">
           <h1 className="logo">{this.renderHomePageNav()}</h1>
-          <i id="hamburger" className="fas fa-bars" />
+          <i
+            id="hamburger"
+            className="fas fa-bars"
+            onClick={this.handleBurgerClick}
+          />
         </div>
         {this.userIcon()}
       </nav>

@@ -182,7 +182,7 @@ class SessionFormModal extends React.Component {
     let buttonClass =
       this.props.id === "2" ? "video-signup-btn" : "navbar-links";
     return (
-      <div>
+      <React.Fragment>
         <button onClick={this.openModal} className={buttonClass}>
           {title}
         </button>
@@ -235,7 +235,7 @@ class SessionFormModal extends React.Component {
             {this.renderErrors()}
           </form>
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }
