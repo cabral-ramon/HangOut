@@ -92,9 +92,7 @@ class SessionFormModal extends React.Component {
         password: "password"
       })
       .then(() => {
-        this.setState({ modalIsOpen: false }, () =>
-          this.props.history.push("/homepage")
-        );
+        this.props.history.push("/homepage");
       });
   }
 
