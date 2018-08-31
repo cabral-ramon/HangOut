@@ -1,16 +1,16 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { Route, Switch, Link } from 'react-router-dom';
-import NavBar from '../navbar/navbar_container';
-import GroupIndexContainer from '../groups/group_index_container';
-import EventIndexContainer from '../event/event_index_container';
-import { merge } from 'lodash';
+import React, { Fragment } from "react";
+import { withRouter } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import GroupIndexContainer from "../groups/group_index_container";
+import EventIndexContainer from "../event/event_index_container";
+import { merge } from "lodash";
 
 class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ""
+      query: "",
+      spinner: false
     };
     this.updateSearchBar = this.updateSearchBar.bind(this);
     this.searchGroups = this.searchGroups.bind(this);
@@ -25,18 +25,23 @@ class Homepage extends React.Component {
     return "homepage-btn";
   }
 
-  searchGroups(e){
+  searchGroups(e) {
     e.preventDefault();
-    this.props.searchGroups(this.state);
+    this.setState({ spinner: true });
+    this.props.searchGroups(this.state).then(() => {
+      this.setState({ spinner: false });
+    });
   }
 
   updateSearchBar() {
-    return (e) => {
-      this.setState(merge({}, this.state, {group: {query: e.currentTarget.value}}));
+    return e => {
+      this.setState(
+        merge({}, this.state, { group: { query: e.currentTarget.value } })
+      );
     };
   }
 
-  renderCount(){
+  renderCount() {
     if (this.props.location.pathname == "/homepage/events") {
       return `${this.props.events.length} Events`;
     } else {
@@ -46,45 +51,50 @@ class Homepage extends React.Component {
 
   render() {
     return (
-    <main>
-      <div className="homepage-search-container">
-        <h1>Find a Hangout</h1>
-        <p className="homepage-count">{this.renderCount()} Available</p>
-        <div className="homepage-btn-wrapper">
-          <div className="homepage-btn-container">
-            <div className="search-bar-container">
-              <form onSubmit={this.searchGroups}>
-                <input type="search"
-                  className="search-bar"
-                  placeholder="Search by groups..."
-                  onChange={this.updateSearchBar()}
-                  ></input>
-              </form>
-            </div>
-            <div className="homepage-btn-list-wrapper">
-              <ul className="homepage-btn-list">
-                <li>
-                  <Link to="/homepage"
-                    className={this.chooseClassName('/homepage')}
-                    >Groups</Link>
-                </li>
-                <li>
-                  <Link to="/homepage/events"
-                    className={this.chooseClassName('/homepage/events')}
-                    >Events</Link>
-                </li>
-              </ul>
+      <main>
+        <div className="homepage-search-container">
+          <h1>Find a Hangout</h1>
+          <p className="homepage-count">{this.renderCount()} Available</p>
+          <div className="homepage-btn-wrapper">
+            <div className="homepage-btn-container">
+              <div className="search-bar-container">
+                <form onSubmit={this.searchGroups}>
+                  <input
+                    type="search"
+                    className="search-bar"
+                    placeholder="Search by groups..."
+                    onChange={this.updateSearchBar()}
+                  />
+                </form>
+              </div>
+              <div className="homepage-btn-list-wrapper">
+                <ul className="homepage-btn-list">
+                  <li>
+                    <Link
+                      to="/homepage"
+                      className={this.chooseClassName("/homepage")}
+                    >
+                      Groups
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/homepage/events"
+                      className={this.chooseClassName("/homepage/events")}
+                    >
+                      Events
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <Route exact path="/homepage" component={GroupIndexContainer}/>
-      <Route path="/homepage/events" component={EventIndexContainer} />
-    </main>
+        <Route exact path="/homepage" component={GroupIndexContainer} />
+        <Route path="/homepage/events" component={EventIndexContainer} />
+      </main>
     );
   }
-
 }
-
 
 export default withRouter(Homepage);
