@@ -6,15 +6,14 @@ const Video = () => {
   return (
     <div className="video-container">
       <video
-        src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4"
-        autoPlay="yes"
+        autoPlay
         className="video"
-        loop="yes" data-vscid="cgnslx2fk"></video>
+        loop="yes">
+        <source src="https://meetup.com/mu_static/en-US/video.dddafbfe.mp4" />
+      </video>
       <div className="video-text">
         <h3>What do you love?</h3>
         <p>do more of it with Hangout</p>
-
-
           <SessionFormContainer formType="signup" id="2"/>
       </div>
     </div>
