@@ -1,12 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
+
 # Examples:
-#
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # require 'faker'
-#
+
 
 # 20.times do
 #   username = Faker::Name.unique.name
@@ -27,8 +27,8 @@
 #   event.save
 #   Rsvp.create(event_id: event.id, user_id: organizer.id)
 # end
-# Comment.delete_all
-#
+# # Comment.delete_all
+
 # 30.times do
 #   group = Group.all.shuffle[0]
 #   author_id = group.members.shuffle[0].id
@@ -38,7 +38,7 @@
 
 
 # User.delete_all
-#
+
 # 100.times do
 #   username = Faker::LeagueOfLegends.unique.champion
 #   email = Faker::Internet.unique.email
@@ -46,16 +46,16 @@
 #   location = Faker::Address.city
 #   user = User.create(username: username, email: email, password: password, location: location)
 # end
-#
+
 # user1 = User.create(username: "Guest User", password: "password", email: "guestuser@gmail.com", location: "New York, NY")
-#
-#
-#
-#
+
+
+
+
 # 30.times do
-#
+
 #   images = ['app/assets/images/animal.jpg', 'app/assets/images/business.jpeg', 'app/assets/images/cat.jpeg', 'app/assets/images/cycle.jpeg', 'app/assets/images/food.jpg', 'app/assets/images/game.jpeg', 'app/assets/images/hack.jpeg', 'app/assets/images/health.jpeg', 'app/assets/images/language.jpeg', 'app/assets/images/learn.jpg', 'app/assets/images/mom.jpeg', 'app/assets/images/music.jpg', 'app/assets/images/paint.jpeg', 'app/assets/images/paint.jpeg', 'app/assets/images/photography.jpg', 'app/assets/images/picture.jpeg', 'app/assets/images/picture2.jpeg', 'app/assets/images/picture3.jpeg', 'app/assets/images/picture4.jpeg']
-#
+
 #   name = Faker::Lorem.unique.sentence
 #   description = Faker::Lorem.unique.paragraph(5)
 #   location = Faker::Address.city
@@ -63,7 +63,7 @@
 #   group = Group.create(name: name, description: description, location: location, image: image)
 # end
 # Group.delete_all
-# #
+#
 # group1 = Group.create(
 #   name: "Brooklyn Pickup Soccer Group",
 #   description: "Bklyn Pickup Soccer is a coed soccer group that plays year-round. Founded by John Thomas in 2008, this group has grown and evolved to over 4,000 members, hosting numerous pickup games all over Brooklyn. Everyone is welcome to attend (so long as people RSVP and respect our rules). Games tend to play on an intermediate level.
@@ -183,13 +183,13 @@
 #   image: File.open('app/assets/images/animal.jpg'),
 #   owner_id: User.all.shuffle.first.id
 #   )
-#
-#   # Group.all.each do |group|
-#   #   user = User.all.shuffle.first
-#   #   group.owner_id = user.id
-#   #   group.save!
-#   # end
-#
+
+  # Group.all.each do |group|
+  #   user = User.all.shuffle.first
+  #   group.owner_id = user.id
+  #   group.save!
+  # end
+
 # Event.delete_all
 #  100.times do
 #    # times = ["7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00AM", "6:00AM", "5:00AM", "4:00AM", "3:00AM", "2:00AM", "1:00AM", "7:00PM", "8:00PM", "9:00PM", "10:00PM", "11:00PM", "12:00PM", "6:00PM", "5:00PM", "4:00PM", "3:00PM", "2:00PM", "1:00PM"]
@@ -203,14 +203,14 @@
 #    event = Event.create(name: name, description: description, location: location, date: date, group_id: group_id)
 #  end
 # #
-# Membership.delete_all
+# # Membership.delete_all
 #  200.times do
 #    group_id = Group.all.shuffle[0].id
 #    user_id = User.all.shuffle[0].id
 #    membership = Membership.create(group_id: group_id, user_id: user_id)
 #  end
-#
-# Rsvp.delete_all
+
+# # Rsvp.delete_all
 #  200.times do
 #    event_id = Event.all.shuffle[0].id
 #    user_id = User.all.shuffle[0].id
